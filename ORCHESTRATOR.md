@@ -7,7 +7,7 @@
 ## What is the Orchestrator?
 
 The Orchestrator is an agent that:
-- **Guides** you sequentially through the 6 Loom phases
+- **Guides** you through the 7 Loom phases
 - **Asks clarifying questions** to ensure clarity at each stage
 - **Coordinates specialist agents** for phase-specific deep work
 - **Maintains project context** across all phases
@@ -67,6 +67,7 @@ Think of it as a project manager + senior engineer + mentor in one.
 ### 2. Specialist Coordination
 - Calls in Discovery Specialist for discovery deep-dives
 - Calls in Architecture Specialist for complex design decisions
+- Calls in Planning Specialist for decomposition, ownership, dependencies, and agent context packets
 - Calls in Implementation Coach for coding questions
 - Calls in Test Specialist for testing strategy
 
@@ -99,14 +100,18 @@ Phase 2: Requirements
      ↓
 Phase 3: Architecture
      ↓
-Phase 4: Contracts & Tests / CI/CD
+Phase 4: Planning & Decomposition
      ↓
-Phase 5: Implementation
+Phase 5: Contracts & Tests / CI/CD
      ↓
-Phase 6: Review & Retrospective
+Phase 6: Implementation
+     ↓
+Phase 7: Review & Retrospective
 ```
 
 At each gate, the Orchestrator validates quality before proceeding.
+
+The first pass through this workflow is often more waterfall-style. After the foundation exists, the Orchestrator can run smaller agile Loom cycles for services, features, subprojects, or milestones.
 
 ---
 

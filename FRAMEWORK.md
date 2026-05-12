@@ -2,14 +2,17 @@
 
 ## Core Principles
 
-### 1. Sequential Progression
-Projects move through phases in order. Each phase builds on the previous one and enables the next. Skipping phases creates technical debt and misalignment.
+### 1. Sequential Foundation, Iterative Practice
+New projects usually move through phases in order. Each phase builds on the previous one and enables the next. This initial pass is intentionally waterfall-style: create shared context, reduce ambiguity, and give agents a stable foundation before parallelizing heavily.
+
+After the first implementation, Loom becomes more agile and recursive. Teams can run smaller Loom cycles for individual services, features, subprojects, or milestones while preserving the same quality gates.
 
 ### 2. Clear Separation of Concerns
 Each phase has distinct responsibilities:
 - **Discovery** answers "What problem are we solving?"
 - **Requirements** answers "What needs to be built?"
 - **Architecture** answers "How will we build it?"
+- **Planning & Decomposition** answers "How will we divide and coordinate the work?"
 - **Contracts & Tests / CI/CD** answers "How do we verify it works?"
 - **Implementation** answers "Let's build it"
 - **Review & Retrospective** answers "Did we succeed? What did we learn?"
@@ -36,7 +39,10 @@ Each phase has a dedicated agent that:
 - Ensures quality before moving forward
 - Maintains consistency with Loom principles
 
-### 6. Continuous Feedback
+### 6. Explicit Agent Coordination
+Agentic workflows need clear work boundaries. Planning & Decomposition defines ownership, context packets, dependencies, parallel work, handoff expectations, and integration checkpoints before implementation begins.
+
+### 7. Continuous Feedback
 The Orchestrator maintains context and asks clarifying questions. This creates a conversation, not a checklist.
 
 ## When to Deviate
@@ -46,11 +52,24 @@ The framework is flexible. Reasonable deviations:
 - **Tight deadlines**: Accelerate through phases but maintain documentation
 - **Small features**: You may compress multiple phases into one session
 - **Experimentation**: Discovery and architecture might be tighter loops
+- **Later iterations**: Run agile mini-cycles for scoped services, features, or subprojects
 
 Avoid deviating from:
 - **Skipping phases** - This creates technical debt
+- **Skipping decomposition on multi-agent work** - This creates ownership confusion
 - **Implementing without contracts** - Tests should exist before code
 - **Skipping retrospectives** - Learning is how we improve
+
+## Recursive Scope
+
+Loom applies at multiple levels:
+
+- **Project-level Loom**: Overall product or system
+- **Service-level Loom**: API service, worker, frontend app, data pipeline, or integration
+- **Feature-level Loom**: A bounded feature inside an existing system
+- **Task-level mini-Loom**: A compressed cycle for small changes
+
+Use the full framework when the work is new, risky, or cross-functional. Use a smaller loop when the scope is bounded and the surrounding context is already understood.
 
 ## Success Metrics
 
@@ -58,6 +77,7 @@ A successful Loom project achieves:
 
 ✅ **Clear Requirements** - Everyone understands what's being built
 ✅ **Sound Architecture** - Technical design is documented and reviewed
+✅ **Clear Work Ownership** - Workstreams, dependencies, and handoffs are explicit
 ✅ **High Test Coverage** - Contracts and tests exist before implementation
 ✅ **Quality Code** - Implementation follows defined contracts
 ✅ **Documented Learning** - Retrospective captures successes and failures

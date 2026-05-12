@@ -1,12 +1,13 @@
-# Phase 5: Implementation
+# Phase 6: Implementation
 
 ## Purpose
 
-Now you build. Implementation is taking the architecture and contracts and writing the actual code that fulfills requirements and passes tests.
+Now you build. Implementation is taking the architecture, decomposition plan, and contracts, then writing the actual code that fulfills requirements and passes tests.
 
 This phase focuses on:
 - Writing clean, testable code
 - Following established contracts
+- Respecting ownership boundaries
 - Maintaining code quality
 - Keeping tests passing
 - Documentation and comments
@@ -20,6 +21,7 @@ The Implementation Agent will help you navigate:
 - What naming conventions?
 - How do we keep it maintainable?
 - Where does each piece belong?
+- How do we avoid crossing another workstream's ownership boundary without coordination?
 
 ### Quality Standards
 - How do we write good code?
@@ -38,6 +40,7 @@ The Implementation Agent will help you navigate:
 - When do we deviate from design?
 - How do we communicate changes?
 - When do we update documentation?
+- When does a subproject or service need its own mini-Loom cycle?
 
 ### Performance & Optimization
 - Are there performance concerns?
@@ -54,6 +57,7 @@ By the end of Implementation, you'll have:
 ✅ **Code Documentation** - Comments and docstrings where needed
 ✅ **PR/Commit History** - Clear history of changes
 ✅ **Integration Complete** - All pieces working together
+✅ **Updated Handoffs** - Deviations, blockers, and integration notes captured
 
 ## Implementation Guidelines
 
@@ -85,6 +89,7 @@ You're ready to move to Review & Retrospective when:
 - ✅ Code quality standards are met
 - ✅ Documentation is complete
 - ✅ Code review is done and approved
+- ✅ Workstream handoffs and integration notes are complete
 
 ## Tips
 
@@ -96,4 +101,4 @@ You're ready to move to Review & Retrospective when:
 
 ---
 
-**Next**: Move to [Review & Retrospective](./06-review-retrospective.md) once Implementation is complete.
+**Next**: Move to [Review & Retrospective](./07-review-retrospective.md) once Implementation is complete.

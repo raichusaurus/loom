@@ -8,14 +8,17 @@ Loom is a structured methodology for project development that guides you through
 
 ## The Loom Framework
 
-The framework consists of **6 core phases**:
+The framework consists of **7 core phases**:
 
 1. **[Discovery](./phases/01-discovery.md)** - Explore the problem space, gather context, identify stakeholders and constraints
 2. **[Requirements](./phases/02-requirements.md)** - Define what needs to be built, success criteria, and scope boundaries
 3. **[Architecture](./phases/03-architecture.md)** - Design the system structure, data flow, and technical approach
-4. **[Contracts & Tests / CI/CD](./phases/04-contracts-tests-cicd.md)** - Define interfaces, write tests, and set up automated pipelines
-5. **[Implementation](./phases/05-implementation.md)** - Build the actual services and features
-6. **[Review & Retrospective](./phases/06-review-retrospective.md)** - Evaluate the outcome, document learnings, and plan improvements
+4. **[Planning & Decomposition](./phases/04-planning-decomposition.md)** - Break the work into owned streams, context packets, dependencies, and integration checkpoints
+5. **[Contracts & Tests / CI/CD](./phases/05-contracts-tests-cicd.md)** - Define interfaces, write tests, and set up automated pipelines
+6. **[Implementation](./phases/06-implementation.md)** - Build the actual services and features
+7. **[Review & Retrospective](./phases/07-review-retrospective.md)** - Evaluate the outcome, document learnings, and plan improvements
+
+The first Loom pass is usually more waterfall-style, especially for a new project: establish the shared foundation before parallelizing heavily. Once the foundation exists, Loom becomes more agile and recursive: services, features, and subprojects can run smaller Loom cycles inside the larger project cycle.
 
 ## The Orchestration Agent
 
@@ -40,14 +43,16 @@ loom/
 │   ├── 01-discovery.md
 │   ├── 02-requirements.md
 │   ├── 03-architecture.md
-│   ├── 04-contracts-tests-cicd.md
-│   ├── 05-implementation.md
-│   └── 06-review-retrospective.md
+│   ├── 04-planning-decomposition.md
+│   ├── 05-contracts-tests-cicd.md
+│   ├── 06-implementation.md
+│   └── 07-review-retrospective.md
 ├── agents/
 │   ├── orchestrator/ (main orchestration agent)
 │   ├── discovery/ (discovery phase specialist)
 │   ├── requirements/ (requirements phase specialist)
 │   ├── architecture/ (architecture phase specialist)
+│   ├── planning/ (planning & decomposition specialist)
 │   ├── contracts-tests-cicd/ (testing & CI/CD specialist)
 │   ├── implementation/ (implementation phase specialist)
 │   └── review/ (review & retrospective specialist)
@@ -55,6 +60,7 @@ loom/
     ├── discovery-template.md
     ├── requirements-template.md
     ├── architecture-template.md
+    ├── planning-template.md
     ├── contracts-tests-template.md
     ├── implementation-template.md
     └── retrospective-template.md

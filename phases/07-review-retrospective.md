@@ -1,4 +1,4 @@
-# Phase 6: Review & Retrospective
+# Phase 7: Review & Retrospective
 
 ## Purpose
 
@@ -10,6 +10,7 @@ This phase focuses on:
 - Identifying improvements for next time
 - Celebrating successes
 - Planning for maintenance and evolution
+- Feeding learnings into the next agile Loom cycle
 
 ## Key Questions
 
@@ -32,6 +33,8 @@ The Review Agent will help you explore:
 - Which phases were most valuable?
 - Where did we struggle?
 - What was smooth?
+- Did the decomposition and ownership model work?
+- Which subprojects, services, or features need their own follow-up cycle?
 
 ### Team Learning
 - What did the team learn?
@@ -55,6 +58,7 @@ By the end of Review & Retrospective, you'll have:
 ✅ **Action Items** - Improvements for next project
 ✅ **Maintenance Plan** - How we'll keep this running
 ✅ **Lessons Learned Document** - Knowledge capture for the team
+✅ **Next Cycle Plan** - Follow-up Loom cycles for services, features, or improvements
 
 ## Review & Retrospective Template
 
@@ -70,6 +74,7 @@ You've successfully completed Loom when:
 - ✅ Team has reflected on the process
 - ✅ Learnings are captured
 - ✅ Improvements are planned
+- ✅ Next agile cycle is identified if more work remains
 
 ## The Retrospective Process
 
@@ -107,6 +112,13 @@ Document learnings:
 - Record architectural insights
 - Capture best practices
 - Note what surprised you
+
+### 6. Next Cycle Planning
+Decide what happens next:
+- Which improvements become the next milestone?
+- Which services or features need a scoped Loom cycle?
+- Which requirements, contracts, or architecture decisions should be revisited?
+- What should become part of the team's default workflow?
 
 ## Tips for Effective Retrospectives
 

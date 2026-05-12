@@ -246,7 +246,7 @@ Code
 - **Tech Lead:** _________________ Date: _______
 - **Ops Lead:** _________________ Date: _______
 
-**Ready to move to Contracts & Tests / CI/CD?** ☐ Yes ☐ No (Explain):
+**Ready to move to Planning & Decomposition?** ☐ Yes ☐ No (Explain):
 
 ---
 

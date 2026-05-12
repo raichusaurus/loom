@@ -62,7 +62,7 @@ See [architecture-template.md](../templates/architecture-template.md) for a deta
 
 ## When Architecture is Complete
 
-You're ready to move to Contracts & Tests / CI/CD when:
+You're ready to move to Planning & Decomposition when:
 
 - ✅ System structure is clear
 - ✅ Technology choices are justified
@@ -80,4 +80,4 @@ You're ready to move to Contracts & Tests / CI/CD when:
 
 ---
 
-**Next**: Move to [Contracts & Tests / CI/CD](./04-contracts-tests-cicd.md) once Architecture is complete.
+**Next**: Move to [Planning & Decomposition](./04-planning-decomposition.md) once Architecture is complete.

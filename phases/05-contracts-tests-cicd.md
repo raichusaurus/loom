@@ -1,8 +1,8 @@
-# Phase 4: Contracts & Tests / CI/CD
+# Phase 5: Contracts & Tests / CI/CD
 
 ## Purpose
 
-Before writing code, you define **how it will work** and **how you'll verify it works**. This phase establishes contracts, test strategy, and CI/CD pipelines.
+Before writing code, you define **how it will work** and **how you'll verify it works**. This phase takes the architecture and decomposition plan, then establishes contracts, test strategy, and CI/CD pipelines.
 
 This phase focuses on:
 - Defining API contracts and interfaces
@@ -10,6 +10,7 @@ This phase focuses on:
 - Setting up CI/CD pipelines
 - Establishing code quality standards
 - Automating verification
+- Mapping tests and contracts to workstream ownership
 
 ## Key Questions
 
@@ -20,12 +21,14 @@ The Test & CI/CD Agent will help you explore:
 - What inputs/outputs does each component have?
 - What are the error cases?
 - How do components communicate?
+- Which workstream owns each contract?
 
 ### Test Strategy
 - What needs to be tested?
 - What's the test coverage target?
 - What types of tests (unit/integration/e2e)?
 - What are the happy paths vs. edge cases?
+- Which tests validate integration between independently owned workstreams?
 
 ### CI/CD Pipeline
 - What runs on every commit?
@@ -55,6 +58,7 @@ By the end of this phase, you'll have:
 ✅ **CI/CD Pipeline** - GitHub Actions workflows configured
 ✅ **Code Quality Standards** - Linting, formatting, review requirements
 ✅ **Monitoring Plan** - Observability and alerting strategy
+✅ **Ownership-Aligned Verification** - Tests and contracts mapped to workstreams
 
 ## Contracts & Tests Template
 
@@ -88,4 +92,4 @@ This phase is crucial because:
 
 ---
 
-**Next**: Move to [Implementation](./05-implementation.md) once Contracts & Tests / CI/CD are complete.
+**Next**: Move to [Implementation](./06-implementation.md) once Contracts & Tests / CI/CD are complete.
