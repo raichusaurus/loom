@@ -21,24 +21,49 @@ Use this template to capture findings during the Discovery phase.
 
 ---
 
-## Stakeholders
+## Project Context
 
-### Primary Stakeholders
-*Who will directly benefit from solving this problem?*
+### Project Type
+*Is this a new build, rewrite, migration, continuation, experiment, or something else?*
+
+### Prior Art / Existing System
+*What already exists? What should be kept, discarded, or rethought?*
+
+| Source / Artifact | What It Shows | Keep / Discard / Rethink | Notes |
+|-------------------|---------------|---------------------------|-------|
+| | | | |
+
+### Working Shape
+*What does the solution seem to be, without locking in requirements or architecture too early?*
+
+### First Useful Version
+*What is the smallest version that would prove the core idea is worth continuing?*
+
+### Explicitly Out of Scope
+*What should not be included in the first useful version?*
+
+- [Out of scope item]
+- [Out of scope item]
+
+---
+
+## Users & Stakeholders
+
+### Primary User / Operator
+*Who is the first person this needs to work for? What do they need to do?*
+
+### Future / External Users
+*Who might benefit later, even if the first version is internal or operator-focused?*
+
+### Stakeholders
+*Who benefits, influences decisions, contributes, or is affected?*
 
 | Stakeholder | Role | Needs | Constraints |
 |-------------|------|-------|-------------|
 | | | | |
 | | | | |
 
-### Secondary Stakeholders
-*Who else is affected by this solution?*
-
-| Stakeholder | Role | Needs | Constraints |
-|-------------|------|-------|-------------|
-| | | | |
-
-### Decision Makers
+### Decision Owner
 *Who has the final say on whether we proceed?*
 
 ---
@@ -64,6 +89,23 @@ Use this template to capture findings during the Discovery phase.
 - **Compliance/Regulatory:** [Any requirements?]
 - **Organizational policies:** [Any constraints?]
 - **Dependencies:** [What else depends on this?]
+
+---
+
+## Success & Validation
+
+### Success Metrics
+*How will we know this project is working? What signals are measurable?*
+
+| Metric / Signal | Target | How We'll Measure |
+|-----------------|--------|-------------------|
+| | | |
+
+### Validation Strategy
+*How will we test whether the idea is credible before investing in polish?*
+
+### Evidence Needed Before Requirements
+*What must be true, known, or decided before moving to Requirements?*
 
 ---
 
@@ -93,6 +135,18 @@ Use this template to capture findings during the Discovery phase.
 
 ---
 
+## Framework Feedback
+
+*If this project is also teaching us about Loom, capture reusable process lessons here.*
+
+### What Worked
+
+### Friction
+
+### Template / Process Improvements
+
+---
+
 ## Discovery Outputs
 
 ### Key Insights
@@ -106,13 +160,11 @@ Use this template to capture findings during the Discovery phase.
 
 ---
 
-## Sign-Off
+## Phase Gate
 
-- **Discovery Lead:** _________________ Date: _______
-- **Stakeholder:** _________________ Date: _______
-- **Decision Maker:** _________________ Date: _______
-
-**Ready to move to Requirements?** ☐ Yes ☐ No (Explain):
+- **Ready to move to Requirements?** [ ] Yes [ ] No
+- **Remaining concerns:**
+- **Owner decision:**
 
 ---
 
