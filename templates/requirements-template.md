@@ -6,6 +6,12 @@ Use this template to define and document requirements for your project.
 **Date:** [Date]
 **Requirements Lead:** [Who's leading this]
 
+### How to Use This Template
+
+- Keep sections that clarify what must be built, how success will be validated, or what Architecture must decide next.
+- Delete optional sections that do not apply; unused prompts create noise.
+- Use **Optional / Not Needed Yet** to name tempting work that should not be part of the MVP.
+
 ---
 
 ## Overview
@@ -46,12 +52,17 @@ Use this template to define and document requirements for your project.
 ### MVP (Minimum Viable Product)
 [What's the smallest version that solves the core problem?]
 
-Code
-
 ### Phased Releases (if applicable)
 - **Phase 1:** [Features for initial release]
 - **Phase 2:** [Features for follow-up]
 - **Phase 3:** [Future enhancements]
+
+### Optional / Not Needed Yet
+*Use this to keep the MVP honest. Capture useful ideas that are intentionally deferred, experimental, or probably unnecessary.*
+
+| Item | Status | Why not now? | Revisit when |
+|------|--------|--------------|--------------|
+| | Optional / Deferred / Unnecessary | | |
 
 ---
 
@@ -65,27 +76,42 @@ As a [user type], I want [action] so that [benefit]
 
 Acceptance Criteria:
 
-Criterion 1
-Criterion 2
-Criterion 3
-Code
+- Criterion 1
+- Criterion 2
+- Criterion 3
 
 #### Story 2
 As a [user type], I want [action] so that [benefit]
 
 Acceptance Criteria:
 
-Criterion 1
-Criterion 2
-Code
+- Criterion 1
+- Criterion 2
 
 *[Add more as needed]*
 
 ### Key Features
+*Use a consistent priority scale such as Must / Should / Could / Won't for MVP.*
+
 | Feature | Description | Priority | Notes |
 |---------|-------------|----------|-------|
 | | | | |
 | | | | |
+
+### Output Surfaces
+*Where will users, operators, or downstream systems see the result? Delete this section if the project has no meaningful output surfaces beyond the primary product.*
+
+| Surface | Purpose | Required Content | Consumer |
+|---------|---------|------------------|----------|
+| | | | |
+
+### Data Fidelity
+*For data-heavy projects, define what must be preserved versus what can be derived. Delete this section if it does not apply.*
+
+- **Source facts to preserve:**
+- **Derived data / recalculable outputs:**
+- **Stable identifiers:**
+- **Precision limits / unknowns not to invent:**
 
 ---
 
@@ -98,8 +124,6 @@ Code
 
 ### Scalability
 [How should this scale? What's the growth plan?]
-
-Code
 
 ### Security
 - Authentication: [e.g., OAuth2]
@@ -117,6 +141,11 @@ Code
 - Backup strategy: [How often?]
 - Recovery time objective: [RTO]
 
+### Cost
+- Recurring cost target: [e.g., local-only, free tier, <$X/month]
+- Paid service approval threshold:
+- Cost-related tradeoffs:
+
 ---
 
 ## Acceptance Tests
@@ -124,12 +153,8 @@ Code
 ### Test Case 1: [Feature Name]
 Given [precondition] When [user action] Then [expected result]
 
-Code
-
 ### Test Case 2: [Feature Name]
 Given [precondition] When [user action] Then [expected result]
-
-Code
 
 *[Add more as needed]*
 
@@ -142,6 +167,14 @@ Code
 - [ ] Performance targets met: [specific metrics]
 - [ ] User satisfaction: [target score]
 - [ ] Uptime: [target percentage]
+
+### Validation Signals
+*What evidence will prove the requirements are useful, not just implemented?*
+
+- [ ] Required outputs are inspectable by the intended user/operator
+- [ ] Results can be compared across runs, versions, users, or scenarios where stability matters
+- [ ] Confidence, sample size, provenance, or other credibility context is visible where needed
+- [ ] Outputs can be traced back to source data, user action, or acceptance criteria where needed
 
 ### Definition of Done
 A feature is considered done when:
@@ -170,6 +203,26 @@ A feature is considered done when:
 |-----------|-----------------|
 | | |
 
+### Prior Art / Legacy Inputs
+*Optional. Use for rewrites, migrations, pilots, or projects with meaningful existing artifacts. Delete if not applicable.*
+
+| Artifact | What it shows | Keep / Discard / Rethink | Notes |
+|----------|---------------|--------------------------|-------|
+| | | | |
+
+---
+
+## Architecture Inputs
+
+*Capture important decisions Requirements surfaced but should not resolve. These become starting points for Architecture.*
+
+Architecture should decide:
+
+- [Decision area 1]
+- [Decision area 2]
+- [Tradeoff or unresolved design question]
+- [Legacy/prior-art reuse decision, if applicable]
+
 ---
 
 ## Phase Gate
@@ -180,4 +233,4 @@ A feature is considered done when:
 
 ---
 
-*Save this document in your project repo. Reference these requirements during Implementation.*
+*Save this document in your project repo. Reference these requirements during Architecture and Implementation.*
