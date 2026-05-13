@@ -6,6 +6,13 @@ Use this template to capture findings during the Discovery phase.
 **Date:** [Date]
 **Facilitator:** [Who's leading this]
 
+### How to Use This Template
+
+- Focus on learning, context, and direction; avoid locking in requirements or architecture too early.
+- Keep sections that clarify the problem, users, constraints, validation needs, or handoff to Requirements.
+- Delete optional sections that do not apply; unused prompts create noise.
+- Capture tempting solution ideas as working shape, not as commitments.
+
 ---
 
 ## Problem Statement
@@ -154,6 +161,18 @@ Use this template to capture findings during the Discovery phase.
 
 ### Open Questions
 *What still needs to be explored?*
+
+### Requirements Handoff
+*Summarize the inputs Requirements should pull forward.*
+
+- **Core problem:**
+- **Primary user / operator:**
+- **Future / external users:**
+- **Working shape:**
+- **First useful version:**
+- **Explicitly out of scope:**
+- **Success / validation signals:**
+- **Open questions carried forward:**
 
 ### Next Steps
 *What needs to happen before Requirements?*

@@ -17,7 +17,19 @@ Use this template to turn architecture into an executable plan for humans and ag
 - Discovery document:
 - Requirements document:
 - Architecture document:
+- Architecture planning inputs:
 - Open decisions:
+
+### Architecture Handoff Summary
+*Pull this from the Architecture document before decomposing work.*
+
+- **Components / modules to build:**
+- **Likely workstreams:**
+- **Critical sequencing constraints:**
+- **Parallelization opportunities:**
+- **Contracts, schemas, or interfaces needing tests:**
+- **Highest-risk areas to isolate early:**
+- **Decisions Planning must not reopen without new evidence:**
 
 ---
 
