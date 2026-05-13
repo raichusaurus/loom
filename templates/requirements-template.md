@@ -31,6 +31,11 @@ Use this template to define and document requirements for your project.
 ### Solution Vision
 *High-level vision of what we're building, based on the Discovery inputs above.*
 
+### Phase Updates
+*Optional. Use this when later phases clarify or change requirements. Keep the original trail, but make the current requirement clear.*
+
+- **[Date / Phase]:** [What changed, what it supersedes, and why]
+
 ---
 
 ## Scope Definition
