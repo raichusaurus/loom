@@ -102,7 +102,7 @@ Phase 3: Architecture
      ↓
 Phase 4: Planning & Decomposition
      ↓
-Phase 5: Contracts & Tests / CI/CD
+Phase 5: Contracts & Tests
      ↓
 Phase 6: Implementation
      ↓

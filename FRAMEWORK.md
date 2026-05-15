@@ -13,7 +13,7 @@ Each phase has distinct responsibilities:
 - **Requirements** answers "What needs to be built?"
 - **Architecture** answers "How will we build it?"
 - **Planning & Decomposition** answers "How will we divide and coordinate the work?"
-- **Contracts & Tests / CI/CD** answers "How do we verify it works?"
+- **Contracts & Tests** answers "How do we verify it works?"
 - **Implementation** answers "Let's build it"
 - **Review & Retrospective** answers "Did we succeed? What did we learn?"
 
@@ -70,6 +70,18 @@ Loom applies at multiple levels:
 - **Task-level mini-Loom**: A compressed cycle for small changes
 
 Use the full framework when the work is new, risky, or cross-functional. Use a smaller loop when the scope is bounded and the surrounding context is already understood.
+
+## Optional Release / Operations Cycle
+
+Release, deployment, scheduling, monitoring, runbooks, incident response, and production CI/CD are not required for every Loom project. Local-first MVPs, prototypes, and internal tools may only need local checks and documented follow-up.
+
+When a project needs operational readiness, run a focused Loom mini-cycle after Implementation and before or alongside Review & Retrospective. Start from the phase that fits the gap:
+
+- **Requirements** for release goals, uptime, access, compliance, or support expectations
+- **Architecture** for deployment topology, secrets, environments, observability, and rollback design
+- **Planning & Decomposition** for release workstreams, ownership, sequencing, and runbooks
+- **Contracts & Tests** for smoke tests, deployment checks, monitoring signals, and release gates
+- **Implementation** for CI/CD workflows, deployment automation, dashboards, alerts, and operational docs
 
 ## Success Metrics
 
