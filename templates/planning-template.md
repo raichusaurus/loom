@@ -127,7 +127,7 @@ Use this template to turn architecture into an executable plan for humans and ag
 [When should an agent stop and ask for direction?]
 
 ### Contract / Test Candidates
-*Carry these into Contracts & Tests / CI/CD. Include behavior that should become fixtures, contract tests, smoke tests, schema checks, command contracts, or API expectations.*
+*Carry these into Contracts & Tests. Include behavior that should become fixtures, contract tests, smoke tests, schema checks, command contracts, or API expectations.*
 
 | Candidate | Source | Why it matters | Suggested test shape |
 |-----------|--------|----------------|----------------------|
@@ -158,7 +158,7 @@ Use this template to turn architecture into an executable plan for humans and ag
 
 ## Phase Gate
 
-- **Ready to move to Contracts & Tests / CI/CD?** [ ] Yes [ ] No
+- **Ready to move to Contracts & Tests?** [ ] Yes [ ] No
 - **Remaining concerns:**
 - **Owner decision:**
 

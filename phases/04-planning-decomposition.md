@@ -87,7 +87,7 @@ Think of the first Loom cycle as establishing the foundation. Later cycles shoul
 
 ## When This Phase is Complete
 
-You're ready to move to Contracts & Tests / CI/CD when:
+You're ready to move to Contracts & Tests when:
 
 - ✅ Workstreams are clearly defined
 - ✅ Ownership boundaries are explicit
@@ -107,4 +107,4 @@ You're ready to move to Contracts & Tests / CI/CD when:
 
 ---
 
-**Next**: Move to [Contracts & Tests / CI/CD](./05-contracts-tests-cicd.md) once Planning & Decomposition is complete.
+**Next**: Move to [Contracts & Tests](./05-contracts-tests.md) once Planning & Decomposition is complete.

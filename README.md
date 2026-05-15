@@ -14,7 +14,7 @@ The framework consists of **7 core phases**:
 2. **[Requirements](./phases/02-requirements.md)** - Define what needs to be built, success criteria, and scope boundaries
 3. **[Architecture](./phases/03-architecture.md)** - Design the system structure, data flow, and technical approach
 4. **[Planning & Decomposition](./phases/04-planning-decomposition.md)** - Break the work into owned streams, context packets, dependencies, and integration checkpoints
-5. **[Contracts & Tests / CI/CD](./phases/05-contracts-tests-cicd.md)** - Define interfaces, write tests, and set up automated pipelines
+5. **[Contracts & Tests](./phases/05-contracts-tests.md)** - Define interfaces, test strategy, fixtures, and verification handoffs
 6. **[Implementation](./phases/06-implementation.md)** - Build the actual services and features
 7. **[Review & Retrospective](./phases/07-review-retrospective.md)** - Evaluate the outcome, document learnings, and plan improvements
 
@@ -44,7 +44,7 @@ loom/
 │   ├── 02-requirements.md
 │   ├── 03-architecture.md
 │   ├── 04-planning-decomposition.md
-│   ├── 05-contracts-tests-cicd.md
+│   ├── 05-contracts-tests.md
 │   ├── 06-implementation.md
 │   └── 07-review-retrospective.md
 ├── agents/
@@ -53,7 +53,7 @@ loom/
 │   ├── requirements/ (requirements phase specialist)
 │   ├── architecture/ (architecture phase specialist)
 │   ├── planning/ (planning & decomposition specialist)
-│   ├── contracts-tests-cicd/ (testing & CI/CD specialist)
+│   ├── contracts-tests/ (contracts and testing specialist)
 │   ├── implementation/ (implementation phase specialist)
 │   └── review/ (review & retrospective specialist)
 └── templates/

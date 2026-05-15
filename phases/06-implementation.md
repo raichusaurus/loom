@@ -8,6 +8,7 @@ This phase focuses on:
 - Writing clean, testable code
 - Following established contracts
 - Respecting ownership boundaries
+- Bootstrapping local and CI/check automation when the scaffold can run it
 - Maintaining code quality
 - Keeping tests passing
 - Documentation and comments
@@ -34,6 +35,8 @@ The Implementation Agent will help you navigate:
 - Integration tests for new features?
 - How do you verify contracts?
 - What's the development workflow?
+- Which checks from Contracts & Tests can now be automated?
+- Which live or external checks must stay opt-in?
 
 ### Problem-Solving
 - How do we handle unexpected complexity?
@@ -54,6 +57,7 @@ By the end of Implementation, you'll have:
 
 ✅ **Working Code** - Features implemented per requirements
 ✅ **Passing Tests** - All tests passing, coverage targets met
+✅ **Executable Checks** - Local checks and CI/check automation bootstrapped when meaningful
 ✅ **Code Documentation** - Comments and docstrings where needed
 ✅ **PR/Commit History** - Clear history of changes
 ✅ **Integration Complete** - All pieces working together
@@ -79,6 +83,10 @@ By the end of Implementation, you'll have:
 - **Integration tests** - Test how components work together
 - **End-to-end tests** - Test full workflows
 - **Manual testing** - Especially for UI/UX validation
+- **Check automation** - Add CI or equivalent automation once the project has a scaffold, lockfile, and meaningful commands
+
+### Release / Operations Follow-Up
+If implementation reveals deployment, scheduling, monitoring, runbook, release automation, or production support needs, capture them as follow-up work. For many local-first or MVP projects, this can be a later mini-Loom cycle rather than a required core phase.
 
 ## When Implementation is Complete
 
@@ -86,6 +94,7 @@ You're ready to move to Review & Retrospective when:
 
 - ✅ All requirements are implemented
 - ✅ All tests are passing
+- ✅ Local checks and applicable CI/check automation are working or explicitly deferred
 - ✅ Code quality standards are met
 - ✅ Documentation is complete
 - ✅ Code review is done and approved
