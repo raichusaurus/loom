@@ -18,7 +18,18 @@ Use this template to turn architecture into an executable plan for humans and ag
 - Requirements document:
 - Architecture document:
 - Architecture planning inputs:
-- Open decisions:
+
+### Decisions Made
+*What is settled for this planning pass? Planning should not reopen these without new evidence.*
+
+- [Decision 1]
+- [Decision 2]
+
+### Open Decisions
+*What still needs to be resolved during Contracts/Tests, implementation, or a future phase?*
+
+- [Open decision 1]
+- [Open decision 2]
 
 ### Architecture Handoff Summary
 *Pull this from the Architecture document before decomposing work.*
@@ -28,6 +39,7 @@ Use this template to turn architecture into an executable plan for humans and ag
 - **Critical sequencing constraints:**
 - **Parallelization opportunities:**
 - **Contracts, schemas, or interfaces needing tests:**
+- **Service/module boundaries to preserve:**
 - **Highest-risk areas to isolate early:**
 - **Decisions Planning must not reopen without new evidence:**
 
@@ -58,6 +70,14 @@ Use this template to turn architecture into an executable plan for humans and ag
 | Shared Area | Owners | Coordination Rule |
 |-------------|--------|-------------------|
 | | | |
+
+### Boundary / Contract Alignment
+*Which architecture boundaries, dependency rules, or component contracts must the plan preserve?*
+
+- **Source architecture sections:**
+- **Dependency rules:**
+- **Interfaces / schemas / commands to keep stable:**
+- **Architecture updates required before changing:**
 
 ---
 
@@ -106,6 +126,13 @@ Use this template to turn architecture into an executable plan for humans and ag
 ### Escalation Path
 [When should an agent stop and ask for direction?]
 
+### Contract / Test Candidates
+*Carry these into Contracts & Tests / CI/CD. Include behavior that should become fixtures, contract tests, smoke tests, schema checks, command contracts, or API expectations.*
+
+| Candidate | Source | Why it matters | Suggested test shape |
+|-----------|--------|----------------|----------------------|
+| | | | |
+
 ---
 
 ## Delivery Plan
@@ -120,6 +147,12 @@ Use this template to turn architecture into an executable plan for humans and ag
 
 ### Later Agile Cycles
 [After the foundation exists, what smaller loops should continue iteratively?]
+
+---
+
+## Update Policy
+
+*Use Planning as the implementation coordination map. Update this document when architecture decisions change, workstream ownership changes, contract boundaries move, or real implementation findings force a better slice order.*
 
 ---
 

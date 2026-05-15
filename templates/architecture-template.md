@@ -62,6 +62,44 @@ Use this template to design your system architecture and hand clear decisions to
 - [Interaction 1]
 - [Interaction 2]
 
+### Service / Interaction Diagrams
+*Optional. Use when important workflows need more detail than the high-level diagram. Keep diagrams small and focused on call direction, state boundaries, or handoff points.*
+
+#### [Workflow / Interaction Name]
+
+```text
+[Interface / caller]
+  |
+  v
+[Application service / coordinator]
+  |
+  +--> [Dependency or repository]
+  +--> [Domain service]
+  |
+  v
+[Result / persisted state / output]
+```
+
+### Initial Service / Module Map
+*Optional. Use when Planning needs a concrete starting map of modules, services, or classes. Names can change during implementation, but responsibility boundaries should stay intentional.*
+
+| Area | Primary Modules / Services | Role |
+|------|----------------------------|------|
+| | | |
+
+### Component Internal Contracts
+*Optional. Use for components whose boundaries should feed Contracts & Tests. This is especially useful for services, APIs, repositories, workflows, models, queues, importers, and CLIs.*
+
+#### [Component Name]
+
+| Item | Detail |
+|------|--------|
+| Owns | |
+| Inputs | |
+| Outputs | |
+| Must not do | |
+| Contract tests | |
+
 ### Interfaces / Control Surfaces
 *How do users, operators, jobs, external systems, or downstream consumers interact with the system?*
 
@@ -332,6 +370,7 @@ Use this template to design your system architecture and hand clear decisions to
 - **Critical sequencing constraints:**
 - **Parallelization opportunities:**
 - **Contracts, schemas, or interfaces needing tests:**
+- **Service/module boundaries to preserve:**
 - **Highest-risk areas to isolate early:**
 - **Decisions Planning must not reopen without new evidence:**
 
