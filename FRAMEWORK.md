@@ -45,6 +45,9 @@ Agentic workflows need clear work boundaries. Planning & Decomposition defines o
 ### 7. Continuous Feedback
 The Orchestrator maintains context and asks clarifying questions. This creates a conversation, not a checklist.
 
+### 8. Recursive Progress Visibility
+Progress should be visible at every useful zoom level. A project can track percent complete for the overall Loom cycle, each phase, each service or feature, each component, and the smallest classes or units worth managing independently. Lower-level scopes may mark phases as `N/A`, but Contracts & Tests and Implementation should usually be tracked anywhere code is being built.
+
 ## When to Deviate
 
 The framework is flexible. Reasonable deviations:
@@ -70,6 +73,8 @@ Loom applies at multiple levels:
 - **Task-level mini-Loom**: A compressed cycle for small changes
 
 Use the full framework when the work is new, risky, or cross-functional. Use a smaller loop when the scope is bounded and the surrounding context is already understood.
+
+Use [PROGRESS.md](./PROGRESS.md) as the shared ledger for this recursion. It records phase completion, aggregate completion, child rollups, scope weights, and the evidence behind each score.
 
 ## Optional Release / Operations Cycle
 
