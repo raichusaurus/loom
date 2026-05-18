@@ -75,6 +75,7 @@ Think of it as a project manager + senior engineer + mentor in one.
 - Ensures all phase documents are created
 - Links documents together
 - Tracks what's been completed
+- Maintains the recursive progress ledger from project level down through services, components, and smallest tracked units
 - Identifies documentation gaps
 
 ### 4. Risk Identification
@@ -85,6 +86,7 @@ Think of it as a project manager + senior engineer + mentor in one.
 
 ### 5. Communication Facilitation
 - Summarizes progress for stakeholders
+- Reports aggregate and phase-level percent complete at each useful project scope
 - Facilitates alignment discussions
 - Captures decisions and rationale
 - Documents risks and trade-offs

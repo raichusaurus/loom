@@ -39,6 +39,7 @@ loom/
 ├── README.md (this file)
 ├── FRAMEWORK.md (framework philosophy and principles)
 ├── ORCHESTRATOR.md (orchestration agent documentation)
+├── PROGRESS.md (recursive project progress ledger)
 ├── phases/
 │   ├── 01-discovery.md
 │   ├── 02-requirements.md
@@ -75,6 +76,8 @@ loom/
 3. **Specialized agents assist** - Phase-specific agents provide deeper guidance and expertise
 4. **Documents are created** - Templates and outputs are generated as you progress
 5. **Complete the cycle** - Finish with review and retrospective
+
+Use [PROGRESS.md](./PROGRESS.md) to track percent complete across the whole project and recursively through services, components, classes, or other smallest owned units.
 
 ### For Existing Projects
 
