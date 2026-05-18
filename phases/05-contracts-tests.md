@@ -5,6 +5,7 @@
 Before writing code, you define **how it will work** and **how you'll verify it works**. This phase takes the architecture and decomposition plan, then establishes behavior contracts, test strategy, fixtures, and the verification handoff for implementation.
 
 This phase focuses on:
+- Pulling forward Architecture component contracts and Planning contract/test candidates
 - Defining API contracts and interfaces
 - Writing tests (unit, integration, end-to-end)
 - Defining test fixtures and contract stability
@@ -17,6 +18,8 @@ This phase focuses on:
 The Contracts & Tests Agent will help you explore:
 
 ### Contracts & Interfaces
+- What component contracts did Architecture identify?
+- What contract/test candidates did Planning hand forward?
 - What are the API contracts?
 - What inputs/outputs does each component have?
 - What are the error cases?
@@ -24,6 +27,8 @@ The Contracts & Tests Agent will help you explore:
 - Which workstream owns each contract?
 
 ### Test Strategy
+- What is the test-first policy for this project?
+- What scaffold exceptions are allowed before tests exist?
 - What needs to be tested?
 - What's the test coverage target?
 - What types of tests (unit/integration/e2e)?
@@ -33,6 +38,7 @@ The Contracts & Tests Agent will help you explore:
 - Which tests are locked contracts versus flexible implementation aids?
 
 ### Check Automation Handoff
+- Does a runnable scaffold and dependency lockfile exist yet?
 - What local commands should developers run?
 - What checks should eventually run on every commit or pull request?
 - When can those checks become blocking?
@@ -56,7 +62,9 @@ The Contracts & Tests Agent will help you explore:
 By the end of this phase, you'll have:
 
 ✅ **API Contracts** - Defined interfaces between components
+✅ **Testing Decision** - Test-first policy, scaffold exceptions, external dependency policy, and rewrite approval rules
 ✅ **Test Plan** - What gets tested and how
+✅ **Contract Stability Register** - Which contracts are locked, approval-gated, or flexible when useful
 ✅ **Contract/Test Candidates** - Behavior that should become executable checks
 ✅ **Fixture Plan** - Source payloads, scenarios, and edge cases to preserve
 ✅ **Check Automation Handoff** - Local and CI checks to bootstrap when the project can run them
@@ -73,6 +81,7 @@ See [contracts-tests-template.md](../templates/contracts-tests-template.md) for 
 You're ready to move to Implementation when:
 
 - ✅ API contracts are defined
+- ✅ Test-first policy and allowed scaffold exceptions are explicit
 - ✅ Test strategy is clear
 - ✅ Required contract/test candidates are captured
 - ✅ Automation/bootstrap handoff is captured

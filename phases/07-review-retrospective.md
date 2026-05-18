@@ -6,6 +6,7 @@ The final phase is about evaluation and learning. You're answering: **Did we suc
 
 This phase focuses on:
 - Evaluating the outcome against requirements
+- Comparing success metrics to actual evidence
 - Capturing learnings and insights
 - Identifying improvements for next time
 - Celebrating successes
@@ -19,13 +20,15 @@ The Review Agent will help you explore:
 ### Outcome Evaluation
 - Did we meet all requirements?
 - Are acceptance tests passing?
-- Does it work in production?
+- Was the intended release, deployment, local workflow, or inspection path validated?
 - Are users satisfied?
+- What was deliberately deferred?
 
 ### Quality Assessment
 - Is the code maintainable?
 - Are there technical debt items?
 - What architectural decisions held up?
+- Did release or operations assumptions hold up where applicable?
 - What would we change?
 
 ### Process Reflection
@@ -54,6 +57,7 @@ By the end of Review & Retrospective, you'll have:
 
 ✅ **Outcome Report** - Requirements vs. reality
 ✅ **Success Metrics** - How did we perform?
+✅ **Quality Review** - Technical assessment and release/operations validation where applicable
 ✅ **Retrospective Notes** - What we learned
 ✅ **Action Items** - Improvements for next project
 ✅ **Maintenance Plan** - How we'll keep this running
@@ -70,7 +74,7 @@ You've successfully completed Loom when:
 
 - ✅ Requirements are met (or deliberately deferred)
 - ✅ Tests are passing
-- ✅ Code is deployed/released
+- ✅ Intended release, deployment, local workflow, or inspection path is validated
 - ✅ Team has reflected on the process
 - ✅ Learnings are captured
 - ✅ Improvements are planned

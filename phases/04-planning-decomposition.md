@@ -7,22 +7,26 @@ Planning & Decomposition answers: **How will we divide, sequence, and coordinate
 This phase is especially important for agentic workflows. Agents work best when they have clear ownership, bounded context, explicit handoffs, and known integration points.
 
 This phase focuses on:
+- Pulling forward Architecture handoff inputs before decomposing work
 - Breaking the project into workstreams, subprojects, services, or features
 - Defining ownership boundaries for humans and agents
 - Identifying dependencies and sequencing
 - Deciding what can happen in parallel
 - Creating context packets for each workstream
 - Establishing integration checkpoints and handoff expectations
+- Identifying contract and test candidates for the next phase
 
 ## Key Questions
 
 The Planning Agent will help you explore:
 
 ### Work Breakdown
+- What did Architecture say Planning should build?
 - What are the major workstreams?
 - Which services, features, or modules need their own scoped plan?
 - What is the smallest useful implementation slice?
 - What can be deferred without blocking the core outcome?
+- Which architecture decisions must Planning not reopen without new evidence?
 
 ### Ownership & Boundaries
 - Who owns each workstream?
@@ -47,6 +51,7 @@ The Planning Agent will help you explore:
 - What integration tests or manual checks prove the pieces work together?
 - How do we resolve conflicts between planned design and implementation reality?
 - What is the escalation path when an agent discovers a blocker?
+- Which behaviors, schemas, interfaces, commands, or workflows should become contract/test candidates?
 
 ## Outputs
 
@@ -57,7 +62,9 @@ By the end of Planning & Decomposition, you'll have:
 ✅ **Dependency Graph** - What blocks what, and what can run in parallel  
 ✅ **Context Packets** - Scoped briefs for each agent or subproject  
 ✅ **Integration Plan** - Checkpoints for merging, testing, and reconciling work  
+✅ **Contract/Test Candidates** - Behaviors and interfaces to carry into Contracts & Tests
 ✅ **Delivery Plan** - Initial milestone order and release strategy  
+✅ **Update Policy** - When Planning must change because architecture, contracts, ownership, or implementation reality changed
 
 ## Recursive Scope
 
@@ -95,6 +102,7 @@ You're ready to move to Contracts & Tests when:
 - ✅ Parallel work is identified
 - ✅ Context packets are ready for agents or contributors
 - ✅ Integration checkpoints are planned
+- ✅ Contract and test candidates are ready for Contracts & Tests
 - ✅ The delivery sequence is clear enough to begin contract and test design
 
 ## Tips
