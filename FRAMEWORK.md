@@ -48,6 +48,8 @@ The Orchestrator maintains context and asks clarifying questions. This creates a
 ### 8. Recursive Progress Visibility
 Progress should be visible at every useful zoom level. A project can track percent complete for the overall Loom cycle, each phase, each service or feature, each component, and the smallest classes or units worth managing independently. Lower-level scopes may mark phases as `N/A`, but Contracts & Tests and Implementation should usually be tracked anywhere code is being built.
 
+The root progress ledger can also become a navigable tree. Large projects may give phases, services, components, and smallest tracked units their own `PROGRESS.md` files, linked from the root, so any zoom level shows the progress that matters there.
+
 ## When to Deviate
 
 The framework is flexible. Reasonable deviations:

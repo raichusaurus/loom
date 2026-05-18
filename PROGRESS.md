@@ -4,6 +4,17 @@ Use this document to track completion at every useful scope: project, service, c
 
 Copy this file into a project repo and update it throughout the Loom cycle.
 
+This root file is the project cockpit. It can stand alone for small projects, or act as an index into a recursive progress tree for larger projects.
+
+Update this document whenever changes land on the project's main branch, especially when:
+
+- A phase gate opens or closes
+- A workstream, service, component, or smallest tracked unit is added, removed, split, or merged
+- Contracts/tests move from planned to executable, or from red to green
+- Implementation scope lands
+- CI/check automation changes status
+- Review, acceptance, or retrospective evidence changes a score
+
 ---
 
 ## How to Score Progress
@@ -21,6 +32,8 @@ Use percentages from `0` to `100`.
 
 Use exact percentages when you have a better signal, such as task counts, test pass counts, implementation slices, or reviewed deliverables.
 
+Contract readiness is not the same as product readiness. A scope can be `100%` complete for Contracts & Tests while still being `0%` complete for Implementation.
+
 ### Default Phase Weights
 
 Use equal weights unless the project has a reason to weight phases differently.
@@ -34,6 +47,8 @@ Use equal weights unless the project has a reason to weight phases differently.
 | Contracts & Tests | 1 | Minimum expected phase for services, components, and classes |
 | Implementation | 1 | Minimum expected phase for services, components, and classes |
 | Review & Retrospective | 1 | Can be a lightweight review at lower scopes |
+
+Lower-level scopes may inherit Requirements, Architecture, and Planning credit from parent phase documents when those documents clearly define the scope, boundaries, contracts, and work ownership. Do not inherit Contracts & Tests or Implementation credit unless that lower-level scope has direct evidence.
 
 ### Rollup Formula
 
@@ -78,6 +93,114 @@ Document the weighting basis in the notes for the parent scope.
 
 ---
 
+## Recursive Progress Tree
+
+Use one root `PROGRESS.md` first. Split child progress docs out only when a phase, service, component, or unit needs independent ownership, blockers, scoring evidence, or too much detail for the root file.
+
+Recommended project layout:
+
+```text
+docs/loom/
+  PROGRESS.md
+  phases/
+    discovery/PROGRESS.md
+    requirements/PROGRESS.md
+    architecture/PROGRESS.md
+    planning/PROGRESS.md
+    contracts-tests/PROGRESS.md
+    implementation/PROGRESS.md
+    review/PROGRESS.md
+  scopes/
+    services/
+      [service-name]/PROGRESS.md
+    components/
+      [service-name]/[component-name]/PROGRESS.md
+    units/
+      [service-name]/[component-name]/[unit-name]/PROGRESS.md
+```
+
+Each child progress document should include:
+
+- Link back to its parent progress document
+- Links to child progress documents when they exist
+- Phase scores relevant to that zoom level
+- Evidence links for each score
+- Blockers, open questions, and next score-changing actions
+
+Use this rule of thumb:
+
+> If a scope has its own owner, contracts, implementation path, blocker surface, or review path, it can earn its own `PROGRESS.md`.
+
+### Progress Tree Index
+
+Use this table in the root file to make drilldowns clickable. Keep the root concise; let child progress docs carry deep detail.
+
+| Scope | Type | Parent | Total | Current Focus | Progress Doc | Notes |
+|-------|------|--------|-------|---------------|--------------|-------|
+| Discovery | Phase | Project | 0% | | `phases/discovery/PROGRESS.md` | Optional child doc |
+| Requirements | Phase | Project | 0% | | `phases/requirements/PROGRESS.md` | Optional child doc |
+| Architecture | Phase | Project | 0% | | `phases/architecture/PROGRESS.md` | Optional child doc |
+| Planning & Decomposition | Phase | Project | 0% | | `phases/planning/PROGRESS.md` | Optional child doc |
+| Contracts & Tests | Phase | Project | 0% | | `phases/contracts-tests/PROGRESS.md` | Useful for test readiness drilldown |
+| Implementation | Phase | Project | 0% | | `phases/implementation/PROGRESS.md` | Useful for delivery drilldown |
+| Review & Retrospective | Phase | Project | 0% | | `phases/review/PROGRESS.md` | Optional child doc |
+| [Service name] | Service | Project | 0% | | `scopes/services/[service-name]/PROGRESS.md` | |
+| [Component name] | Component | [Service name] | 0% | | `scopes/components/[service-name]/[component-name]/PROGRESS.md` | |
+| [Class / unit name] | Unit | [Component name] | 0% | | `scopes/units/[service-name]/[component-name]/[unit-name]/PROGRESS.md` | |
+
+### Child Progress Template
+
+Use this shape for any phase, service, component, or unit-level progress document.
+
+```md
+# Progress: [Scope Name]
+
+**Type:** [Phase / Service / Component / Unit]
+**Parent:** [Parent scope](../PROGRESS.md)
+**Owner:** [Owner]
+**Total Complete:** 0%
+**Current Focus:** [What is changing next]
+**Last Updated:** [Date]
+
+## Navigation
+
+- **Parent:** [Parent progress](../PROGRESS.md)
+- **Children:** [Child progress docs, if any]
+- **Related phase docs:** [Requirements / Architecture / Planning / Contracts / Implementation]
+
+## Phase Completion
+
+| Phase | Complete | Weight | Evidence / Source | Notes |
+|-------|----------|--------|-------------------|-------|
+| Requirements | N/A | | | |
+| Architecture | N/A | | | |
+| Planning & Decomposition | N/A | | | |
+| Contracts & Tests | 0% | 1 | | |
+| Implementation | 0% | 1 | | |
+| Review & Retrospective | 0% | 1 | | |
+| **Phase Total** | **0%** | | | |
+
+## Children
+
+| Scope | Type | Weight | Total | Progress Doc | Notes |
+|-------|------|--------|-------|--------------|-------|
+| | | | | | |
+
+## Next Score-Changing Actions
+
+| Action | Phase / Area | Expected Score Impact | Owner |
+|--------|--------------|-----------------------|-------|
+| | | | |
+
+## Blockers and Questions
+
+| Item | Impact | Owner | Next Step |
+|------|--------|-------|-----------|
+| | | | |
+```
+
+---
+
 ## Project Snapshot
 
 **Project:** [Project name]
@@ -107,6 +230,17 @@ Document the weighting basis in the notes for the parent scope.
 | [Service / feature / subsystem] | Service | 1 | 0% | 0% | 0% | | |
 | [Service / feature / subsystem] | Service | 1 | 0% | 0% | 0% | | |
 | **Child Rollup** | | | | | **0%** | | |
+
+---
+
+## Workstream Progress
+
+Use this compact matrix for the main implementation or delivery workstreams. Workstreams can be services, feature slices, platform areas, CI/bootstrap tracks, documentation tracks, or any other owned stream that helps explain delivery progress.
+
+| Workstream | Requirements | Architecture | Planning | Contracts & Tests | Implementation | Review | Total | Evidence |
+|------------|--------------|--------------|----------|-------------------|----------------|--------|-------|----------|
+| [Workstream name] | 0% | 0% | 0% | 0% | 0% | 0% | 0% | |
+| [Workstream name] | 0% | 0% | 0% | 0% | 0% | 0% | 0% | |
 
 ---
 
@@ -185,7 +319,7 @@ Duplicate this section for each component, module, package, workflow, route grou
 
 ## Class / Unit Progress
 
-Duplicate this section for the smallest units worth tracking. Do not track every class by default; track classes, functions, schemas, commands, views, adapters, or workflows when their completion status matters independently.
+Duplicate this section for the smallest units worth tracking. Do not track every class by default. Track classes, functions, schemas, commands, views, adapters, or workflows only when their completion status matters independently because they have their own contracts, risks, ownership, integration points, or review path.
 
 ### Class / Unit: [Name]
 
