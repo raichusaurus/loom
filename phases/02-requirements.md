@@ -1,57 +1,66 @@
 # Phase 2: Requirements
 
-**Objective:** Define what needs to be built, acceptance criteria, scope boundaries, and prioritize features.
+**Objective:** Translate Discovery into clear, testable scope: what must be built, what should wait, how success will be validated, and what Architecture must decide next.
 
 ---
 
 ## What is Requirements?
 
-Requirements translate the discovery findings into a specification. It answers: "What exactly needs to be built?"
+Requirements answer: **What exactly needs to be built, and how will we know it is useful?**
 
-**Output:** Clear user stories with acceptance criteria, feature list with priorities, scope document, and stakeholder sign-off.
+This phase should pull forward Discovery context before inventing new scope. It turns the core problem, primary user/operator, first useful version, validation signals, and open questions into a bounded product or system specification.
+
+**Output:** Discovery inputs, solution vision, MVP scope, user stories, prioritized features, output surfaces, relevant non-functional requirements, acceptance tests, validation signals, risks, assumptions, and Architecture inputs.
 
 ---
 
 ## Key Activities
 
-### 1. Write User Stories
-- Who is the user?
-- What do they want to do?
-- Why do they want to do it?
-- What's the acceptance criteria?
+### 1. Pull Forward Discovery Inputs
+- What is the core problem?
+- Who is the primary user or operator?
+- Who might use this later?
+- What was the working shape from Discovery?
+- What is the first useful version?
+- What was explicitly out of scope?
+- Which validation signals and open questions carry forward?
 
-### 2. Define Features
-- What features are needed?
-- What's the priority of each?
-- What's the scope?
-- What's out of scope?
+### 2. Define Scope and MVP Boundaries
+- What is definitely in scope?
+- What is explicitly out of scope?
+- What is the smallest version that solves the core problem?
+- Which later phases or releases are worth naming?
+- Which tempting ideas are optional, deferred, or unnecessary for now?
 
-### 3. Establish Constraints
-- Timeline: When does this need to be done?
-- Budget: What resources are available?
-- Technical: What systems do we need to integrate with?
-- Regulatory: What compliance requirements exist?
+### 3. Define Functional Requirements
+- What user stories describe the necessary behavior?
+- What acceptance criteria prove each story works?
+- Which features are Must, Should, Could, or Won't for the MVP?
+- Where will users, operators, or downstream systems see outputs?
+- What source facts, stable identifiers, or data fidelity constraints must be preserved?
 
-### 4. Define Success Metrics
-- How do we measure if requirements are met?
-- What's the acceptance test for each feature?
-- Who verifies completion?
+### 4. Establish Non-Functional Requirements
+- What performance, scalability, reliability, security, accessibility, or cost constraints matter?
+- Which constraints are real MVP requirements versus future concerns?
+- What external dependencies, assumptions, or prior-art decisions affect scope?
 
-### 5. Get Stakeholder Sign-off
-- Do stakeholders agree with the requirements?
-- Are there conflicting priorities?
-- Is budget/timeline realistic?
+### 5. Define Acceptance and Validation
+- What Given/When/Then acceptance tests should Contracts & Tests inherit?
+- What measurable goals define done?
+- What evidence proves the requirements are useful, not merely implemented?
+- Where do outputs need provenance, confidence, sample size, comparison, or traceability?
 
-### 6. Document Decisions
-- Why did we include/exclude features?
-- What trade-offs did we make?
-- What assumptions are we making?
+### 6. Hand Decisions to Architecture
+- Which decisions did Requirements surface but should not resolve?
+- What tradeoffs should Architecture explore?
+- Which prior-art or legacy reuse decisions need technical judgment?
+- What requirements changed during later phases, and what did they supersede?
 
 ---
 
 ## Requirements Template
 
-Use [requirements-template.md](../templates/requirements-template.md) to structure your requirements.
+Use [requirements-template.md](../templates/requirements-template.md) to structure your requirements and create the Architecture handoff.
 
 ---
 
@@ -59,27 +68,30 @@ Use [requirements-template.md](../templates/requirements-template.md) to structu
 
 Before moving to Architecture, validate:
 
-- ✅ User stories are clear and have acceptance criteria
-- ✅ Features are prioritized (must-have, should-have, nice-to-have)
-- ✅ Scope is explicitly bounded
-- ✅ Success metrics are measurable
-- ✅ Constraints are documented
-- ✅ No conflicting requirements
-- ✅ Stakeholder sign-off obtained
-- ✅ Team understands requirements
+- ✅ Discovery inputs are pulled forward and reflected in scope
+- ✅ MVP, in-scope work, out-of-scope work, and optional/deferred work are explicit
+- ✅ User stories have testable acceptance criteria
+- ✅ Features use a consistent priority scale
+- ✅ Output surfaces and data fidelity needs are captured where relevant
+- ✅ Non-functional requirements are specific enough to guide design
+- ✅ Acceptance tests and validation signals are measurable
+- ✅ Dependencies, assumptions, risks, and prior-art inputs are documented
+- ✅ Architecture inputs name unresolved technical decisions without prematurely solving them
+- ✅ Phase gate has an owner decision and remaining concerns
 
 ---
 
 ## Common Requirements Mistakes
 
-❌ **Vague acceptance criteria** - "It should be fast" isn't testable
-❌ **Scope creep** - Everything is marked "must-have"
-❌ **Missing stakeholder input** - Build what customers actually need
-❌ **Over-specifying** - Leave room for implementation creativity
-❌ **Not prioritizing** - Everything can't be first
+❌ **Rewriting Discovery instead of using it** - Pull the handoff forward before expanding scope
+❌ **Scope creep by politeness** - Use Optional / Not Needed Yet to protect the MVP
+❌ **Vague acceptance criteria** - "It should be fast" is not testable
+❌ **Hiding output expectations** - If someone consumes a result, define the surface
+❌ **Inventing data** - State what must be preserved, derived, nullable, or unknown
+❌ **Solving architecture too early** - Requirements should frame decisions Architecture must make
 
 ---
 
 ## Next Phase
 
-Once Requirements are complete and signed off, move to **[Architecture](./03-architecture.md)**.
+Once Requirements are complete and the Architecture inputs are clear, move to **[Architecture](./03-architecture.md)**.
