@@ -77,6 +77,7 @@ Think of it as a project manager + senior engineer + mentor in one.
 - Tracks what's been completed
 - Maintains the recursive progress ledger from project level down through services, components, and smallest tracked units
 - Splits child progress documents out when a phase, service, component, or unit needs independent ownership or blockers
+- Auto-populates recursive progress drilldowns from phase docs, tests, contracts, and source code instead of waiting for manual prompts at each zoom level
 - Identifies documentation gaps
 
 ### 4. Risk Identification
