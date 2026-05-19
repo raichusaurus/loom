@@ -4,7 +4,7 @@ Use this document to track completion at every useful scope: project, service, c
 
 Copy this file into a project repo and update it throughout the Loom cycle.
 
-This root file is the project cockpit. It can stand alone for small projects, or act as an index into a recursive progress tree for larger projects.
+This root file is the project cockpit. It can stand alone for small projects, or act as an index into a recursive progress tree for larger projects. When a project asks for recursive progress, populate the drilldown tree automatically instead of waiting for follow-up prompts at each level.
 
 Update this document whenever changes land on the project's main branch, especially when:
 
@@ -29,6 +29,8 @@ Use percentages from `0` to `100`.
 - `75%` = mostly complete, known cleanup or validation remains
 - `100%` = phase gate is satisfied for this scope
 - `N/A` = phase does not apply to this scope and is excluded from calculations
+- `Unknown` = scope exists but evidence has not been inspected yet; treat as a scoring gap to resolve, not as `N/A`
+- `TBD` = scope is expected or planned but not yet defined enough to score
 
 Use exact percentages when you have a better signal, such as task counts, test pass counts, implementation slices, or reviewed deliverables.
 
@@ -95,7 +97,9 @@ Document the weighting basis in the notes for the parent scope.
 
 ## Recursive Progress Tree
 
-Use one root `PROGRESS.md` first. Split child progress docs out only when a phase, service, component, or unit needs independent ownership, blockers, scoring evidence, or too much detail for the root file.
+Use one root `PROGRESS.md` first for a small project or quick status pass. When the user asks for drilldowns, a progress tree, zoom levels, a visual system map, or recursive progress, create and populate child progress docs for every discovered phase and scope by default.
+
+Do not stop after the root file. The root is an index and rollup; the child files are the zoomable progress surface.
 
 Recommended project layout:
 
@@ -127,9 +131,41 @@ Each child progress document should include:
 - Evidence links for each score
 - Blockers, open questions, and next score-changing actions
 
-Use this rule of thumb:
+Use this rule of thumb for whether a scope needs ongoing independent maintenance:
 
 > If a scope has its own owner, contracts, implementation path, blocker surface, or review path, it can earn its own `PROGRESS.md`.
+
+When first auto-populating a recursive tree, be more inclusive than that rule of thumb:
+
+- Create phase progress docs for all seven Loom phases, even if some are lightweight.
+- Create service/workstream progress docs for every service, app, worker, API, integration, data pipeline, or major delivery stream named in Architecture or Planning.
+- Create component progress docs for every component/module/package/workflow/control surface named in Architecture, Planning, Contracts & Tests, or the source tree.
+- Create unit progress docs for every class, command, function group, schema, model, repository, adapter, workflow, test double, or other smallest owned unit named in contracts/tests or exposed by the source tree.
+- If a unit seems too small after inspection, keep it in the nearest parent table with `No child doc` and explain why. Do not silently omit it.
+- Use `Unknown` when evidence has not been inspected yet. Use `N/A` only when a phase truly does not apply.
+
+### Auto-Population Workflow
+
+When building or refreshing a recursive progress tree:
+
+1. Read the phase docs, especially Requirements, Architecture, Planning, Contracts & Tests, and Implementation.
+2. Read existing tests and contract fixtures to discover expected services, components, and units.
+3. Inspect the source tree, public classes/functions, CLI commands, schemas, repositories, adapters, and workflows.
+4. Build a scope inventory before writing progress docs.
+5. Create the root `PROGRESS.md` rollup and tree index.
+6. Create child phase progress docs under `phases/*/PROGRESS.md`.
+7. Create child scope progress docs under `scopes/services`, `scopes/components`, and `scopes/units`.
+8. Link every child from its parent and every parent from its child.
+9. Mark scores with evidence links, `Unknown`, `TBD`, or `N/A`; do not leave discovered scopes unrepresented.
+10. Add open progress questions for anything that could not be scored confidently.
+
+### Scope Inventory
+
+Use this table before or inside the root progress file to show that the tree was populated from evidence rather than vibes.
+
+| Scope | Type | Parent | Source Evidence | Progress Doc | Inclusion Decision |
+|-------|------|--------|-----------------|--------------|--------------------|
+| [Scope name] | Phase / Workstream / Service / Component / Unit | [Parent] | [Doc/test/source path] | [Path or No child doc] | Included / Rolled into parent / Deferred |
 
 ### Progress Tree Index
 
@@ -137,13 +173,13 @@ Use this table in the root file to make drilldowns clickable. Keep the root conc
 
 | Scope | Type | Parent | Total | Current Focus | Progress Doc | Notes |
 |-------|------|--------|-------|---------------|--------------|-------|
-| Discovery | Phase | Project | 0% | | `phases/discovery/PROGRESS.md` | Optional child doc |
-| Requirements | Phase | Project | 0% | | `phases/requirements/PROGRESS.md` | Optional child doc |
-| Architecture | Phase | Project | 0% | | `phases/architecture/PROGRESS.md` | Optional child doc |
-| Planning & Decomposition | Phase | Project | 0% | | `phases/planning/PROGRESS.md` | Optional child doc |
-| Contracts & Tests | Phase | Project | 0% | | `phases/contracts-tests/PROGRESS.md` | Useful for test readiness drilldown |
-| Implementation | Phase | Project | 0% | | `phases/implementation/PROGRESS.md` | Useful for delivery drilldown |
-| Review & Retrospective | Phase | Project | 0% | | `phases/review/PROGRESS.md` | Optional child doc |
+| Discovery | Phase | Project | 0% | | `phases/discovery/PROGRESS.md` | Create in recursive mode |
+| Requirements | Phase | Project | 0% | | `phases/requirements/PROGRESS.md` | Create in recursive mode |
+| Architecture | Phase | Project | 0% | | `phases/architecture/PROGRESS.md` | Create in recursive mode |
+| Planning & Decomposition | Phase | Project | 0% | | `phases/planning/PROGRESS.md` | Create in recursive mode |
+| Contracts & Tests | Phase | Project | 0% | | `phases/contracts-tests/PROGRESS.md` | Create in recursive mode |
+| Implementation | Phase | Project | 0% | | `phases/implementation/PROGRESS.md` | Create in recursive mode |
+| Review & Retrospective | Phase | Project | 0% | | `phases/review/PROGRESS.md` | Create in recursive mode |
 | [Service name] | Service | Project | 0% | | `scopes/services/[service-name]/PROGRESS.md` | |
 | [Component name] | Component | [Service name] | 0% | | `scopes/components/[service-name]/[component-name]/PROGRESS.md` | |
 | [Class / unit name] | Unit | [Component name] | 0% | | `scopes/units/[service-name]/[component-name]/[unit-name]/PROGRESS.md` | |
@@ -185,6 +221,12 @@ Use this shape for any phase, service, component, or unit-level progress documen
 | Scope | Type | Weight | Total | Progress Doc | Notes |
 |-------|------|--------|-------|--------------|-------|
 | | | | | | |
+
+## Local Scope Inventory
+
+| Scope | Type | Source Evidence | Progress Doc | Inclusion Decision |
+|-------|------|-----------------|--------------|--------------------|
+| | | | | |
 
 ## Next Score-Changing Actions
 
@@ -319,7 +361,7 @@ Duplicate this section for each component, module, package, workflow, route grou
 
 ## Class / Unit Progress
 
-Duplicate this section for the smallest units worth tracking. Do not track every class by default. Track classes, functions, schemas, commands, views, adapters, or workflows only when their completion status matters independently because they have their own contracts, risks, ownership, integration points, or review path.
+Duplicate this section for the smallest units discovered in contracts/tests, architecture/planning docs, or the source tree. In recursive mode, include every discovered class, function group, schema, command, view, adapter, workflow, repository, model, or test double somewhere in the progress tree. Create a child progress doc when useful; otherwise keep the unit in its parent table with evidence and an explicit `No child doc` note.
 
 ### Class / Unit: [Name]
 

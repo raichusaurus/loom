@@ -48,7 +48,7 @@ The Orchestrator maintains context and asks clarifying questions. This creates a
 ### 8. Recursive Progress Visibility
 Progress should be visible at every useful zoom level. A project can track percent complete for the overall Loom cycle, each phase, each service or feature, each component, and the smallest classes or units worth managing independently. Lower-level scopes may mark phases as `N/A`, but Contracts & Tests and Implementation should usually be tracked anywhere code is being built.
 
-The root progress ledger can also become a navigable tree. Large projects may give phases, services, components, and smallest tracked units their own `PROGRESS.md` files, linked from the root, so any zoom level shows the progress that matters there.
+The root progress ledger can also become a navigable tree. When recursive progress is requested, create and populate child progress files for discovered phases, services, components, and smallest owned units by default. Do not stop at a top-level rollup; the purpose is to let the user zoom to any level and see relevant progress, evidence, blockers, and next actions.
 
 ## When to Deviate
 
@@ -76,7 +76,7 @@ Loom applies at multiple levels:
 
 Use the full framework when the work is new, risky, or cross-functional. Use a smaller loop when the scope is bounded and the surrounding context is already understood.
 
-Use [PROGRESS.md](./PROGRESS.md) as the shared ledger for this recursion. It records phase completion, aggregate completion, child rollups, scope weights, and the evidence behind each score.
+Use [PROGRESS.md](./PROGRESS.md) as the shared ledger for this recursion. It records phase completion, aggregate completion, child rollups, scope weights, and the evidence behind each score. In recursive mode, every discovered scope should appear either as a child progress document or as an explicit row in its parent with a reason no child doc exists.
 
 ## Optional Release / Operations Cycle
 

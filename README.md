@@ -77,7 +77,7 @@ loom/
 4. **Documents are created** - Templates and outputs are generated as you progress
 5. **Complete the cycle** - Finish with review and retrospective
 
-Use [PROGRESS.md](./PROGRESS.md) to track percent complete across the whole project and recursively through phases, services, components, classes, or other smallest owned units. For larger projects, the root progress ledger can link to child `PROGRESS.md` files at each useful drilldown level.
+Use [PROGRESS.md](./PROGRESS.md) to track percent complete across the whole project and recursively through phases, services, components, classes, or other smallest owned units. When recursive progress is requested, the root progress ledger links to child `PROGRESS.md` files at each useful drilldown level, and discovered scopes are populated by default instead of requiring one prompt per zoom level.
 
 ### For Existing Projects
 
