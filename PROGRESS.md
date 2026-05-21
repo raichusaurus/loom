@@ -1,15 +1,15 @@
 # Loom Progress Ledger
 
-Use this document to track completion at every useful scope: project, service, component, class, workflow, or task-level mini-Loom. The goal is to make progress visible at each zoom level without pretending every scope needs every phase.
+Use this document to track completion at every useful scope: project, architecture component, owned subcomponent, class, workflow, or task-level mini-Loom. The goal is to make progress visible at each zoom level without pretending every scope needs every phase.
 
-Copy this file into a project repo and update it throughout the Loom cycle.
+Copy this file into a project repo as `docs/loom/PROGRESS.md` and update it throughout the Loom cycle.
 
 This root file is the project cockpit. It can stand alone for small projects, or act as an index into a recursive progress tree for larger projects. When a project asks for recursive progress, populate the drilldown tree automatically instead of waiting for follow-up prompts at each level.
 
 Update this document whenever changes land on the project's main branch, especially when:
 
 - A phase gate opens or closes
-- A workstream, service, component, or smallest tracked unit is added, removed, split, or merged
+- A workstream, architecture component, subcomponent, or smallest tracked unit is added, removed, split, or merged
 - Contracts/tests move from planned to executable, or from red to green
 - Implementation scope lands
 - CI/check automation changes status
@@ -101,39 +101,55 @@ Use one root `PROGRESS.md` first for a small project or quick status pass. When 
 
 Do not stop after the root file. The root is an index and rollup; the child files are the zoomable progress surface.
 
-Before `src/` and `tests/` exist, use the intended source/test structure from Architecture, Planning, and Contracts & Tests as the progress tree shape. Once implementation begins, keep Loom progress docs, `src/`, and `tests/` aligned so the same service/component/unit can be found in the same relative path in all three places.
+Before `src/` and `tests/` exist, use the intended source/test structure from Architecture, Planning, and Contracts & Tests as the progress tree shape. Once implementation begins, keep Loom progress docs, `src/`, and `tests/` aligned so the same architecture component or owned unit can be found in the same relative path in all three places.
 
-Recommended project layout:
+Recommended project progress layout:
 
 ```text
 docs/loom/
+  README.md
   PROGRESS.md
+  pilot-feedback.md                  # optional, useful when piloting Loom itself
   phases/
-    discovery/PROGRESS.md
-    requirements/PROGRESS.md
-    architecture/PROGRESS.md
-    planning/PROGRESS.md
-    contracts-tests/PROGRESS.md
-    implementation/PROGRESS.md
-    review/PROGRESS.md
-  scopes/
-    services/
-      [service-name]/PROGRESS.md
-    components/
-      [service-name]/[component-name]/PROGRESS.md
-    units/
-      [service-name]/[component-name]/[unit-name]/PROGRESS.md
+    01-discovery/
+      README.md
+      PROGRESS.md
+    02-requirements/
+      README.md
+      PROGRESS.md
+    03-architecture/
+      README.md
+      PROGRESS.md
+    04-planning/
+      README.md
+      PROGRESS.md
+    05-contracts-tests/
+      README.md
+      PROGRESS.md
+    06-implementation/
+      README.md
+      PROGRESS.md
+    07-review/
+      README.md
+      PROGRESS.md
+  system/
+    [architecture-component]/
+      PROGRESS.md
+      [owned-unit-or-subcomponent]/
+        PROGRESS.md
 src/
   [package-or-app]/
-    [service-name]/
-      [component-name]/
-        [unit].py
+    [architecture-component]/
+      [owned-unit-or-subcomponent].*
 tests/
   [test-category]/
-    [service-name]/
-      [component-name]/
-        test_[unit].py
+    [architecture-component]/
+      test_[owned-unit-or-subcomponent].*
 ```
+
+Use the numbered phase directories above as the default for project artifacts. Each phase directory keeps the phase artifact in `README.md` beside its phase ledger in `PROGRESS.md`.
+
+Use `docs/loom/system/` for delivery drilldowns. The first level under `system/` should match the major components named in the Architecture document rather than a generic taxonomy like services/components/units. Nest lower-level ledgers directly under the thing that owns them only when that scope needs independent ownership, blockers, scoring evidence, or review path.
 
 Each child progress document should include:
 
@@ -161,12 +177,11 @@ When first auto-populating a recursive tree, be more inclusive than that rule of
 The Loom progress tree should mirror the intended code and test tree:
 
 ```text
-docs/loom/scopes/services/[service]/PROGRESS.md
-docs/loom/scopes/components/[service]/[component]/PROGRESS.md
-docs/loom/scopes/units/[service]/[component]/[unit]/PROGRESS.md
+docs/loom/system/[architecture-component]/PROGRESS.md
+docs/loom/system/[architecture-component]/[owned-unit-or-subcomponent]/PROGRESS.md
 
-src/[package]/[service]/[component]/[unit].*
-tests/[category]/[service]/[component]/test_[unit].*
+src/[package]/[architecture-component]/[owned-unit-or-subcomponent].*
+tests/[category]/[architecture-component]/test_[owned-unit-or-subcomponent].*
 ```
 
 This rule applies before implementation exists. In early phases, Architecture and Planning define the intended paths, Contracts & Tests define the expected test paths, and Progress creates the matching documentation paths. During Implementation, source and test files should fill the documented paths or update the docs with the approved deviation.
@@ -198,8 +213,8 @@ When building or refreshing a recursive progress tree:
 3. Inspect the intended or actual source tree, public classes/functions, CLI commands, schemas, repositories, adapters, and workflows.
 4. Build a scope inventory before writing progress docs, including intended doc path, intended source path, and intended test path.
 5. Create the root `PROGRESS.md` rollup and tree index.
-6. Create child phase progress docs under `phases/*/PROGRESS.md`.
-7. Create child scope progress docs under `scopes/services`, `scopes/components`, and `scopes/units`, mirroring the intended source/test paths.
+6. Create child phase artifacts and progress docs under the numbered `phases/*/README.md` and `phases/*/PROGRESS.md` directories.
+7. Create child scope progress docs under `system/[architecture-component]/...`, mirroring the architecture-aligned source/test paths.
 8. Link every child from its parent and every parent from its child.
 9. Mark scores with evidence links, `Unknown`, `TBD`, or `N/A`; do not leave discovered scopes unrepresented.
 10. Add open progress questions for anything that could not be scored confidently.
@@ -210,7 +225,7 @@ Use this table before or inside the root progress file to show that the tree was
 
 | Scope | Type | Parent | Source Evidence | Progress Doc | Intended Source Path | Intended Test Path | Inclusion Decision |
 |-------|------|--------|-----------------|--------------|----------------------|--------------------|--------------------|
-| [Scope name] | Phase / Workstream / Service / Component / Unit | [Parent] | [Doc/test/source path] | [Path or No child doc] | [src path or TBD] | [test path or TBD] | Included / Rolled into parent / Deferred |
+| [Scope name] | Phase / Workstream / System Component / Subcomponent / Unit | [Parent] | [Doc/test/source path] | [Path or No child doc] | [src path or TBD] | [test path or TBD] | Included / Rolled into parent / Deferred |
 
 ### Progress Tree Index
 
@@ -218,25 +233,24 @@ Use this table in the root file to make drilldowns clickable. Keep the root conc
 
 | Scope | Type | Parent | Total | Current Focus | Progress Doc | Notes |
 |-------|------|--------|-------|---------------|--------------|-------|
-| Discovery | Phase | Project | 0% | | `phases/discovery/PROGRESS.md` | Create in recursive mode |
-| Requirements | Phase | Project | 0% | | `phases/requirements/PROGRESS.md` | Create in recursive mode |
-| Architecture | Phase | Project | 0% | | `phases/architecture/PROGRESS.md` | Create in recursive mode |
-| Planning & Decomposition | Phase | Project | 0% | | `phases/planning/PROGRESS.md` | Create in recursive mode |
-| Contracts & Tests | Phase | Project | 0% | | `phases/contracts-tests/PROGRESS.md` | Create in recursive mode |
-| Implementation | Phase | Project | 0% | | `phases/implementation/PROGRESS.md` | Create in recursive mode |
-| Review & Retrospective | Phase | Project | 0% | | `phases/review/PROGRESS.md` | Create in recursive mode |
-| [Service name] | Service | Project | 0% | | `scopes/services/[service-name]/PROGRESS.md` | |
-| [Component name] | Component | [Service name] | 0% | | `scopes/components/[service-name]/[component-name]/PROGRESS.md` | |
-| [Class / unit name] | Unit | [Component name] | 0% | | `scopes/units/[service-name]/[component-name]/[unit-name]/PROGRESS.md` | |
+| Discovery | Phase | Project | 0% | | `phases/01-discovery/PROGRESS.md` | Create in recursive mode |
+| Requirements | Phase | Project | 0% | | `phases/02-requirements/PROGRESS.md` | Create in recursive mode |
+| Architecture | Phase | Project | 0% | | `phases/03-architecture/PROGRESS.md` | Create in recursive mode |
+| Planning & Decomposition | Phase | Project | 0% | | `phases/04-planning/PROGRESS.md` | Create in recursive mode |
+| Contracts & Tests | Phase | Project | 0% | | `phases/05-contracts-tests/PROGRESS.md` | Create in recursive mode |
+| Implementation | Phase | Project | 0% | | `phases/06-implementation/PROGRESS.md` | Create in recursive mode |
+| Review & Retrospective | Phase | Project | 0% | | `phases/07-review/PROGRESS.md` | Create in recursive mode |
+| [Architecture component] | System Component | Project | 0% | | `system/[architecture-component]/PROGRESS.md` | |
+| [Owned unit or subcomponent] | Unit / Subcomponent | [Architecture component] | 0% | | `system/[architecture-component]/[owned-unit-or-subcomponent]/PROGRESS.md` | |
 
 ### Child Progress Template
 
-Use this shape for any phase, service, component, or unit-level progress document.
+Use this shape for any phase, system component, subcomponent, or unit-level progress document.
 
 ```md
 # Progress: [Scope Name]
 
-**Type:** [Phase / Service / Component / Unit]
+**Type:** [Phase / System Component / Subcomponent / Unit]
 **Parent:** [Parent scope](../PROGRESS.md)
 **Owner:** [Owner]
 **Total Complete:** 0%

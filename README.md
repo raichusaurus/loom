@@ -34,6 +34,8 @@ See [ORCHESTRATOR.md](./ORCHESTRATOR.md) for detailed information.
 
 ## Project Structure
 
+The framework repo keeps the reusable phase guidance at the top level:
+
 ```
 loom/
 ├── README.md (this file)
@@ -67,6 +69,43 @@ loom/
     └── retrospective-template.md
 ```
 
+Projects using Loom should keep their project-specific Loom artifacts under `docs/loom/`:
+
+```text
+docs/loom/
+├── README.md (project Loom index)
+├── PROGRESS.md (project progress cockpit and rollup)
+├── phases/
+│   ├── 01-discovery/
+│   │   ├── README.md
+│   │   └── PROGRESS.md
+│   ├── 02-requirements/
+│   │   ├── README.md
+│   │   └── PROGRESS.md
+│   ├── 03-architecture/
+│   │   ├── README.md
+│   │   └── PROGRESS.md
+│   ├── 04-planning/
+│   │   ├── README.md
+│   │   └── PROGRESS.md
+│   ├── 05-contracts-tests/
+│   │   ├── README.md
+│   │   └── PROGRESS.md
+│   ├── 06-implementation/
+│   │   ├── README.md
+│   │   └── PROGRESS.md
+│   └── 07-review/
+│       ├── README.md
+│       └── PROGRESS.md
+└── system/
+    └── [architecture-component]/
+        ├── PROGRESS.md
+        └── [owned-unit-or-subcomponent]/
+            └── PROGRESS.md
+```
+
+The `system/` tree should follow the major components named by Architecture, then nest lower-level progress ledgers only where a unit has its own owner, blockers, scoring evidence, or review path.
+
 ## How to Use Loom
 
 ### For a New Project
@@ -77,7 +116,7 @@ loom/
 4. **Documents are created** - Templates and outputs are generated as you progress
 5. **Complete the cycle** - Finish with review and retrospective
 
-Use [PROGRESS.md](./PROGRESS.md) to track percent complete across the whole project and recursively through phases, services, components, classes, or other smallest owned units. When recursive progress is requested, the root progress ledger links to child `PROGRESS.md` files at each useful drilldown level, and discovered scopes are populated by default instead of requiring one prompt per zoom level.
+Use [PROGRESS.md](./PROGRESS.md) to track percent complete across the whole project and recursively through phases, architecture components, owned subcomponents, classes, or other smallest owned units. When recursive progress is requested, the root progress ledger links to child `PROGRESS.md` files at each useful drilldown level, and discovered scopes are populated by default instead of requiring one prompt per zoom level.
 
 ### For Existing Projects
 

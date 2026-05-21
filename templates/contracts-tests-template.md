@@ -60,25 +60,24 @@ Use this template to define how the system will be verified before implementatio
 
 ### Test Layout
 
-Mirror the intended source tree where practical. Tests may be grouped by category, but the service/component/unit path should remain recognizable so Progress, source, and tests can be joined automatically.
+Mirror the intended source tree where practical. Tests may be grouped by category, but the architecture component or owned unit path should remain recognizable so Progress, source, and tests can be joined automatically.
 
 ```text
 tests/
   unit/
-    [service]/
-      [component]/
-        test_[unit].py
+    [architecture-component]/
+      test_[owned-unit].py
   integration/
-    [service]/
-      [workflow]/
+    [architecture-component]/
+      [workflow-or-subcomponent]/
         test_[scenario].py
   contracts/
-    [service]/
-      [component]/
+    [architecture-component]/
+      [owned-unit]/
         test_[contract].py
   fixtures/
-    [service]/
-      [component]/
+    [architecture-component]/
+      [owned-unit]/
 ```
 
 ### Naming Conventions
@@ -174,7 +173,7 @@ tests/
 
 | Scope | Type | Progress Doc Path | Source Path | Test Path | Progress Update |
 |-------|------|-------------------|-------------|-----------|-----------------|
-| | Service / Component / Unit | | | | |
+| | System Component / Subcomponent / Unit | `docs/loom/system/.../PROGRESS.md` | | | |
 
 ---
 
