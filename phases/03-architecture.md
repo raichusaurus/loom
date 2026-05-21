@@ -80,8 +80,8 @@ By the end of Architecture, you'll have:
 
 ✅ **Architecture Overview** - Problem recap, goals, and requirement inputs
 ✅ **System Design** - Components, interactions, diagrams, interfaces, and boundary rules
-✅ **Mirrored Module Map** - Intended Loom progress, source, and test paths for services/components/units
-✅ **Progress Drilldown Inputs** - Services, components, and units that should be populated in the progress tree
+✅ **Mirrored Module Map** - Intended Loom progress, source, and test paths for architecture components and owned units
+✅ **Progress Drilldown Inputs** - Architecture components, subcomponents, and units that should be populated in the progress tree
 ✅ **Technology Decisions** - Choices by layer with justification, alternatives, tradeoffs, and boundary implications
 ✅ **Data Design** - Model, source of truth, identifiers, data flow, storage, and runtime state
 ✅ **Integration Design** - External services, endpoints, events, queues, and storage integrations

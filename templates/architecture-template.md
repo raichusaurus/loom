@@ -85,9 +85,9 @@ Use this template to design your system architecture and hand clear decisions to
 
 Use this map to establish the intended documentation, source, and test tree before implementation exists. Planning, Contracts & Tests, and Progress should mirror this structure unless a later phase approves a deviation.
 
-| Area | Primary Modules / Services | Intended Loom Progress Path | Intended Source Path | Intended Test Path | Role |
+| Area | Primary Modules / Components | Intended Loom Progress Path | Intended Source Path | Intended Test Path | Role |
 |------|----------------------------|-----------------------------|----------------------|--------------------|------|
-| | | `docs/loom/scopes/.../PROGRESS.md` | `src/...` | `tests/...` | |
+| | | `docs/loom/system/.../PROGRESS.md` | `src/...` | `tests/...` | |
 
 ### Component Internal Contracts
 *Optional. Use for components whose boundaries should feed Contracts & Tests. This is especially useful for services, APIs, repositories, workflows, models, queues, importers, and CLIs.*
@@ -382,7 +382,7 @@ Use this map to establish the intended documentation, source, and test tree befo
 
 | Scope | Type | Parent | Progress Doc Path | Intended Source Path | Intended Test Path | Confidence / Notes |
 |-------|------|--------|-------------------|----------------------|--------------------|--------------------|
-| | Service / Component / Unit | | | | | |
+| | System Component / Subcomponent / Unit | | `docs/loom/system/.../PROGRESS.md` | | | |
 
 ---
 
