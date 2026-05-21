@@ -66,6 +66,7 @@ loom/
     ├── planning-template.md
     ├── contracts-tests-template.md
     ├── implementation-template.md
+    ├── progress-ledger-template.md
     └── retrospective-template.md
 ```
 

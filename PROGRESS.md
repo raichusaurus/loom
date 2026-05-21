@@ -2,7 +2,7 @@
 
 Use this document to track completion at every useful scope: project, architecture component, owned subcomponent, class, workflow, or task-level mini-Loom. The goal is to make progress visible at each zoom level without pretending every scope needs every phase.
 
-Copy this file into a project repo as `docs/loom/PROGRESS.md` and update it throughout the Loom cycle.
+Copy [templates/progress-ledger-template.md](templates/progress-ledger-template.md) into a project repo as `docs/loom/PROGRESS.md`, then use this file for scoring rules and recursive progress guidance.
 
 This root file is the project cockpit. It can stand alone for small projects, or act as an index into a recursive progress tree for larger projects. When a project asks for recursive progress, populate the drilldown tree automatically instead of waiting for follow-up prompts at each level.
 
@@ -302,171 +302,69 @@ Use this shape for any phase, system component, subcomponent, or unit-level prog
 
 ---
 
+## Root Progress Ledger Template
+
+Use this as the default top-level `docs/loom/PROGRESS.md` shape. It is intentionally compact: the root file is the project cockpit, while detailed evidence lives in child phase, system component, subcomponent, and unit ledgers beneath it. The standalone copyable version lives at [templates/progress-ledger-template.md](templates/progress-ledger-template.md).
+
+```md
+# Loom Progress Ledger
+
+Project-specific completion ledger for [Project Name]. This root file is the project cockpit: snapshot, rollups, next score-changing actions, decisions, and open questions. Detailed evidence lives in the phase, system component, subcomponent, and unit ledgers beneath it.
+
 ## Project Snapshot
 
-**Project:** [Project name]
-**Date:** [Date]
-**Owner:** [Owner]
-**Current Focus:** [Phase, service, component, or class]
+**Project:** [project-slug]
+**Date:** [YYYY-MM-DD]
+**Owner:** [Owner names]
+**Current Focus:** [Current phase, workstream, or score-changing push]
 **Total Complete:** [0-100%]
-**Calculation Basis:** [Equal phase weights / weighted phase scores / child rollup blend]
+**Calculation Basis:** [Equal phase weights / weighted phase scores / child rollup blend / custom basis]
 
-### Top-Level Phase Completion
+## Top-Level Phase Completion
 
 | Phase | Complete | Weight | Evidence / Source | Notes |
 |-------|----------|--------|-------------------|-------|
-| Discovery | 0% | 1 | [Discovery document] | |
-| Requirements | 0% | 1 | [Requirements document] | |
-| Architecture | 0% | 1 | [Architecture document] | |
-| Planning & Decomposition | 0% | 1 | [Planning document] | |
-| Contracts & Tests | 0% | 1 | [Contracts & Tests document] | |
-| Implementation | 0% | 1 | [Implementation document / PRs] | |
-| Review & Retrospective | 0% | 1 | [Retrospective document] | |
-| **Phase Total** | **0%** | | | |
+| Discovery | 0% | 1 | [Discovery Progress](phases/01-discovery/PROGRESS.md) | |
+| Requirements | 0% | 1 | [Requirements Progress](phases/02-requirements/PROGRESS.md) | |
+| Architecture | 0% | 1 | [Architecture Progress](phases/03-architecture/PROGRESS.md) | |
+| Planning & Decomposition | 0% | 1 | [Planning Progress](phases/04-planning/PROGRESS.md) | |
+| Contracts & Tests | 0% | 1 | [Contracts & Tests Progress](phases/05-contracts-tests/PROGRESS.md) | |
+| Implementation | 0% | 1 | [Implementation Progress](phases/06-implementation/PROGRESS.md) | |
+| Review & Retrospective | 0% | 1 | [Review Progress](phases/07-review/PROGRESS.md) | |
+| **Phase Total** | **0%** | | | [Calculation note, such as rounded from 0 / 700.] |
 
-### Top-Level Child Rollup
+## Top-Level Child Rollup
 
 | Scope | Type | Weight | Phase Total | Child Rollup | Total | Owner | Notes |
 |-------|------|--------|-------------|--------------|-------|-------|-------|
-| [Service / feature / subsystem] | Service | 1 | 0% | 0% | 0% | | |
-| [Service / feature / subsystem] | Service | 1 | 0% | 0% | 0% | | |
-| **Child Rollup** | | | | | **0%** | | |
+| [System Component](system/[architecture-component]/PROGRESS.md) | System Component | 1 | 0% | 0% | 0% | [Owner] | |
+| [Delivery Workstream](phases/[phase]/PROGRESS.md) | Workstream | 1 | 0% | 0% | 0% | [Owner] | |
+| **Child Rollup** | | | | | **0%** | | [Calculation note, such as rounded equal-weight average.] |
 
----
+## Next Score-Changing Actions
 
-## Workstream Progress
-
-Use this compact matrix for the main implementation or delivery workstreams. Workstreams can be services, feature slices, platform areas, CI/bootstrap tracks, documentation tracks, or any other owned stream that helps explain delivery progress.
-
-| Workstream | Requirements | Architecture | Planning | Contracts & Tests | Implementation | Review | Total | Evidence |
-|------------|--------------|--------------|----------|-------------------|----------------|--------|-------|----------|
-| [Workstream name] | 0% | 0% | 0% | 0% | 0% | 0% | 0% | |
-| [Workstream name] | 0% | 0% | 0% | 0% | 0% | 0% | 0% | |
-
----
-
-## Service Progress
-
-Duplicate this section for each service, feature, subsystem, app, worker, API, integration, or data pipeline.
-
-### Service: [Service Name]
-
-**Purpose:** [What this service owns]
-**Owner:** [Owner]
-**Total Complete:** 0%
-**Phase Total:** 0%
-**Child Rollup:** 0%
-**Weighting Basis:** [Equal components / effort / risk / critical path]
-
-#### Phase Completion
-
-| Phase | Complete | Weight | Evidence / Source | Notes |
-|-------|----------|--------|-------------------|-------|
-| Discovery | N/A | | | |
-| Requirements | 0% | 1 | | |
-| Architecture | 0% | 1 | | |
-| Planning & Decomposition | 0% | 1 | | |
-| Contracts & Tests | 0% | 1 | | Minimum expected phase |
-| Implementation | 0% | 1 | | Minimum expected phase |
-| Review & Retrospective | 0% | 1 | | |
-| **Phase Total** | **0%** | | | |
-
-#### Components
-
-| Component | Weight | Phase Total | Child Rollup | Total | Owner | Notes |
-|-----------|--------|-------------|--------------|-------|-------|-------|
-| [Component name] | 1 | 0% | 0% | 0% | | |
-| [Component name] | 1 | 0% | 0% | 0% | | |
-| **Child Rollup** | | | | **0%** | | |
-
----
-
-## Component Progress
-
-Duplicate this section for each component, module, package, workflow, route group, repository, model area, or UI area.
-
-### Component: [Component Name]
-
-**Parent Service:** [Service name]
-**Purpose:** [What this component owns]
-**Owner:** [Owner]
-**Total Complete:** 0%
-**Phase Total:** 0%
-**Child Rollup:** 0%
-**Weighting Basis:** [Equal classes / effort / risk / critical path]
-
-#### Phase Completion
-
-| Phase | Complete | Weight | Evidence / Source | Notes |
-|-------|----------|--------|-------------------|-------|
-| Discovery | N/A | | | |
-| Requirements | 0% | 1 | | |
-| Architecture | 0% | 1 | | |
-| Planning & Decomposition | 0% | 1 | | |
-| Contracts & Tests | 0% | 1 | | Minimum expected phase |
-| Implementation | 0% | 1 | | Minimum expected phase |
-| Review & Retrospective | 0% | 1 | | |
-| **Phase Total** | **0%** | | | |
-
-#### Classes / Smallest Owned Units
-
-| Class / Unit | Weight | Phase Total | Total | Owner | Notes |
-|--------------|--------|-------------|-------|-------|-------|
-| [Class, function group, command, hook, view, model, schema, or adapter] | 1 | 0% | 0% | | |
-| [Class, function group, command, hook, view, model, schema, or adapter] | 1 | 0% | 0% | | |
-| **Child Rollup** | | | **0%** | | |
-
----
-
-## Class / Unit Progress
-
-Duplicate this section for the smallest units discovered in contracts/tests, architecture/planning docs, or the source tree. In recursive mode, include every discovered class, function group, schema, command, view, adapter, workflow, repository, model, or test double somewhere in the progress tree. Create a child progress doc when useful; otherwise keep the unit in its parent table with evidence and an explicit `No child doc` note.
-
-### Class / Unit: [Name]
-
-**Parent Component:** [Component name]
-**Purpose:** [What this unit owns]
-**Owner:** [Owner]
-**Total Complete:** 0%
-**Calculation Basis:** [Usually phase total only]
-
-#### Phase Completion
-
-| Phase | Complete | Weight | Evidence / Source | Notes |
-|-------|----------|--------|-------------------|-------|
-| Discovery | N/A | | | |
-| Requirements | N/A | | | |
-| Architecture | N/A | | | |
-| Planning & Decomposition | N/A | | | |
-| Contracts & Tests | 0% | 1 | | Minimum expected phase |
-| Implementation | 0% | 1 | | Minimum expected phase |
-| Review & Retrospective | 0% | 1 | | Lightweight review is enough |
-| **Phase Total** | **0%** | | | |
-
-#### Breakdown
-
-| Item | Complete | Evidence / Source | Notes |
-|------|----------|-------------------|-------|
-| Contract or expected behavior is defined | 0% | | |
-| Tests or verification evidence exist | 0% | | |
-| Implementation is complete | 0% | | |
-| Integrated with parent component | 0% | | |
-| Reviewed or accepted | 0% | | |
-
----
+| Action | Phase / Area | Expected Score Impact | Owner |
+|--------|--------------|-----------------------|-------|
+| [Next concrete action] | [Phase / system component] | [How this changes the score or unlocks scoring evidence] | [Owner] |
+| [Next concrete action] | [Phase / system component] | [How this changes the score or unlocks scoring evidence] | [Owner] |
 
 ## Decisions and Adjustments
 
-Use this section when scores change for a reason other than normal task progress.
-
 | Date | Scope | Change | Reason | Owner |
 |------|-------|--------|--------|-------|
-| | | | | |
-
----
+| [YYYY-MM-DD] | [Scope] | [What changed] | [Why the score, structure, or plan changed] | [Owner] |
 
 ## Open Progress Questions
 
 | Scope | Question | Needed To Score Accurately | Owner |
 |-------|----------|----------------------------|-------|
-| | | | |
+| [Scope] | [Open question] | [What evidence or decision is needed] | [Owner] |
+```
+
+Use the root template as the first thing a reader sees in a project repo. Put deeper scoring detail in the child ledgers:
+
+- Phase ledgers: `docs/loom/phases/*/PROGRESS.md`
+- System component ledgers: `docs/loom/system/[architecture-component]/PROGRESS.md`
+- Unit or subcomponent ledgers: `docs/loom/system/[architecture-component]/[owned-unit-or-subcomponent]/PROGRESS.md`
+
+If a child scope does not need its own file, keep it as a row in the nearest parent table and write `No child doc` in the progress-doc field.
