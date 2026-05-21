@@ -109,7 +109,7 @@ Recommended project progress layout:
 docs/loom/
   README.md
   PROGRESS.md
-  pilot-feedback.md                  # optional, useful when piloting Loom itself
+  pilot-feedback.md                  # optional; copy templates/pilot-feedback-template.md when piloting Loom itself
   phases/
     01-discovery/
       README.md
@@ -341,6 +341,38 @@ Project-specific completion ledger for [Project Name]. This root file is the pro
 | [Delivery Workstream](phases/[phase]/PROGRESS.md) | Workstream | 1 | 0% | 0% | 0% | [Owner] | |
 | **Child Rollup** | | | | | **0%** | | [Calculation note, such as rounded equal-weight average.] |
 
+## Scope Inventory
+
+Use this table to show that the progress tree was populated from evidence rather than vibes.
+
+| Scope | Type | Parent | Source Evidence | Progress Doc | Intended Source Path | Intended Test Path | Inclusion Decision |
+|-------|------|--------|-----------------|--------------|----------------------|--------------------|--------------------|
+| Discovery | Phase | Project | [Discovery artifact] | `phases/01-discovery/PROGRESS.md` | N/A | N/A | Included |
+| Requirements | Phase | Project | [Requirements artifact] | `phases/02-requirements/PROGRESS.md` | N/A | N/A | Included |
+| Architecture | Phase | Project | [Architecture artifact] | `phases/03-architecture/PROGRESS.md` | N/A | N/A | Included |
+| Planning & Decomposition | Phase | Project | [Planning artifact] | `phases/04-planning/PROGRESS.md` | N/A | N/A | Included |
+| Contracts & Tests | Phase | Project | [Contracts artifact] | `phases/05-contracts-tests/PROGRESS.md` | N/A | N/A | Included |
+| Implementation | Phase | Project | [Implementation artifact] | `phases/06-implementation/PROGRESS.md` | N/A | N/A | Included |
+| Review & Retrospective | Phase | Project | [Review artifact] | `phases/07-review/PROGRESS.md` | N/A | N/A | Included |
+| [Architecture component] | System Component | Project | [Architecture / planning / source evidence] | `system/[architecture-component]/PROGRESS.md` | `src/...` | `tests/...` | Included |
+| [Owned unit or subcomponent] | Unit / Subcomponent | [Architecture component] | [Contract / source / test evidence] | `system/[architecture-component]/[owned-unit-or-subcomponent]/PROGRESS.md` or `No child doc` | `src/...` or TBD | `tests/...` or TBD | Included / Rolled into parent / Deferred |
+
+## Progress Tree Index
+
+Keep this table compact and clickable. Put deeper scoring evidence in child ledgers.
+
+| Scope | Type | Parent | Total | Current Focus | Progress Doc | Notes |
+|-------|------|--------|-------|---------------|--------------|-------|
+| Discovery | Phase | Project | 0% | | [Progress](phases/01-discovery/PROGRESS.md) | |
+| Requirements | Phase | Project | 0% | | [Progress](phases/02-requirements/PROGRESS.md) | |
+| Architecture | Phase | Project | 0% | | [Progress](phases/03-architecture/PROGRESS.md) | |
+| Planning & Decomposition | Phase | Project | 0% | | [Progress](phases/04-planning/PROGRESS.md) | |
+| Contracts & Tests | Phase | Project | 0% | | [Progress](phases/05-contracts-tests/PROGRESS.md) | |
+| Implementation | Phase | Project | 0% | | [Progress](phases/06-implementation/PROGRESS.md) | |
+| Review & Retrospective | Phase | Project | 0% | | [Progress](phases/07-review/PROGRESS.md) | |
+| [Architecture component] | System Component | Project | 0% | | [Progress](system/[architecture-component]/PROGRESS.md) | |
+| [Owned unit or subcomponent] | Unit / Subcomponent | [Architecture component] | 0% | | [Progress](system/[architecture-component]/[owned-unit-or-subcomponent]/PROGRESS.md) or `No child doc` | |
+
 ## Next Score-Changing Actions
 
 | Action | Phase / Area | Expected Score Impact | Owner |
@@ -368,3 +400,5 @@ Use the root template as the first thing a reader sees in a project repo. Put de
 - Unit or subcomponent ledgers: `docs/loom/system/[architecture-component]/[owned-unit-or-subcomponent]/PROGRESS.md`
 
 If a child scope does not need its own file, keep it as a row in the nearest parent table and write `No child doc` in the progress-doc field.
+
+When the project is also piloting Loom, copy [templates/pilot-feedback-template.md](templates/pilot-feedback-template.md) into `docs/loom/pilot-feedback.md` so process lessons do not get mixed into delivery scoring.

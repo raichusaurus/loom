@@ -67,6 +67,7 @@ loom/
     ├── contracts-tests-template.md
     ├── implementation-template.md
     ├── progress-ledger-template.md
+    ├── pilot-feedback-template.md
     └── retrospective-template.md
 ```
 
@@ -76,6 +77,7 @@ Projects using Loom should keep their project-specific Loom artifacts under `doc
 docs/loom/
 ├── README.md (project Loom index)
 ├── PROGRESS.md (project progress cockpit and rollup)
+├── pilot-feedback.md (optional, for projects piloting Loom itself)
 ├── phases/
 │   ├── 01-discovery/
 │   │   ├── README.md
@@ -106,6 +108,8 @@ docs/loom/
 ```
 
 The `system/` tree should follow the major components named by Architecture, then nest lower-level progress ledgers only where a unit has its own owner, blockers, scoring evidence, or review path.
+
+Use [templates/progress-ledger-template.md](./templates/progress-ledger-template.md) for both the root progress cockpit and child progress ledgers. Use [templates/pilot-feedback-template.md](./templates/pilot-feedback-template.md) when a project is also producing reusable Loom process lessons.
 
 ## How to Use Loom
 
