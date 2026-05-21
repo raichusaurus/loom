@@ -41,6 +41,13 @@ Use this template to track implementation work against the plan, contracts, and 
 |-----------|--------|-------------|-----------|
 | | | | |
 
+### Progress Tree Updates
+*Keep progress docs, source paths, and test paths aligned as implementation reveals the real shape.*
+
+| Scope | Progress Doc Path | Source Path | Test Path | Update Needed / Completed |
+|-------|-------------------|-------------|-----------|---------------------------|
+| | | | | |
+
 ### Blockers
 | Blocker | Owner | Impact | Next Step |
 |---------|-------|--------|-----------|

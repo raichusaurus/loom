@@ -30,6 +30,8 @@ The Architecture Agent will help you explore:
 ### System Structure and Boundaries
 - What are the major components, modules, services, or classes?
 - What does each component own?
+- What documentation/source/test paths should represent each service, component, and unit before implementation exists?
+- Which progress drilldowns should be created or updated from this architecture tree?
 - How do components communicate, sequence work, share state, and handle failure?
 - What must each component not do?
 - What dependency direction and ownership rules should implementation preserve?
@@ -78,6 +80,8 @@ By the end of Architecture, you'll have:
 
 ✅ **Architecture Overview** - Problem recap, goals, and requirement inputs
 ✅ **System Design** - Components, interactions, diagrams, interfaces, and boundary rules
+✅ **Mirrored Module Map** - Intended Loom progress, source, and test paths for services/components/units
+✅ **Progress Drilldown Inputs** - Services, components, and units that should be populated in the progress tree
 ✅ **Technology Decisions** - Choices by layer with justification, alternatives, tradeoffs, and boundary implications
 ✅ **Data Design** - Model, source of truth, identifiers, data flow, storage, and runtime state
 ✅ **Integration Design** - External services, endpoints, events, queues, and storage integrations
@@ -96,6 +100,8 @@ You're ready to move to Planning & Decomposition when:
 
 - ✅ Requirements inputs and MVP constraints are reflected in the design
 - ✅ Components, modules, services, and responsibilities are clear enough to decompose
+- ✅ Intended documentation, source, and test paths are clear enough for Planning and Progress to mirror
+- ✅ Progress tree entries can be populated for known services, components, and major units
 - ✅ Interaction patterns, interfaces, and control surfaces are documented
 - ✅ Boundary rules and ownership rules are explicit
 - ✅ Data model, state ownership, and integration points are understood

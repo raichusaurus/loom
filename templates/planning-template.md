@@ -62,9 +62,16 @@ Use this template to turn architecture into an executable plan for humans and ag
 ## Ownership Boundaries
 
 ### Ownership Map
-| Owner | Files/Modules/Services | Responsibilities | Out of Scope |
-|-------|------------------------|------------------|--------------|
-| | | | |
+| Owner | Docs Path | Source Path | Test Path | Responsibilities | Out of Scope |
+|-------|-----------|-------------|-----------|------------------|--------------|
+| | `docs/loom/scopes/.../PROGRESS.md` | `src/...` | `tests/...` | | |
+
+### Mirrored Tree Plan
+*Use the intended Architecture module map to align Loom progress docs, source files, and tests before implementation starts.*
+
+| Scope | Type | Parent | Progress Doc Path | Intended Source Path | Intended Test Path |
+|-------|------|--------|-------------------|----------------------|--------------------|
+| | Service / Component / Unit | | | | |
 
 ### Shared Areas
 | Shared Area | Owners | Coordination Rule |
@@ -103,7 +110,9 @@ Use this template to turn architecture into an executable plan for humans and ag
 - **Goal:** [What this workstream must accomplish]
 - **Relevant requirements:** [Links or references]
 - **Relevant architecture decisions:** [Links or references]
-- **Owned files/services/modules:** [Scope]
+- **Owned progress docs:** [docs/loom/scopes/... paths]
+- **Owned source paths:** [src/... paths]
+- **Owned test paths:** [tests/... paths]
 - **Contracts to preserve:** [APIs, schemas, events, interfaces]
 - **Risks and assumptions:** [Known concerns]
 - **Expected output:** [Patch, design, test plan, report, etc.]

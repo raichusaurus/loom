@@ -11,6 +11,7 @@ This phase focuses on:
 - Bootstrapping local and CI/check automation when the scaffold can run it
 - Maintaining code quality
 - Keeping tests passing
+- Keeping progress docs, source paths, and test paths aligned as real implementation shape emerges
 - Documentation and comments
 
 ## Key Questions
@@ -23,6 +24,7 @@ The Implementation Agent will help you navigate:
 - How do we keep it maintainable?
 - Where does each piece belong?
 - How do we avoid crossing another workstream's ownership boundary without coordination?
+- Does the implemented source/test layout still match the mirrored progress tree?
 
 ### Quality Standards
 - How do we write good code?
@@ -61,6 +63,7 @@ By the end of Implementation, you'll have:
 ✅ **Code Documentation** - Comments and docstrings where needed
 ✅ **PR/Commit History** - Clear history of changes
 ✅ **Integration Complete** - All pieces working together
+✅ **Progress Tree Updated** - Implemented source/test paths and deviations reflected in progress docs
 ✅ **Updated Handoffs** - Deviations, blockers, and integration notes captured
 
 ## Implementation Guidelines
@@ -70,6 +73,7 @@ By the end of Implementation, you'll have:
 - **Keep commits clean** - Small, focused commits are easier to review
 - **Reference requirements** - Tie code to acceptance tests
 - **Communicate changes** - If you're deviating from design, flag it
+- **Update progress paths** - If implementation changes the planned structure, update the relevant progress docs with evidence and reason
 - **Review your own code first** - Catch obvious issues before review
 
 ### Code Quality
@@ -97,6 +101,7 @@ You're ready to move to Review & Retrospective when:
 - ✅ Local checks and applicable CI/check automation are working or explicitly deferred
 - ✅ Code quality standards are met
 - ✅ Documentation is complete
+- ✅ Progress docs reflect delivered source/test paths and known deviations
 - ✅ Code review is done and approved
 - ✅ Workstream handoffs and integration notes are complete
 

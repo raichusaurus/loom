@@ -228,6 +228,14 @@ Architecture should decide:
 - [Tradeoff or unresolved design question]
 - [Legacy/prior-art reuse decision, if applicable]
 
+## Progress Inputs
+
+*Capture the coarse scopes Progress should track before Architecture defines exact paths.*
+
+| Scope | Type | Why track it? | Known / TBD Path Notes |
+|-------|------|---------------|------------------------|
+| | Workstream / Surface / Integration / Service candidate | | |
+
 ---
 
 ## Phase Gate
