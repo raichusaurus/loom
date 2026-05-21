@@ -83,9 +83,11 @@ Use this template to design your system architecture and hand clear decisions to
 ### Initial Service / Module Map
 *Optional. Use when Planning needs a concrete starting map of modules, services, or classes. Names can change during implementation, but responsibility boundaries should stay intentional.*
 
-| Area | Primary Modules / Services | Role |
-|------|----------------------------|------|
-| | | |
+Use this map to establish the intended documentation, source, and test tree before implementation exists. Planning, Contracts & Tests, and Progress should mirror this structure unless a later phase approves a deviation.
+
+| Area | Primary Modules / Services | Intended Loom Progress Path | Intended Source Path | Intended Test Path | Role |
+|------|----------------------------|-----------------------------|----------------------|--------------------|------|
+| | | `docs/loom/scopes/.../PROGRESS.md` | `src/...` | `tests/...` | |
 
 ### Component Internal Contracts
 *Optional. Use for components whose boundaries should feed Contracts & Tests. This is especially useful for services, APIs, repositories, workflows, models, queues, importers, and CLIs.*
@@ -373,6 +375,14 @@ Use this template to design your system architecture and hand clear decisions to
 - **Service/module boundaries to preserve:**
 - **Highest-risk areas to isolate early:**
 - **Decisions Planning must not reopen without new evidence:**
+
+## Progress Inputs
+
+*Hand the mirrored tree to Progress. By the end of Architecture, this should be the first credible directory structure for docs, source, and tests.*
+
+| Scope | Type | Parent | Progress Doc Path | Intended Source Path | Intended Test Path | Confidence / Notes |
+|-------|------|--------|-------------------|----------------------|--------------------|--------------------|
+| | Service / Component / Unit | | | | | |
 
 ---
 

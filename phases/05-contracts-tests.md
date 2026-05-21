@@ -32,6 +32,8 @@ The Contracts & Tests Agent will help you explore:
 - What needs to be tested?
 - What's the test coverage target?
 - What types of tests (unit/integration/e2e)?
+- How should test paths mirror intended source paths and progress docs?
+- Which new contract-ready units should be added to the progress tree from tests or fixtures?
 - What are the happy paths vs. edge cases?
 - Which tests validate integration between independently owned workstreams?
 - Which tests should exist before implementation starts?
@@ -64,6 +66,8 @@ By the end of this phase, you'll have:
 ✅ **API Contracts** - Defined interfaces between components
 ✅ **Testing Decision** - Test-first policy, scaffold exceptions, external dependency policy, and rewrite approval rules
 ✅ **Test Plan** - What gets tested and how
+✅ **Mirrored Test Layout** - Test paths aligned with progress docs and intended source paths
+✅ **Progress Tree Updates** - Contract-ready scopes and test paths added to progress docs
 ✅ **Contract Stability Register** - Which contracts are locked, approval-gated, or flexible when useful
 ✅ **Contract/Test Candidates** - Behavior that should become executable checks
 ✅ **Fixture Plan** - Source payloads, scenarios, and edge cases to preserve
@@ -83,6 +87,8 @@ You're ready to move to Implementation when:
 - ✅ API contracts are defined
 - ✅ Test-first policy and allowed scaffold exceptions are explicit
 - ✅ Test strategy is clear
+- ✅ Test layout mirrors the intended source/progress tree where practical
+- ✅ Contract-ready units discovered in tests are reflected in the progress tree
 - ✅ Required contract/test candidates are captured
 - ✅ Automation/bootstrap handoff is captured
 - ✅ Code quality standards are established

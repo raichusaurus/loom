@@ -32,6 +32,8 @@ The Planning Agent will help you explore:
 - Who owns each workstream?
 - Which agent or person is responsible for each service, module, or feature?
 - What files, directories, APIs, or systems are inside each owner's scope?
+- What Loom progress docs, source paths, and test paths belong to each owner?
+- Which child progress docs should already exist before Contracts & Tests starts?
 - Where might ownership overlap?
 
 ### Dependencies & Sequencing
@@ -59,6 +61,8 @@ By the end of Planning & Decomposition, you'll have:
 
 ✅ **Work Breakdown** - Major workstreams, features, services, and implementation slices  
 ✅ **Ownership Map** - Clear responsibility boundaries for humans and agents  
+✅ **Mirrored Tree Plan** - Progress docs, source paths, and test paths aligned by scope
+✅ **Progress Drilldown Ownership** - Owners for each child progress doc and mirrored code/test area
 ✅ **Dependency Graph** - What blocks what, and what can run in parallel  
 ✅ **Context Packets** - Scoped briefs for each agent or subproject  
 ✅ **Integration Plan** - Checkpoints for merging, testing, and reconciling work  
@@ -98,6 +102,8 @@ You're ready to move to Contracts & Tests when:
 
 - ✅ Workstreams are clearly defined
 - ✅ Ownership boundaries are explicit
+- ✅ Progress docs, source paths, and test paths are mapped for each owned scope
+- ✅ Known child progress docs are created or explicitly marked as pending with owner and reason
 - ✅ Dependencies and critical path are understood
 - ✅ Parallel work is identified
 - ✅ Context packets are ready for agents or contributors

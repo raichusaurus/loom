@@ -101,6 +101,8 @@ Use one root `PROGRESS.md` first for a small project or quick status pass. When 
 
 Do not stop after the root file. The root is an index and rollup; the child files are the zoomable progress surface.
 
+Before `src/` and `tests/` exist, use the intended source/test structure from Architecture, Planning, and Contracts & Tests as the progress tree shape. Once implementation begins, keep Loom progress docs, `src/`, and `tests/` aligned so the same service/component/unit can be found in the same relative path in all three places.
+
 Recommended project layout:
 
 ```text
@@ -121,6 +123,16 @@ docs/loom/
       [service-name]/[component-name]/PROGRESS.md
     units/
       [service-name]/[component-name]/[unit-name]/PROGRESS.md
+src/
+  [package-or-app]/
+    [service-name]/
+      [component-name]/
+        [unit].py
+tests/
+  [test-category]/
+    [service-name]/
+      [component-name]/
+        test_[unit].py
 ```
 
 Each child progress document should include:
@@ -144,17 +156,50 @@ When first auto-populating a recursive tree, be more inclusive than that rule of
 - If a unit seems too small after inspection, keep it in the nearest parent table with `No child doc` and explain why. Do not silently omit it.
 - Use `Unknown` when evidence has not been inspected yet. Use `N/A` only when a phase truly does not apply.
 
+### Mirrored Structure Rule
+
+The Loom progress tree should mirror the intended code and test tree:
+
+```text
+docs/loom/scopes/services/[service]/PROGRESS.md
+docs/loom/scopes/components/[service]/[component]/PROGRESS.md
+docs/loom/scopes/units/[service]/[component]/[unit]/PROGRESS.md
+
+src/[package]/[service]/[component]/[unit].*
+tests/[category]/[service]/[component]/test_[unit].*
+```
+
+This rule applies before implementation exists. In early phases, Architecture and Planning define the intended paths, Contracts & Tests define the expected test paths, and Progress creates the matching documentation paths. During Implementation, source and test files should fill the documented paths or update the docs with the approved deviation.
+
+If a language/framework uses a different convention, keep the nearest stable equivalent and document the mapping.
+
+### Phase-by-Phase Population Expectations
+
+Populate as much progress structure as each phase can honestly know. Do not wait until Implementation to create the tree.
+
+| Phase | Expected Progress Tree Maturity |
+|-------|---------------------------------|
+| Discovery | Capture project-level progress only, plus obvious major surfaces or systems if they are already known. |
+| Requirements | Identify coarse workstreams, output surfaces, external integrations, and any obvious service/component candidates. Mark paths as `TBD` when not known. |
+| Architecture | Define the first credible mirrored tree: services, components, major units, intended progress doc paths, intended source paths, and intended test paths. This is where the directory structure should be mostly figured out. |
+| Planning & Decomposition | Turn the Architecture tree into an ownership map: every workstream has progress docs, source paths, test paths, sequencing, and handoff expectations. |
+| Contracts & Tests | Populate or refine test paths to mirror the intended source/progress tree. Add contract-ready units from tests even if implementation does not exist yet. |
+| Implementation | Fill the intended source paths, adjust the tree when real code proves a better shape, and record deviations in progress docs rather than leaving stale paths. |
+| Review & Retrospective | Confirm the final tree matches delivered reality, collapse unnecessary drilldowns if appropriate, and carry lessons into the next cycle. |
+
+At every phase gate, update the root progress ledger and any known child progress docs with the evidence available at that phase. Use `Unknown` or `TBD` for gaps; do not omit known scopes just because they are not implemented yet.
+
 ### Auto-Population Workflow
 
 When building or refreshing a recursive progress tree:
 
 1. Read the phase docs, especially Requirements, Architecture, Planning, Contracts & Tests, and Implementation.
 2. Read existing tests and contract fixtures to discover expected services, components, and units.
-3. Inspect the source tree, public classes/functions, CLI commands, schemas, repositories, adapters, and workflows.
-4. Build a scope inventory before writing progress docs.
+3. Inspect the intended or actual source tree, public classes/functions, CLI commands, schemas, repositories, adapters, and workflows.
+4. Build a scope inventory before writing progress docs, including intended doc path, intended source path, and intended test path.
 5. Create the root `PROGRESS.md` rollup and tree index.
 6. Create child phase progress docs under `phases/*/PROGRESS.md`.
-7. Create child scope progress docs under `scopes/services`, `scopes/components`, and `scopes/units`.
+7. Create child scope progress docs under `scopes/services`, `scopes/components`, and `scopes/units`, mirroring the intended source/test paths.
 8. Link every child from its parent and every parent from its child.
 9. Mark scores with evidence links, `Unknown`, `TBD`, or `N/A`; do not leave discovered scopes unrepresented.
 10. Add open progress questions for anything that could not be scored confidently.
@@ -163,9 +208,9 @@ When building or refreshing a recursive progress tree:
 
 Use this table before or inside the root progress file to show that the tree was populated from evidence rather than vibes.
 
-| Scope | Type | Parent | Source Evidence | Progress Doc | Inclusion Decision |
-|-------|------|--------|-----------------|--------------|--------------------|
-| [Scope name] | Phase / Workstream / Service / Component / Unit | [Parent] | [Doc/test/source path] | [Path or No child doc] | Included / Rolled into parent / Deferred |
+| Scope | Type | Parent | Source Evidence | Progress Doc | Intended Source Path | Intended Test Path | Inclusion Decision |
+|-------|------|--------|-----------------|--------------|----------------------|--------------------|--------------------|
+| [Scope name] | Phase / Workstream / Service / Component / Unit | [Parent] | [Doc/test/source path] | [Path or No child doc] | [src path or TBD] | [test path or TBD] | Included / Rolled into parent / Deferred |
 
 ### Progress Tree Index
 
@@ -224,9 +269,9 @@ Use this shape for any phase, service, component, or unit-level progress documen
 
 ## Local Scope Inventory
 
-| Scope | Type | Source Evidence | Progress Doc | Inclusion Decision |
-|-------|------|-----------------|--------------|--------------------|
-| | | | | |
+| Scope | Type | Source Evidence | Progress Doc | Intended Source Path | Intended Test Path | Inclusion Decision |
+|-------|------|-----------------|--------------|----------------------|--------------------|--------------------|
+| | | | | | | |
 
 ## Next Score-Changing Actions
 

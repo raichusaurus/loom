@@ -55,6 +55,7 @@ This phase should pull forward Discovery context before inventing new scope. It 
 - What tradeoffs should Architecture explore?
 - Which prior-art or legacy reuse decisions need technical judgment?
 - What requirements changed during later phases, and what did they supersede?
+- Which coarse workstreams, surfaces, services, or components should Progress track now, even if source/test paths are still `TBD`?
 
 ---
 
@@ -77,6 +78,7 @@ Before moving to Architecture, validate:
 - ✅ Acceptance tests and validation signals are measurable
 - ✅ Dependencies, assumptions, risks, and prior-art inputs are documented
 - ✅ Architecture inputs name unresolved technical decisions without prematurely solving them
+- ✅ Coarse progress scopes are identified for obvious workstreams, surfaces, integrations, or service candidates
 - ✅ Phase gate has an owner decision and remaining concerns
 
 ---

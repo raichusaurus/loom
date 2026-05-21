@@ -60,12 +60,25 @@ Use this template to define how the system will be verified before implementatio
 
 ### Test Layout
 
+Mirror the intended source tree where practical. Tests may be grouped by category, but the service/component/unit path should remain recognizable so Progress, source, and tests can be joined automatically.
+
 ```text
 tests/
   unit/
+    [service]/
+      [component]/
+        test_[unit].py
   integration/
+    [service]/
+      [workflow]/
+        test_[scenario].py
   contracts/
+    [service]/
+      [component]/
+        test_[contract].py
   fixtures/
+    [service]/
+      [component]/
 ```
 
 ### Naming Conventions
@@ -135,9 +148,9 @@ tests/
 ## Test Strategy
 
 ### Coverage Matrix
-| Area | Test Type | Owner | Required Before Merge |
-|------|-----------|-------|-----------------------|
-| | | | |
+| Area | Progress Doc Path | Source Path | Test Path | Test Type | Owner | Required Before Merge |
+|------|-------------------|-------------|-----------|-----------|-------|-----------------------|
+| | | | | | | |
 
 ### Required Fixtures
 *Optional. Use fixtures to cover important source payloads, workflow states, user scenarios, or edge cases.*
@@ -155,6 +168,13 @@ tests/
 | Integration Point | Test Scenario | Owner |
 |-------------------|---------------|-------|
 | | | |
+
+### Progress Tree Updates
+*Add scopes that became contract-ready because tests, fixtures, or contract expectations now exist.*
+
+| Scope | Type | Progress Doc Path | Source Path | Test Path | Progress Update |
+|-------|------|-------------------|-------------|-----------|-----------------|
+| | Service / Component / Unit | | | | |
 
 ---
 
