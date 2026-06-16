@@ -78,6 +78,7 @@ Before moving to Architecture, validate:
 - ✅ Acceptance tests and validation signals are measurable
 - ✅ Dependencies, assumptions, risks, and prior-art inputs are documented
 - ✅ Architecture inputs name unresolved technical decisions without prematurely solving them
+- ✅ Open questions that need user decisions include summaries, options, trade-offs, and recommendations
 - ✅ Coarse progress scopes are identified for obvious workstreams, surfaces, integrations, or service candidates
 - ✅ Phase gate has an owner decision and remaining concerns
 

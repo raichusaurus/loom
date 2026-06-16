@@ -39,6 +39,7 @@ Think of it as a project manager + senior engineer + mentor in one.
 **The Orchestrator:**
 - Explains the phase's purpose and outputs
 - Asks key questions
+- Frames open questions as decision packets with options, trade-offs, and a recommendation
 - Guides you through templates
 - Coordinates with phase specialists as needed
 - Tracks progress
@@ -92,6 +93,16 @@ Think of it as a project manager + senior engineer + mentor in one.
 - Facilitates alignment discussions
 - Captures decisions and rationale
 - Documents risks and trade-offs
+
+### 6. Open Question Decision Support
+When any phase has an open question, the Orchestrator should not hand the user a vague prompt. It should turn each open question into a compact decision packet:
+
+- **Question summary:** The decision being made, in one or two plain sentences
+- **Options:** Two to four plausible choices, including a "do nothing / defer" option when reasonable
+- **Trade-offs:** The main cost, risk, speed, quality, scope, or reversibility implications of each option
+- **Recommendation:** The Orchestrator's suggested choice, with a short rationale and any trigger that would change the recommendation
+
+The goal is to make the user's decision-making feel multiple choice. Ask for free-form thinking only when the answer truly cannot be bounded yet.
 
 ---
 

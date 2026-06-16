@@ -72,6 +72,7 @@ Before moving to Requirements, validate:
 - ✅ Constraints and dependencies are explicit
 - ✅ Success metrics and validation strategy are measurable enough for Requirements
 - ✅ Assumptions, risks, and open questions have validation paths
+- ✅ Open questions that need user decisions include summaries, options, trade-offs, and recommendations
 - ✅ Requirements handoff summarizes the inputs the next phase should pull forward
 
 ---

@@ -53,6 +53,13 @@ Use this template to track implementation work against the plan, contracts, and 
 |---------|-------|--------|-----------|
 | | | | |
 
+### Open Implementation Decisions
+*Use this for blockers, deviations, scope choices, or implementation questions that need user input.*
+
+| Question Summary | Options | Trade-offs | Recommendation | Owner / Status |
+|------------------|---------|------------|----------------|----------------|
+| | | | | |
+
 ---
 
 ## Verification

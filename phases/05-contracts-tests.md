@@ -75,6 +75,7 @@ By the end of this phase, you'll have:
 ✅ **Code Quality Standards** - Linting, formatting, review requirements
 ✅ **Monitoring Plan** - Observability and alerting strategy
 ✅ **Ownership-Aligned Verification** - Tests and contracts mapped to workstreams
+✅ **Open Decision Packets** - Remaining test, contract, automation, or quality questions framed with options, trade-offs, and recommendations
 
 ## Contracts & Tests Template
 
@@ -92,6 +93,7 @@ You're ready to move to Implementation when:
 - ✅ Required contract/test candidates are captured
 - ✅ Automation/bootstrap handoff is captured
 - ✅ Code quality standards are established
+- ✅ Open questions that need user decisions include summaries, options, trade-offs, and recommendations
 - ✅ The first implementation slice knows which failing tests or checks to create first
 
 ## Tips

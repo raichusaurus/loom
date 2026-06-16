@@ -223,10 +223,9 @@ A feature is considered done when:
 
 Architecture should decide:
 
-- [Decision area 1]
-- [Decision area 2]
-- [Tradeoff or unresolved design question]
-- [Legacy/prior-art reuse decision, if applicable]
+| Question Summary | Options | Trade-offs | Recommendation | Owner / Status |
+|------------------|---------|------------|----------------|----------------|
+| [Decision area, tradeoff, or unresolved design question] | [Option A / Option B / Defer] | [Cost, risk, scope, quality, speed, reversibility] | [Recommended option and why] | [Owner / Open] |
 
 ## Progress Inputs
 

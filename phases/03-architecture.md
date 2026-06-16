@@ -87,7 +87,7 @@ By the end of Architecture, you'll have:
 ✅ **Integration Design** - External services, endpoints, events, queues, and storage integrations
 ✅ **Component Contracts** - Inputs, outputs, ownership, and test candidates for Contracts & Tests
 ✅ **Security & Reliability Plan** - Access, secrets, failure handling, recovery, and observability
-✅ **Decision Log** - Key decisions, open decisions, defaults, and revisit triggers
+✅ **Decision Log** - Key decisions, open decisions, options, tradeoffs, recommendations, defaults, and revisit triggers
 ✅ **Planning Inputs** - Components, workstreams, sequencing, parallelism, contracts, boundaries, and highest-risk areas
 
 ## Architecture Template
@@ -106,6 +106,7 @@ You're ready to move to Planning & Decomposition when:
 - ✅ Boundary rules and ownership rules are explicit
 - ✅ Data model, state ownership, and integration points are understood
 - ✅ Technology choices are justified with tradeoffs and alternatives
+- ✅ Open decisions include summaries, options, tradeoffs, recommendations, defaults, and revisit triggers
 - ✅ Component contracts and contract-test candidates are identified
 - ✅ Security, reliability, operational, and deferred-work risks are captured
 - ✅ Planning inputs name workstreams, sequencing constraints, parallelization opportunities, and decisions Planning must not reopen

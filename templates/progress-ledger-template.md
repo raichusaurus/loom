@@ -81,9 +81,9 @@ Keep this table compact and clickable. Put deeper scoring evidence in child ledg
 
 ## Open Progress Questions
 
-| Scope | Question | Needed To Score Accurately | Owner |
-|-------|----------|----------------------------|-------|
-| [Scope] | [Open question] | [What evidence or decision is needed] | [Owner] |
+| Scope | Question Summary | Options | Trade-offs | Recommendation | Needed To Score Accurately | Owner |
+|-------|------------------|---------|------------|----------------|----------------------------|-------|
+| [Scope] | [Open question] | [Option A / Option B / Defer] | [Cost, risk, scope, quality, speed, reversibility] | [Recommended option and why] | [What evidence or decision is needed] | [Owner] |
 
 ---
 

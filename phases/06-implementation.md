@@ -65,6 +65,7 @@ By the end of Implementation, you'll have:
 ✅ **Integration Complete** - All pieces working together
 ✅ **Progress Tree Updated** - Implemented source/test paths and deviations reflected in progress docs
 ✅ **Updated Handoffs** - Deviations, blockers, and integration notes captured
+✅ **Open Decision Packets** - Blockers, deviations, and implementation choices framed with options, trade-offs, and recommendations
 
 ## Implementation Guidelines
 
@@ -102,6 +103,7 @@ You're ready to move to Review & Retrospective when:
 - ✅ Code quality standards are met
 - ✅ Documentation is complete
 - ✅ Progress docs reflect delivered source/test paths and known deviations
+- ✅ Open questions that need user decisions include summaries, options, trade-offs, and recommendations
 - ✅ Code review is done and approved
 - ✅ Workstream handoffs and integration notes are complete
 

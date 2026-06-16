@@ -63,6 +63,7 @@ By the end of Review & Retrospective, you'll have:
 ✅ **Maintenance Plan** - How we'll keep this running
 ✅ **Lessons Learned Document** - Knowledge capture for the team
 ✅ **Next Cycle Plan** - Follow-up Loom cycles for services, features, or improvements
+✅ **Open Decision Packets** - Follow-up choices framed with options, trade-offs, and recommendations
 
 ## Review & Retrospective Template
 
@@ -78,6 +79,7 @@ You've successfully completed Loom when:
 - ✅ Team has reflected on the process
 - ✅ Learnings are captured
 - ✅ Improvements are planned
+- ✅ Open questions that need user decisions include summaries, options, trade-offs, and recommendations
 - ✅ Next agile cycle is identified if more work remains
 
 ## The Retrospective Process

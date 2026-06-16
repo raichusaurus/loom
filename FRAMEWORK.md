@@ -45,6 +45,8 @@ Agentic workflows need clear work boundaries. Planning & Decomposition defines o
 ### 7. Continuous Feedback
 The Orchestrator maintains context and asks clarifying questions. This creates a conversation, not a checklist.
 
+When open questions appear in any phase, agents should package them for decision instead of leaving the user with a blank prompt. Each open question should include a short summary, clear options, trade-offs for each option, and a recommendation. This keeps the conversation moving and turns ambiguous decisions into guided multiple choice whenever possible.
+
 ### 8. Recursive Progress Visibility
 Progress should be visible at every useful zoom level. A project can track percent complete for the overall Loom cycle, each phase, each service or feature, each component, and the smallest classes or units worth managing independently. Lower-level scopes may mark phases as `N/A`, but Contracts & Tests and Implementation should usually be tracked anywhere code is being built.
 

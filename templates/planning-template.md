@@ -28,8 +28,9 @@ Use this template to turn architecture into an executable plan for humans and ag
 ### Open Decisions
 *What still needs to be resolved during Contracts/Tests, implementation, or a future phase?*
 
-- [Open decision 1]
-- [Open decision 2]
+| Question Summary | Options | Trade-offs | Recommendation | Owner / Status |
+|------------------|---------|------------|----------------|----------------|
+| | | | | |
 
 ### Architecture Handoff Summary
 *Pull this from the Architecture document before decomposing work.*

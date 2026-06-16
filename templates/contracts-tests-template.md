@@ -35,6 +35,13 @@ Use this template to define how the system will be verified before implementatio
 - **Network/external dependency policy:** [Mocked/fixture by default? Live tests opt-in?]
 - **Approval policy for rewriting existing tests:** [Who approves, and what explanation is required?]
 
+### Open Contract / Test Decisions
+*Use this for unresolved test, fixture, automation, quality, or monitoring questions that need user input.*
+
+| Question Summary | Options | Trade-offs | Recommendation | Owner / Status |
+|------------------|---------|------------|----------------|----------------|
+| | | | | |
+
 ### Contract Stability Register
 *Optional. Use when some tests/contracts should be treated as locked while others may evolve.*
 

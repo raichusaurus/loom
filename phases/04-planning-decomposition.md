@@ -69,6 +69,7 @@ By the end of Planning & Decomposition, you'll have:
 ✅ **Contract/Test Candidates** - Behaviors and interfaces to carry into Contracts & Tests
 ✅ **Delivery Plan** - Initial milestone order and release strategy  
 ✅ **Update Policy** - When Planning must change because architecture, contracts, ownership, or implementation reality changed
+✅ **Open Decision Packets** - Remaining planning questions framed with options, trade-offs, and recommendations
 
 ## Recursive Scope
 
@@ -108,6 +109,7 @@ You're ready to move to Contracts & Tests when:
 - ✅ Parallel work is identified
 - ✅ Context packets are ready for agents or contributors
 - ✅ Integration checkpoints are planned
+- ✅ Open questions that need user decisions include summaries, options, trade-offs, and recommendations
 - ✅ Contract and test candidates are ready for Contracts & Tests
 - ✅ The delivery sequence is clear enough to begin contract and test design
 

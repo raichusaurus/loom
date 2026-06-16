@@ -66,6 +66,11 @@ Use this template to evaluate the outcome and feed learnings into the next Loom 
 |--------|-------|----------|
 | | | |
 
+### Open Follow-Up Decisions
+| Question Summary | Options | Trade-offs | Recommendation | Owner / Status |
+|------------------|---------|------------|----------------|----------------|
+| | | | | |
+
 ---
 
 ## Next Cycle

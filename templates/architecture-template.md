@@ -357,9 +357,9 @@ Use this map to establish the intended documentation, source, and test tree befo
 | | | |
 
 ### Decisions Still Open
-| Decision | Default for Planning | Revisit When |
-|----------|----------------------|--------------|
-| | | |
+| Question Summary | Options | Tradeoffs | Recommendation / Default for Planning | Revisit When |
+|------------------|---------|-----------|---------------------------------------|--------------|
+| | | | | |
 
 ---
 

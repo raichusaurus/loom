@@ -162,6 +162,12 @@ Use this template to capture findings during the Discovery phase.
 ### Open Questions
 *What still needs to be explored?*
 
+Use this shape for each question that needs a decision:
+
+| Question Summary | Options | Trade-offs | Recommendation | Owner / Status |
+|------------------|---------|------------|----------------|----------------|
+| | | | | |
+
 ### Requirements Handoff
 *Summarize the inputs Requirements should pull forward.*
 

@@ -217,7 +217,7 @@ When building or refreshing a recursive progress tree:
 7. Create child scope progress docs under `system/[architecture-component]/...`, mirroring the architecture-aligned source/test paths.
 8. Link every child from its parent and every parent from its child.
 9. Mark scores with evidence links, `Unknown`, `TBD`, or `N/A`; do not leave discovered scopes unrepresented.
-10. Add open progress questions for anything that could not be scored confidently.
+10. Add open progress questions for anything that could not be scored confidently, using a summary, options, trade-offs, recommendation, and owner.
 
 ### Scope Inventory
 
@@ -388,9 +388,9 @@ Keep this table compact and clickable. Put deeper scoring evidence in child ledg
 
 ## Open Progress Questions
 
-| Scope | Question | Needed To Score Accurately | Owner |
-|-------|----------|----------------------------|-------|
-| [Scope] | [Open question] | [What evidence or decision is needed] | [Owner] |
+| Scope | Question Summary | Options | Trade-offs | Recommendation | Needed To Score Accurately | Owner |
+|-------|------------------|---------|------------|----------------|----------------------------|-------|
+| [Scope] | [Open question] | [Option A / Option B / Defer] | [Cost, risk, scope, quality, speed, reversibility] | [Recommended option and why] | [What evidence or decision is needed] | [Owner] |
 ```
 
 Use the root template as the first thing a reader sees in a project repo. Put deeper scoring detail in the child ledgers:
