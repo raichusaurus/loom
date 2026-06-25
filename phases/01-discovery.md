@@ -74,6 +74,8 @@ Before moving to Requirements, validate:
 - ✅ Assumptions, risks, and open questions have validation paths
 - ✅ Open questions that need user decisions include summaries, options, trade-offs, and recommendations
 - ✅ Requirements handoff summarizes the inputs the next phase should pull forward
+- ✅ Loom process feedback is captured or explicitly marked not applicable
+- ✅ Phase gate separates agent recommendation from owner approval
 
 ---
 
@@ -90,4 +92,4 @@ Before moving to Requirements, validate:
 
 ## Next Phase
 
-Once Discovery has enough evidence and a clear handoff, move to **[Requirements](./02-requirements.md)**.
+Once Discovery has enough evidence, a clear handoff, and owner approval, move to **[Requirements](./02-requirements.md)**.

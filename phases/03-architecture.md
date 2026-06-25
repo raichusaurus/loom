@@ -110,6 +110,8 @@ You're ready to move to Planning & Decomposition when:
 - ✅ Component contracts and contract-test candidates are identified
 - ✅ Security, reliability, operational, and deferred-work risks are captured
 - ✅ Planning inputs name workstreams, sequencing constraints, parallelization opportunities, and decisions Planning must not reopen
+- ✅ Loom process feedback is captured or explicitly marked not applicable
+- ✅ Phase gate separates agent recommendation from owner approval
 
 ## Tips
 
@@ -122,4 +124,4 @@ You're ready to move to Planning & Decomposition when:
 
 ---
 
-**Next**: Move to [Planning & Decomposition](./04-planning-decomposition.md) once Architecture is complete.
+**Next**: Move to [Planning & Decomposition](./04-planning-decomposition.md) once Architecture is complete and the owner approves the gate.

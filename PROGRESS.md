@@ -27,7 +27,7 @@ Use percentages from `0` to `100`.
 - `25%` = drafted or started, major gaps remain
 - `50%` = usable first pass, important gaps remain
 - `75%` = mostly complete, known cleanup or validation remains
-- `100%` = phase gate is satisfied for this scope
+- `100%` = phase gate is approved for this scope, or a lower-level non-gated scope has complete evidence
 - `N/A` = phase does not apply to this scope and is excluded from calculations
 - `Unknown` = scope exists but evidence has not been inspected yet; treat as a scoring gap to resolve, not as `N/A`
 - `TBD` = scope is expected or planned but not yet defined enough to score
@@ -35,6 +35,8 @@ Use percentages from `0` to `100`.
 Use exact percentages when you have a better signal, such as task counts, test pass counts, implementation slices, or reviewed deliverables.
 
 Contract readiness is not the same as product readiness. A scope can be `100%` complete for Contracts & Tests while still being `0%` complete for Implementation.
+
+Artifact completeness is not the same as gate completion. A phase artifact may be `100%` drafted while the phase gate remains pending until the owner explicitly approves it. Agents may recommend readiness and update draft-completeness scores, but they should not mark an owner decision on the owner's behalf.
 
 ### Default Phase Weights
 
@@ -204,6 +206,12 @@ Populate as much progress structure as each phase can honestly know. Do not wait
 
 At every phase gate, update the root progress ledger and any known child progress docs with the evidence available at that phase. Use `Unknown` or `TBD` for gaps; do not omit known scopes just because they are not implemented yet.
 
+Record gate authority separately from artifact completeness:
+
+| Phase | Agent Recommendation | Owner Decision | Decision Date | Remaining Concerns |
+|-------|----------------------|----------------|---------------|--------------------|
+| [Phase] | Ready / Not ready / TBD | Approved / Needs revision / Deferred / TBD | TBD | TBD |
+
 ### Auto-Population Workflow
 
 When building or refreshing a recursive progress tree:
@@ -256,6 +264,9 @@ Use this shape for any phase, system component, subcomponent, or unit-level prog
 **Total Complete:** 0%
 **Current Focus:** [What is changing next]
 **Last Updated:** [Date]
+**Artifact Completeness:** 0%
+**Gate Status:** Pending owner approval
+**Phase Complete:** 0%
 
 ## Navigation
 
@@ -298,6 +309,12 @@ Use this shape for any phase, system component, subcomponent, or unit-level prog
 | Item | Impact | Owner | Next Step |
 |------|--------|-------|-----------|
 | | | | |
+
+## Gate Status
+
+| Agent Recommendation | Owner Decision | Decision Date | Remaining Concerns |
+|----------------------|----------------|---------------|--------------------|
+| Ready / Not ready / TBD | Approved / Needs revision / Deferred / TBD | TBD | TBD |
 ```
 
 ---
@@ -319,6 +336,9 @@ Project-specific completion ledger for [Project Name]. This root file is the pro
 **Current Focus:** [Current phase, workstream, or score-changing push]
 **Total Complete:** [0-100%]
 **Calculation Basis:** [Equal phase weights / weighted phase scores / child rollup blend / custom basis]
+**Artifact Completeness:** [0-100% for drafted artifacts]
+**Gate Status:** [Pending owner approval / Approved / Needs revision / Deferred]
+**Phase Complete:** [0-100% including gate status]
 
 ## Top-Level Phase Completion
 
@@ -385,6 +405,20 @@ Keep this table compact and clickable. Put deeper scoring evidence in child ledg
 | Date | Scope | Change | Reason | Owner |
 |------|-------|--------|--------|-------|
 | [YYYY-MM-DD] | [Scope] | [What changed] | [Why the score, structure, or plan changed] | [Owner] |
+
+## Gate Authority
+
+Progress scores may reflect artifact completeness, but phase gates close only when the owner explicitly approves them. Agents may recommend readiness, identify concerns, and update draft completeness scores; they may not convert a recommendation into an owner decision.
+
+| Phase | Agent Recommendation | Owner Decision | Decision Date | Remaining Concerns |
+|-------|----------------------|----------------|---------------|--------------------|
+| Discovery | Ready / Not ready / TBD | Approved / Needs revision / Deferred / TBD | TBD | TBD |
+| Requirements | Ready / Not ready / TBD | Approved / Needs revision / Deferred / TBD | TBD | TBD |
+| Architecture | Ready / Not ready / TBD | Approved / Needs revision / Deferred / TBD | TBD | TBD |
+| Planning & Decomposition | Ready / Not ready / TBD | Approved / Needs revision / Deferred / TBD | TBD | TBD |
+| Contracts & Tests | Ready / Not ready / TBD | Approved / Needs revision / Deferred / TBD | TBD | TBD |
+| Implementation | Ready / Not ready / TBD | Approved / Needs revision / Deferred / TBD | TBD | TBD |
+| Review & Retrospective | Ready / Not ready / TBD | Approved / Needs revision / Deferred / TBD | TBD | TBD |
 
 ## Open Progress Questions
 

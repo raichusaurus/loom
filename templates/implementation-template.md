@@ -105,8 +105,38 @@ Use this template to track implementation work against the plan, contracts, and 
 
 ---
 
+## Phase Decisions
+
+*Keep decisions and approved deviations from implementation close to this artifact, even when they are also summarized in the root progress ledger.*
+
+| Decision | Choice | Rationale | Owner |
+|----------|--------|-----------|-------|
+| | | | |
+
+## Next Phase Handoff
+
+*If approved, summarize what Review & Retrospective should use next. Preparing this handoff does not close the phase gate or start Review by itself.*
+
+- **Decisions:**
+- **Inputs:**
+- **Open risks:**
+- **Non-goals:**
+- **Validation signals:**
+
+## Loom Process Feedback
+
+*If this phase exposed reusable Loom lessons, capture them here or link to `docs/loom/pilot-feedback.md`. Keep process feedback separate from product scope.*
+
+| Observation | Suggested Template/Guide Improvement | Project-Specific? |
+|-------------|--------------------------------------|-------------------|
+| | | Yes / No |
+
+---
+
 ## Phase Gate
 
-- **Ready to move to Review & Retrospective?** [ ] Yes [ ] No
-- **Remaining concerns:**
-- **Owner decision:**
+- **Agent recommendation:** [ ] Ready [ ] Not ready
+- **Owner decision:** [ ] Approved [ ] Needs revision [ ] Deferred
+- **Decision date:** TBD
+- **Loom feedback captured:** [ ] Not applicable [ ] In this phase artifact [ ] In `docs/loom/pilot-feedback.md`
+- **Remaining concerns:** TBD

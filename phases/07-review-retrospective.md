@@ -81,6 +81,8 @@ You've successfully completed Loom when:
 - ✅ Improvements are planned
 - ✅ Open questions that need user decisions include summaries, options, trade-offs, and recommendations
 - ✅ Next agile cycle is identified if more work remains
+- ✅ Loom process feedback is captured or explicitly marked not applicable
+- ✅ Final gate separates agent recommendation from owner approval
 
 ## The Retrospective Process
 

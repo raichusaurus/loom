@@ -47,7 +47,22 @@ The Orchestrator maintains context and asks clarifying questions. This creates a
 
 When open questions appear in any phase, agents should package them for decision instead of leaving the user with a blank prompt. Each open question should include a short summary, clear options, trade-offs for each option, and a recommendation. This keeps the conversation moving and turns ambiguous decisions into guided multiple choice whenever possible.
 
-### 8. Recursive Progress Visibility
+Each phase should also ask for Loom feedback before the phase gate closes. Capture phase-local observations in the phase artifact's `Loom Process Feedback` section. Capture reusable framework lessons in `docs/loom/pilot-feedback.md` so process learning does not get mixed into product scope or delivery scoring.
+
+### 8. Explicit Gate Authority
+Agents can draft artifacts, score draft completeness, identify risks, prepare handoffs, and recommend whether a phase is ready. They cannot approve a gate on the owner's behalf.
+
+Every phase should separate:
+
+- **Agent recommendation:** Ready or not ready.
+- **Owner decision:** Approved, needs revision, or deferred.
+- **Artifact completeness:** How complete the draft artifact is.
+- **Gate status:** Whether the owner has closed the phase gate.
+- **Next phase handoff:** Context prepared for the next phase, not permission to start it.
+
+This keeps forward momentum visible without blurring authority. A phase artifact can be complete enough for review while the phase itself remains open until the owner approves the gate.
+
+### 9. Recursive Progress Visibility
 Progress should be visible at every useful zoom level. A project can track percent complete for the overall Loom cycle, each phase, each service or feature, each component, and the smallest classes or units worth managing independently. Lower-level scopes may mark phases as `N/A`, but Contracts & Tests and Implementation should usually be tracked anywhere code is being built.
 
 The root progress ledger can also become a navigable tree. When recursive progress is requested, create and populate child progress files for discovered phases, services, components, and smallest owned units by default. Do not stop at a top-level rollup; the purpose is to let the user zoom to any level and see relevant progress, evidence, blockers, and next actions.
@@ -102,6 +117,7 @@ A successful Loom project achieves:
 ✅ **High Test Coverage** - Contracts and tests exist before implementation
 ✅ **Quality Code** - Implementation follows defined contracts
 ✅ **Documented Learning** - Retrospective captures successes and failures
+✅ **Clear Gate Authority** - Agent recommendations and owner decisions stay distinct
 ✅ **Reusability** - Framework and templates improve over time
 
 ## The Orchestrator's Role
@@ -112,7 +128,7 @@ The Orchestrator:
 - Identifies blockers
 - Maintains project context
 - Coordinates with phase-specific agents
-- Ensures quality gates are met
+- Recommends readiness for quality gates and records owner decisions
 - Facilitates phase transitions
 
 The Orchestrator is your partner, not a tool. Think of it as a project manager + senior engineer + mentor all in one.

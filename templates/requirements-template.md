@@ -237,11 +237,41 @@ Architecture should decide:
 
 ---
 
+## Phase Decisions
+
+*Keep decisions that shaped requirements close to this artifact, even when they are also summarized in the root progress ledger.*
+
+| Decision | Choice | Rationale | Owner |
+|----------|--------|-----------|-------|
+| | | | |
+
+## Next Phase Handoff
+
+*If approved, summarize what Architecture should use next. Preparing this handoff does not close the phase gate or start Architecture by itself.*
+
+- **Decisions:**
+- **Inputs:**
+- **Open risks:**
+- **Non-goals:**
+- **Validation signals:**
+
+## Loom Process Feedback
+
+*If this phase exposed reusable Loom lessons, capture them here or link to `docs/loom/pilot-feedback.md`. Keep process feedback separate from product scope.*
+
+| Observation | Suggested Template/Guide Improvement | Project-Specific? |
+|-------------|--------------------------------------|-------------------|
+| | | Yes / No |
+
+---
+
 ## Phase Gate
 
-- **Ready to move to Architecture?** [ ] Yes [ ] No
-- **Remaining concerns:**
-- **Owner decision:**
+- **Agent recommendation:** [ ] Ready [ ] Not ready
+- **Owner decision:** [ ] Approved [ ] Needs revision [ ] Deferred
+- **Decision date:** TBD
+- **Loom feedback captured:** [ ] Not applicable [ ] In this phase artifact [ ] In `docs/loom/pilot-feedback.md`
+- **Remaining concerns:** TBD
 
 ---
 

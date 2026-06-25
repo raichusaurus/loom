@@ -48,6 +48,12 @@ Use this template when a project is also piloting Loom itself. Keep it close to 
 |---------------|-------------------|----------|----------------|
 | | | | Yes / No |
 
+## Gate Authority Lessons
+
+| Phase | Agent Recommendation | Owner Decision | Lesson |
+|-------|----------------------|----------------|--------|
+| | Ready / Not ready / TBD | Approved / Needs revision / Deferred / TBD | |
+
 ## Carry-Forward Actions
 
 | Action | Target Repo / Doc | Owner | Status |

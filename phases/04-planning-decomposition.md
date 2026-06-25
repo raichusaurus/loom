@@ -112,6 +112,8 @@ You're ready to move to Contracts & Tests when:
 - ✅ Open questions that need user decisions include summaries, options, trade-offs, and recommendations
 - ✅ Contract and test candidates are ready for Contracts & Tests
 - ✅ The delivery sequence is clear enough to begin contract and test design
+- ✅ Loom process feedback is captured or explicitly marked not applicable
+- ✅ Phase gate separates agent recommendation from owner approval
 
 ## Tips
 
@@ -123,4 +125,4 @@ You're ready to move to Contracts & Tests when:
 
 ---
 
-**Next**: Move to [Contracts & Tests](./05-contracts-tests.md) once Planning & Decomposition is complete.
+**Next**: Move to [Contracts & Tests](./05-contracts-tests.md) once Planning & Decomposition is complete and the owner approves the gate.

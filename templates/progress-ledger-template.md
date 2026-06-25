@@ -12,6 +12,9 @@ Use this file as the default top-level `docs/loom/PROGRESS.md`. For recursive pr
 **Current Focus:** [Current phase, workstream, or score-changing push]
 **Total Complete:** [0-100%]
 **Calculation Basis:** [Equal phase weights / weighted phase scores / child rollup blend / custom basis]
+**Artifact Completeness:** [0-100% for drafted artifacts]
+**Gate Status:** [Pending owner approval / Approved / Needs revision / Deferred]
+**Phase Complete:** [0-100% including gate status]
 
 ## Top-Level Phase Completion
 
@@ -79,6 +82,20 @@ Keep this table compact and clickable. Put deeper scoring evidence in child ledg
 |------|-------|--------|--------|-------|
 | [YYYY-MM-DD] | [Scope] | [What changed] | [Why the score, structure, or plan changed] | [Owner] |
 
+## Gate Authority
+
+Progress scores may reflect artifact completeness, but phase gates close only when the owner explicitly approves them. Agents may recommend readiness, identify concerns, and update draft completeness scores; they may not convert a recommendation into an owner decision.
+
+| Phase | Agent Recommendation | Owner Decision | Decision Date | Remaining Concerns |
+|-------|----------------------|----------------|---------------|--------------------|
+| Discovery | Ready / Not ready / TBD | Approved / Needs revision / Deferred / TBD | TBD | TBD |
+| Requirements | Ready / Not ready / TBD | Approved / Needs revision / Deferred / TBD | TBD | TBD |
+| Architecture | Ready / Not ready / TBD | Approved / Needs revision / Deferred / TBD | TBD | TBD |
+| Planning & Decomposition | Ready / Not ready / TBD | Approved / Needs revision / Deferred / TBD | TBD | TBD |
+| Contracts & Tests | Ready / Not ready / TBD | Approved / Needs revision / Deferred / TBD | TBD | TBD |
+| Implementation | Ready / Not ready / TBD | Approved / Needs revision / Deferred / TBD | TBD | TBD |
+| Review & Retrospective | Ready / Not ready / TBD | Approved / Needs revision / Deferred / TBD | TBD | TBD |
+
 ## Open Progress Questions
 
 | Scope | Question Summary | Options | Trade-offs | Recommendation | Needed To Score Accurately | Owner |
@@ -100,6 +117,9 @@ Use this shape for any phase, system component, subcomponent, or unit-level prog
 **Total Complete:** 0%
 **Current Focus:** [What is changing next]
 **Last Updated:** [YYYY-MM-DD]
+**Artifact Completeness:** 0%
+**Gate Status:** Pending owner approval
+**Phase Complete:** 0%
 
 ## Navigation
 
@@ -143,4 +163,10 @@ Use this shape for any phase, system component, subcomponent, or unit-level prog
 | Item | Impact | Owner | Next Step |
 |------|--------|-------|-----------|
 | | | | |
+
+## Gate Status
+
+| Agent Recommendation | Owner Decision | Decision Date | Remaining Concerns |
+|----------------------|----------------|---------------|--------------------|
+| Ready / Not ready / TBD | Approved / Needs revision / Deferred / TBD | TBD | TBD |
 ```

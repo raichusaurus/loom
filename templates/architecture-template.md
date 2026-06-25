@@ -349,12 +349,14 @@ Use this map to establish the intended documentation, source, and test tree befo
 
 ---
 
-## Decision Log
+## Phase Decisions
+
+*Keep decisions that shaped architecture close to this artifact, even when they are also summarized in the root progress ledger.*
 
 ### Key Decisions Made
-| Decision | Rationale | Alternatives |
-|----------|-----------|--------------|
-| | | |
+| Decision | Choice | Rationale | Owner |
+|----------|--------|-----------|-------|
+| | | | |
 
 ### Decisions Still Open
 | Question Summary | Options | Tradeoffs | Recommendation / Default for Planning | Revisit When |
@@ -386,11 +388,33 @@ Use this map to establish the intended documentation, source, and test tree befo
 
 ---
 
+## Next Phase Handoff
+
+*If approved, summarize what Planning & Decomposition should use next. Preparing this handoff does not close the phase gate or start Planning by itself.*
+
+- **Decisions:**
+- **Inputs:**
+- **Open risks:**
+- **Non-goals:**
+- **Validation signals:**
+
+## Loom Process Feedback
+
+*If this phase exposed reusable Loom lessons, capture them here or link to `docs/loom/pilot-feedback.md`. Keep process feedback separate from product scope.*
+
+| Observation | Suggested Template/Guide Improvement | Project-Specific? |
+|-------------|--------------------------------------|-------------------|
+| | | Yes / No |
+
+---
+
 ## Phase Gate
 
-- **Ready to move to Planning & Decomposition?** [ ] Yes [ ] No
-- **Remaining concerns:**
-- **Owner decision:**
+- **Agent recommendation:** [ ] Ready [ ] Not ready
+- **Owner decision:** [ ] Approved [ ] Needs revision [ ] Deferred
+- **Decision date:** TBD
+- **Loom feedback captured:** [ ] Not applicable [ ] In this phase artifact [ ] In `docs/loom/pilot-feedback.md`
+- **Remaining concerns:** TBD
 
 ---
 

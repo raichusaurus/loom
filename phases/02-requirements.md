@@ -80,7 +80,8 @@ Before moving to Architecture, validate:
 - ✅ Architecture inputs name unresolved technical decisions without prematurely solving them
 - ✅ Open questions that need user decisions include summaries, options, trade-offs, and recommendations
 - ✅ Coarse progress scopes are identified for obvious workstreams, surfaces, integrations, or service candidates
-- ✅ Phase gate has an owner decision and remaining concerns
+- ✅ Loom process feedback is captured or explicitly marked not applicable
+- ✅ Phase gate separates agent recommendation, owner decision, decision date, and remaining concerns
 
 ---
 
@@ -97,4 +98,4 @@ Before moving to Architecture, validate:
 
 ## Next Phase
 
-Once Requirements are complete and the Architecture inputs are clear, move to **[Architecture](./03-architecture.md)**.
+Once Requirements are complete, Architecture inputs are clear, and the owner approves the gate, move to **[Architecture](./03-architecture.md)**.

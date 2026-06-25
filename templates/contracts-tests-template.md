@@ -232,10 +232,40 @@ tests/
 
 ---
 
+## Phase Decisions
+
+*Keep decisions that shaped contracts and tests close to this artifact, even when they are also summarized in the root progress ledger.*
+
+| Decision | Choice | Rationale | Owner |
+|----------|--------|-----------|-------|
+| | | | |
+
+## Next Phase Handoff
+
+*If approved, summarize what Implementation should use next. Preparing this handoff does not close the phase gate or start Implementation by itself.*
+
+- **Decisions:**
+- **Inputs:**
+- **Open risks:**
+- **Non-goals:**
+- **Validation signals:**
+
+## Loom Process Feedback
+
+*If this phase exposed reusable Loom lessons, capture them here or link to `docs/loom/pilot-feedback.md`. Keep process feedback separate from product scope.*
+
+| Observation | Suggested Template/Guide Improvement | Project-Specific? |
+|-------------|--------------------------------------|-------------------|
+| | | Yes / No |
+
+---
+
 ## Phase Gate
 
-- **Ready to move to Implementation?** [ ] Yes [ ] No
+- **Agent recommendation:** [ ] Ready [ ] Not ready
+- **Owner decision:** [ ] Approved [ ] Needs revision [ ] Deferred
+- **Decision date:** TBD
+- **Loom feedback captured:** [ ] Not applicable [ ] In this phase artifact [ ] In `docs/loom/pilot-feedback.md`
 - **Required tests/contracts identified?** [ ] Yes [ ] No
 - **Automation/bootstrap handoff captured?** [ ] Yes [ ] No
-- **Remaining concerns:**
-- **Owner decision:**
+- **Remaining concerns:** TBD

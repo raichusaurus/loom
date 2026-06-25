@@ -20,6 +20,12 @@ The framework consists of **7 core phases**:
 
 The first Loom pass is usually more waterfall-style, especially for a new project: establish the shared foundation before parallelizing heavily. Once the foundation exists, Loom becomes more agile and recursive: services, features, and subprojects can run smaller Loom cycles inside the larger project cycle.
 
+Phase gates have explicit authority boundaries. Agents may draft artifacts, update progress, prepare handoffs, and recommend readiness; the project owner approves, revises, or defers the gate before the next phase begins.
+
+## Feedback Home
+
+Every phase should ask whether Loom itself created friction, clarity, or reusable process lessons before the phase gate closes. Capture small phase-local notes in the phase artifact's `Loom Process Feedback` section. When the project is piloting Loom or producing reusable framework lessons, copy [templates/pilot-feedback-template.md](./templates/pilot-feedback-template.md) to `docs/loom/pilot-feedback.md` and use that as the durable feedback home.
+
 ## The Orchestration Agent
 
 The **Orchestrator** is your guide throughout the Loom process. It works directly with you to:
@@ -110,6 +116,8 @@ docs/loom/
 The `system/` tree should follow the major components named by Architecture, then nest lower-level progress ledgers only where a unit has its own owner, blockers, scoring evidence, or review path.
 
 Use [templates/progress-ledger-template.md](./templates/progress-ledger-template.md) for both the root progress cockpit and child progress ledgers. Use [templates/pilot-feedback-template.md](./templates/pilot-feedback-template.md) when a project is also producing reusable Loom process lessons.
+
+Phase artifacts should keep local decision logs and next-phase handoffs near the work they shape. The root progress ledger can summarize those decisions, but it should not be the only place a phase-level choice lives.
 
 ## How to Use Loom
 

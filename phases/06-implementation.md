@@ -106,6 +106,8 @@ You're ready to move to Review & Retrospective when:
 - ✅ Open questions that need user decisions include summaries, options, trade-offs, and recommendations
 - ✅ Code review is done and approved
 - ✅ Workstream handoffs and integration notes are complete
+- ✅ Loom process feedback is captured or explicitly marked not applicable
+- ✅ Phase gate separates agent recommendation from owner approval
 
 ## Tips
 
@@ -117,4 +119,4 @@ You're ready to move to Review & Retrospective when:
 
 ---
 
-**Next**: Move to [Review & Retrospective](./07-review-retrospective.md) once Implementation is complete.
+**Next**: Move to [Review & Retrospective](./07-review-retrospective.md) once Implementation is complete and the owner approves the gate.

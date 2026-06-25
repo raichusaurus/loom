@@ -154,6 +154,16 @@ Use this template to capture findings during the Discovery phase.
 
 ---
 
+## Phase Decisions
+
+*Keep decisions that shaped this phase close to the phase artifact, even when they are also summarized in the root progress ledger.*
+
+| Decision | Choice | Rationale | Owner |
+|----------|--------|-----------|-------|
+| | | | |
+
+---
+
 ## Discovery Outputs
 
 ### Key Insights
@@ -169,7 +179,7 @@ Use this shape for each question that needs a decision:
 | | | | | |
 
 ### Requirements Handoff
-*Summarize the inputs Requirements should pull forward.*
+*If approved, summarize the inputs Requirements should pull forward. Preparing this handoff does not close the phase gate or start Requirements by itself.*
 
 - **Core problem:**
 - **Primary user / operator:**
@@ -187,9 +197,11 @@ Use this shape for each question that needs a decision:
 
 ## Phase Gate
 
-- **Ready to move to Requirements?** [ ] Yes [ ] No
-- **Remaining concerns:**
-- **Owner decision:**
+- **Agent recommendation:** [ ] Ready [ ] Not ready
+- **Owner decision:** [ ] Approved [ ] Needs revision [ ] Deferred
+- **Decision date:** TBD
+- **Loom feedback captured:** [ ] Not applicable [ ] In this phase artifact [ ] In `docs/loom/pilot-feedback.md`
+- **Remaining concerns:** TBD
 
 ---
 

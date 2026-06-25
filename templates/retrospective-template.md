@@ -82,9 +82,30 @@ Use this template to evaluate the outcome and feed learnings into the next Loom 
 
 ---
 
+## Phase Decisions
+
+*Keep final review decisions close to this artifact, even when they are also summarized in the root progress ledger.*
+
+| Decision | Choice | Rationale | Owner |
+|----------|--------|-----------|-------|
+| | | | |
+
+## Loom Process Feedback
+
+*If this review exposed reusable Loom lessons, capture them here or link to `docs/loom/pilot-feedback.md`. Keep process feedback separate from product outcome.*
+
+| Observation | Suggested Template/Guide Improvement | Project-Specific? |
+|-------------|--------------------------------------|-------------------|
+| | | Yes / No |
+
+---
+
 ## Phase Gate
 
+- **Agent recommendation:** [ ] Ready to close [ ] Not ready
+- **Owner decision:** [ ] Approved [ ] Needs revision [ ] Deferred
+- **Decision date:** TBD
+- **Loom feedback captured:** [ ] Not applicable [ ] In this review artifact [ ] In `docs/loom/pilot-feedback.md`
 - **Review complete?** [ ] Yes [ ] No
 - **Follow-up Loom cycles identified?** [ ] Yes [ ] No
-- **Remaining concerns:**
-- **Owner decision:**
+- **Remaining concerns:** TBD

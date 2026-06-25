@@ -95,6 +95,8 @@ You're ready to move to Implementation when:
 - ✅ Code quality standards are established
 - ✅ Open questions that need user decisions include summaries, options, trade-offs, and recommendations
 - ✅ The first implementation slice knows which failing tests or checks to create first
+- ✅ Loom process feedback is captured or explicitly marked not applicable
+- ✅ Phase gate separates agent recommendation from owner approval
 
 ## Tips
 
@@ -114,4 +116,4 @@ This phase is crucial because:
 
 ---
 
-**Next**: Move to [Implementation](./06-implementation.md) once Contracts & Tests are complete.
+**Next**: Move to [Implementation](./06-implementation.md) once Contracts & Tests are complete and the owner approves the gate.

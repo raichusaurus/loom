@@ -12,7 +12,7 @@ The Orchestrator is an agent that:
 - **Coordinates specialist agents** for phase-specific deep work
 - **Maintains project context** across all phases
 - **Identifies blockers** and helps resolve them
-- **Ensures quality gates** are met before phase transitions
+- **Recommends phase readiness** and records explicit owner gate decisions before phase transitions
 
 Think of it as a project manager + senior engineer + mentor in one.
 
@@ -53,7 +53,18 @@ Think of it as a project manager + senior engineer + mentor in one.
 - Are the outputs complete?
 - Is the team aligned?
 - Are quality gates met?
+- Has Loom process feedback been captured or explicitly marked not applicable?
 - Do you understand what comes next?
+
+**The Orchestrator may recommend readiness, but the owner closes the gate.**
+
+Each phase gate should distinguish:
+
+- **Agent recommendation:** Ready or not ready, with remaining concerns.
+- **Owner decision:** Approved, needs revision, or deferred.
+- **Decision date:** When the owner made the gate decision.
+- **Next phase handoff:** Prepared context for the next phase, without automatically starting it.
+- **Loom feedback:** Captured in the phase artifact or `docs/loom/pilot-feedback.md`, or marked not applicable.
 
 ---
 
@@ -92,9 +103,25 @@ Think of it as a project manager + senior engineer + mentor in one.
 - Reports aggregate and phase-level percent complete at each useful project scope
 - Facilitates alignment discussions
 - Captures decisions and rationale
+- Keeps phase-level decision logs close to the artifacts they shape
 - Documents risks and trade-offs
 
-### 6. Open Question Decision Support
+### 6. Agent Authority
+The Orchestrator and specialist agents may:
+
+- Draft phase artifacts.
+- Recommend phase readiness.
+- Update progress scores for draft completeness.
+- Identify open questions, risks, and next-phase handoff items.
+- Capture reusable Loom process feedback.
+
+They may not:
+
+- Mark a phase gate approved without explicit owner approval.
+- Start the next phase unless asked or approved.
+- Convert a recommendation into an owner decision.
+
+### 7. Open Question Decision Support
 When any phase has an open question, the Orchestrator should not hand the user a vague prompt. It should turn each open question into a compact decision packet:
 
 - **Question summary:** The decision being made, in one or two plain sentences
@@ -124,7 +151,7 @@ Phase 6: Implementation
 Phase 7: Review & Retrospective
 ```
 
-At each gate, the Orchestrator validates quality before proceeding.
+At each gate, the Orchestrator validates quality and recommends readiness. The phase proceeds only after the owner approves the gate or explicitly asks to continue.
 
 The first pass through this workflow is often more waterfall-style. After the foundation exists, the Orchestrator can run smaller agile Loom cycles for services, features, subprojects, or milestones.
 
