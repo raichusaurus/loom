@@ -1,438 +1,190 @@
-# Loom Progress Ledger
+# Loom Progress Ledger Guidance
 
-Use this document to track completion at every useful scope: project, architecture component, owned subcomponent, class, workflow, or task-level mini-Loom. The goal is to make progress visible at each zoom level without pretending every scope needs every phase.
+Use Loom progress to show what evidence exists, what remains, who owns the next decision, and whether the owner has closed a phase gate. The root ledger is a project cockpit, not a second source tree or a substitute for phase artifacts.
 
-Copy [templates/progress-ledger-template.md](templates/progress-ledger-template.md) into a project repo as `docs/loom/PROGRESS.md`, then use this file for scoring rules and recursive progress guidance.
+Copy [templates/progress-ledger-template.md](templates/progress-ledger-template.md) to `docs/loom/PROGRESS.md` in a project repository.
 
-This root file is the project cockpit. It can stand alone for small projects, or act as an index into a recursive progress tree for larger projects. When a project asks for recursive progress, populate the drilldown tree automatically instead of waiting for follow-up prompts at each level.
+## What Progress Must Keep Separate
 
-Update this document whenever changes land on the project's main branch, especially when:
+For each phase or independently tracked scope, distinguish:
 
-- A phase gate opens or closes
-- A workstream, architecture component, subcomponent, or smallest tracked unit is added, removed, split, or merged
-- Contracts/tests move from planned to executable, or from red to green
-- Implementation scope lands
-- CI/check automation changes status
-- Review, acceptance, or retrospective evidence changes a score
+- **Artifact readiness:** How complete and internally coherent the relevant artifact is.
+- **Engineering evidence readiness:** How much of the applicable specialist evidence exists and has been inspected.
+- **Agent recommendation:** Ready or not ready, with remaining concerns.
+- **Owner decision:** Approved, needs revision, deferred, or pending.
+- **Phase completion:** `100%` only when applicable artifact and engineering evidence are ready and the owner has approved the gate.
 
----
+An artifact can be `100%` ready while the owner decision remains pending. A skill invocation, drafted plan, test count, or coverage percentage does not by itself increase engineering evidence readiness.
 
-## How to Score Progress
+For a single headline phase number, use the lower of artifact readiness and applicable engineering evidence readiness. Cap that number at `99%` until the owner approves the gate; an approved gate with both readiness categories complete is `100%`. A deferred or needs-revision decision does not create completion credit by itself.
 
-### Completion Values
+## Completion Values
 
-Use percentages from `0` to `100`.
+Use percentages from `0` to `100` for artifact, evidence, and phase completion.
 
-- `0%` = not started
-- `25%` = drafted or started, major gaps remain
-- `50%` = usable first pass, important gaps remain
-- `75%` = mostly complete, known cleanup or validation remains
-- `100%` = phase gate is approved for this scope, or a lower-level non-gated scope has complete evidence
-- `N/A` = phase does not apply to this scope and is excluded from calculations
-- `Unknown` = scope exists but evidence has not been inspected yet; treat as a scoring gap to resolve, not as `N/A`
-- `TBD` = scope is expected or planned but not yet defined enough to score
+- `0%` — Not started; no direct evidence inspected.
+- `25%` — Initial evidence exists; major known gaps remain.
+- `50%` — Usable first pass; consequential gaps or validation remain.
+- `75%` — Most applicable evidence exists; known closure work remains.
+- `100%` — The named readiness category has complete applicable evidence.
+- `N/A` — The category or phase truly does not apply and is excluded from calculations.
+- `Unknown` — The scope exists but its evidence has not been inspected.
+- `TBD` — The scope is planned but not defined enough to score.
 
-Use exact percentages when you have a better signal, such as task counts, test pass counts, implementation slices, or reviewed deliverables.
+Use exact percentages only when a more precise evidence basis exists, such as weighted requirement disposition, gated scope count, or implementation-slice weights. Document the basis; do not imply precision from intuition.
 
-Contract readiness is not the same as product readiness. A scope can be `100%` complete for Contracts & Tests while still being `0%` complete for Implementation.
+## Phase Evidence Rubric
 
-Artifact completeness is not the same as gate completion. A phase artifact may be `100%` drafted while the phase gate remains pending until the owner explicitly approves it. Agents may recommend readiness and update draft-completeness scores, but they should not mark an owner decision on the owner's behalf.
+| Phase | Evidence required for `100%` readiness before owner approval |
+|-------|---------------------------------------------------------------|
+| Discovery | Problem, users, current-state evidence, constraints, assumptions and unknowns, validation owners, non-goals, and Requirements handoff are coherent. |
+| Requirements | Material scope has stable IDs; acceptance evidence is traceable; quality attributes are ranked, bounded, and sourced; compatibility, assumptions, and Architecture decisions are explicit. |
+| Architecture | Applicable framing, evidence, alternatives, contract, risk, migration, and authority gates pass; boundaries, critical flows, validation, and Planning handoff agree. |
+| Planning & Decomposition | Material drivers have owners and vertical slices; authority, dependencies, integration, risk validation, and coherent Phase 5 gate scopes are actionable. |
+| Contracts & Tests | Every standard TDD scope has schema, observable contract, all currently known executable tests, clause trace, and meaningful red or characterization-green evidence; any owner-approved non-TDD scope records its reason, reduced evidence, missing signal, and follow-up. |
+| Implementation | Standard TDD scopes have recorded red-green-refactor slices; approved non-TDD scopes have reduced-check evidence and visible gaps; gate resets are complete; proportionate checks pass; design claims and final clarity are validated. |
+| Review & Retrospective | Outcomes and engineering evidence are reviewed; findings and risk are routed to owning phases; next cycles and evidence-backed process candidates are explicit where needed. |
 
-### Default Phase Weights
+For Contracts & Tests, a plan, candidate list, or unwritten test suite cannot score `100%`. For Implementation, a passing final suite without inspectable pre-state evidence may prove current behavior but cannot retroactively prove TDD provenance.
 
-Use equal weights unless the project has a reason to weight phases differently.
+## Default Phase Weights
 
-| Phase | Default Weight | Notes |
-|-------|----------------|-------|
-| Discovery | 1 | Often `N/A` below project or feature level |
-| Requirements | 1 | Can be lighter for existing services/classes |
-| Architecture | 1 | Can be `N/A` for simple classes with obvious design |
-| Planning & Decomposition | 1 | Usually applies when ownership or sequencing matters |
-| Contracts & Tests | 1 | Minimum expected phase for services, components, and classes |
-| Implementation | 1 | Minimum expected phase for services, components, and classes |
-| Review & Retrospective | 1 | Can be a lightweight review at lower scopes |
+Use equal weights unless effort, risk, or delivered value makes another basis materially more honest.
 
-Lower-level scopes may inherit Requirements, Architecture, and Planning credit from parent phase documents when those documents clearly define the scope, boundaries, contracts, and work ownership. Do not inherit Contracts & Tests or Implementation credit unless that lower-level scope has direct evidence.
+| Phase | Default Weight | Lower-Scope Note |
+|-------|----------------|------------------|
+| Discovery | 1 | Often inherited or `N/A` below project or novel-feature scope. |
+| Requirements | 1 | May be inherited when parent IDs and non-goals clearly cover the scope. |
+| Architecture | 1 | May be inherited for a local change inside a stable boundary. |
+| Planning & Decomposition | 1 | May be lightweight when ownership and sequencing are obvious. |
+| Contracts & Tests | 1 | Direct evidence is expected for behavior-bearing code; do not inherit it from a parent. |
+| Implementation | 1 | Direct source and validation evidence is required; do not inherit it. |
+| Review & Retrospective | 1 | May be a lightweight scoped review. |
 
-### Rollup Formula
-
-For any scope:
+### Rollups
 
 ```text
-Phase Total % =
-  sum(applicable phase percent * phase weight)
+Phase Completion % =
+  sum(applicable phase completion * phase weight)
   / sum(applicable phase weights)
-```
 
-For parent scopes with children:
-
-```text
 Child Rollup % =
-  sum(child total percent * child weight)
+  sum(child completion * child weight)
   / sum(child weights)
 ```
 
-Use `Total %` as the scope's headline progress number.
+For a child with its own Loom phase gate, calculate completion with the same readiness minimum and `99%` owner-approval cap. For a nongated delivery child, completion is the lower of its applicable artifact and engineering evidence readiness and may reach `100%` from complete direct evidence; set the owner decision to `N/A`. This gives every rolled-up child one inspectable completion value.
 
-```text
-Total % =
-  Phase Total %
-```
+Do not silently exclude a weighted `Unknown` or `TBD` child. The default parent rollup remains `Unknown` while existing child evidence is uninspected and `TBD` while planned scope is not defined enough to score. If a stakeholder needs a partial view, report a separately labeled `Known-child rollup` with evidence coverage such as `4 of 6 child weights inspected`; do not present it as the total.
 
-If a scope has meaningful children and you want the parent total to reflect delivery progress, use:
+If a parent combines governance work and delivered child scopes, show both numbers before choosing a documented blend. Do not hide a blocked critical child behind a healthy average.
 
-```text
-Total % =
-  (Phase Total % * scope weight + Child Rollup % * child rollup weight)
-  / (scope weight + child rollup weight)
-```
+## Traceability Mapping
 
-Default to `scope weight = 1` and `child rollup weight = 1`. Change the weights when the parent phases are mostly governance and the child scopes represent most of the work.
+Loom scopes, source evidence, and test evidence must be linkable; they do not need identical directory hierarchies.
 
-### Scope Weights
+- Architecture defines stable components, ownership, contracts, and data boundaries—not private classes or a complete file tree.
+- Planning maps owned workstreams and stable boundaries to likely source and test areas.
+- Contracts & Tests chooses the highest stable test boundary that proves behavior.
+- Implementation records actual paths and updates stale provisional mappings.
+- Private classes, functions, helpers, fixtures, adapters, and test doubles remain evidence rows unless they have independent ownership, contracts, blockers, scoring evidence, or a review path.
 
-Child weights can be equal by default. Use effort, risk, complexity, user value, or critical-path weight when equal weighting would misrepresent reality.
-
-Document the weighting basis in the notes for the parent scope.
-
----
-
-## Recursive Progress Tree
-
-Use one root `PROGRESS.md` first for a small project or quick status pass. When the user asks for drilldowns, a progress tree, zoom levels, a visual system map, or recursive progress, create and populate child progress docs for every discovered phase and scope by default.
-
-Do not stop after the root file. The root is an index and rollup; the child files are the zoomable progress surface.
-
-Before `src/` and `tests/` exist, use the intended source/test structure from Architecture, Planning, and Contracts & Tests as the progress tree shape. Once implementation begins, keep Loom progress docs, `src/`, and `tests/` aligned so the same architecture component or owned unit can be found in the same relative path in all three places.
-
-Recommended project progress layout:
+Recommended artifact layout:
 
 ```text
 docs/loom/
   README.md
   PROGRESS.md
-  pilot-feedback.md                  # optional; copy templates/pilot-feedback-template.md when piloting Loom itself
   phases/
-    01-discovery/
-      README.md
-      PROGRESS.md
-    02-requirements/
-      README.md
-      PROGRESS.md
-    03-architecture/
-      README.md
-      PROGRESS.md
-    04-planning/
-      README.md
-      PROGRESS.md
-    05-contracts-tests/
-      README.md
-      PROGRESS.md
-    06-implementation/
-      README.md
-      PROGRESS.md
-    07-review/
-      README.md
-      PROGRESS.md
+    01-discovery/{README.md,PROGRESS.md}
+    02-requirements/{README.md,PROGRESS.md}
+    03-architecture/{README.md,PROGRESS.md}
+    04-planning/{README.md,PROGRESS.md}
+    05-contracts-tests/{README.md,PROGRESS.md}
+    06-implementation/{README.md,PROGRESS.md}
+    07-review/{README.md,PROGRESS.md}
   system/
-    [architecture-component]/
-      PROGRESS.md
-      [owned-unit-or-subcomponent]/
-        PROGRESS.md
-src/
-  [package-or-app]/
-    [architecture-component]/
-      [owned-unit-or-subcomponent].*
-tests/
-  [test-category]/
-    [architecture-component]/
-      test_[owned-unit-or-subcomponent].*
+    [independently-tracked-component]/PROGRESS.md
 ```
 
-Use the numbered phase directories above as the default for project artifacts. Each phase directory keeps the phase artifact in `README.md` beside its phase ledger in `PROGRESS.md`.
+Source and test layouts follow their language and framework conventions. Record their mapping in the ledger rather than forcing them to copy `docs/loom/system/`.
 
-Use `docs/loom/system/` for delivery drilldowns. The first level under `system/` should match the major components named in the Architecture document rather than a generic taxonomy like services/components/units. Nest lower-level ledgers directly under the thing that owns them only when that scope needs independent ownership, blockers, scoring evidence, or review path.
+## When a Child Ledger Earns a File
 
-Each child progress document should include:
+Create a child `PROGRESS.md` when a scope has one or more of:
 
-- Link back to its parent progress document
-- Links to child progress documents when they exist
-- Phase scores relevant to that zoom level
-- Evidence links for each score
-- Blockers, open questions, and next score-changing actions
+- Independent owner or decision authority
+- Stable contract or separate TDD gate
+- Blocker surface or critical dependency
+- Material implementation and validation path
+- Independent review, migration, release, or recovery path
 
-Use this rule of thumb for whether a scope needs ongoing independent maintenance:
+Inventory every discovered material scope, but keep smaller scopes as rows in the nearest parent with `Parent row` and a short reason. Do not create a ledger merely because a class, function, schema, adapter, or test double exists.
 
-> If a scope has its own owner, contracts, implementation path, blocker surface, or review path, it can earn its own `PROGRESS.md`.
-
-When first auto-populating a recursive tree, be more inclusive than that rule of thumb:
-
-- Create phase progress docs for all seven Loom phases, even if some are lightweight.
-- Create service/workstream progress docs for every service, app, worker, API, integration, data pipeline, or major delivery stream named in Architecture or Planning.
-- Create component progress docs for every component/module/package/workflow/control surface named in Architecture, Planning, Contracts & Tests, or the source tree.
-- Create unit progress docs for every class, command, function group, schema, model, repository, adapter, workflow, test double, or other smallest owned unit named in contracts/tests or exposed by the source tree.
-- If a unit seems too small after inspection, keep it in the nearest parent table with `No child doc` and explain why. Do not silently omit it.
-- Use `Unknown` when evidence has not been inspected yet. Use `N/A` only when a phase truly does not apply.
-
-### Mirrored Structure Rule
-
-The Loom progress tree should mirror the intended code and test tree:
-
-```text
-docs/loom/system/[architecture-component]/PROGRESS.md
-docs/loom/system/[architecture-component]/[owned-unit-or-subcomponent]/PROGRESS.md
-
-src/[package]/[architecture-component]/[owned-unit-or-subcomponent].*
-tests/[category]/[architecture-component]/test_[owned-unit-or-subcomponent].*
-```
-
-This rule applies before implementation exists. In early phases, Architecture and Planning define the intended paths, Contracts & Tests define the expected test paths, and Progress creates the matching documentation paths. During Implementation, source and test files should fill the documented paths or update the docs with the approved deviation.
-
-If a language/framework uses a different convention, keep the nearest stable equivalent and document the mapping.
-
-### Phase-by-Phase Population Expectations
-
-Populate as much progress structure as each phase can honestly know. Do not wait until Implementation to create the tree.
-
-| Phase | Expected Progress Tree Maturity |
-|-------|---------------------------------|
-| Discovery | Capture project-level progress only, plus obvious major surfaces or systems if they are already known. |
-| Requirements | Identify coarse workstreams, output surfaces, external integrations, and any obvious service/component candidates. Mark paths as `TBD` when not known. |
-| Architecture | Define the first credible mirrored tree: services, components, major units, intended progress doc paths, intended source paths, and intended test paths. This is where the directory structure should be mostly figured out. |
-| Planning & Decomposition | Turn the Architecture tree into an ownership map: every workstream has progress docs, source paths, test paths, sequencing, and handoff expectations. |
-| Contracts & Tests | Populate or refine test paths to mirror the intended source/progress tree. Add contract-ready units from tests even if implementation does not exist yet. |
-| Implementation | Fill the intended source paths, adjust the tree when real code proves a better shape, and record deviations in progress docs rather than leaving stale paths. |
-| Review & Retrospective | Confirm the final tree matches delivered reality, collapse unnecessary drilldowns if appropriate, and carry lessons into the next cycle. |
-
-At every phase gate, update the root progress ledger and any known child progress docs with the evidence available at that phase. Use `Unknown` or `TBD` for gaps; do not omit known scopes just because they are not implemented yet.
-
-Record gate authority separately from artifact completeness:
-
-| Phase | Agent Recommendation | Owner Decision | Decision Date | Remaining Concerns |
-|-------|----------------------|----------------|---------------|--------------------|
-| [Phase] | Ready / Not ready / TBD | Approved / Needs revision / Deferred / TBD | TBD | TBD |
-
-### Auto-Population Workflow
-
-When building or refreshing a recursive progress tree:
-
-1. Read the phase docs, especially Requirements, Architecture, Planning, Contracts & Tests, and Implementation.
-2. Read existing tests and contract fixtures to discover expected services, components, and units.
-3. Inspect the intended or actual source tree, public classes/functions, CLI commands, schemas, repositories, adapters, and workflows.
-4. Build a scope inventory before writing progress docs, including intended doc path, intended source path, and intended test path.
-5. Create the root `PROGRESS.md` rollup and tree index.
-6. Create child phase artifacts and progress docs under the numbered `phases/*/README.md` and `phases/*/PROGRESS.md` directories.
-7. Create child scope progress docs under `system/[architecture-component]/...`, mirroring the architecture-aligned source/test paths.
-8. Link every child from its parent and every parent from its child.
-9. Mark scores with evidence links, `Unknown`, `TBD`, or `N/A`; do not leave discovered scopes unrepresented.
-10. Add open progress questions for anything that could not be scored confidently, using a summary, options, trade-offs, recommendation, and owner.
-
-### Scope Inventory
-
-Use this table before or inside the root progress file to show that the tree was populated from evidence rather than vibes.
-
-| Scope | Type | Parent | Source Evidence | Progress Doc | Intended Source Path | Intended Test Path | Inclusion Decision |
-|-------|------|--------|-----------------|--------------|----------------------|--------------------|--------------------|
-| [Scope name] | Phase / Workstream / System Component / Subcomponent / Unit | [Parent] | [Doc/test/source path] | [Path or No child doc] | [src path or TBD] | [test path or TBD] | Included / Rolled into parent / Deferred |
-
-### Progress Tree Index
-
-Use this table in the root file to make drilldowns clickable. Keep the root concise; let child progress docs carry deep detail.
-
-| Scope | Type | Parent | Total | Current Focus | Progress Doc | Notes |
-|-------|------|--------|-------|---------------|--------------|-------|
-| Discovery | Phase | Project | 0% | | `phases/01-discovery/PROGRESS.md` | Create in recursive mode |
-| Requirements | Phase | Project | 0% | | `phases/02-requirements/PROGRESS.md` | Create in recursive mode |
-| Architecture | Phase | Project | 0% | | `phases/03-architecture/PROGRESS.md` | Create in recursive mode |
-| Planning & Decomposition | Phase | Project | 0% | | `phases/04-planning/PROGRESS.md` | Create in recursive mode |
-| Contracts & Tests | Phase | Project | 0% | | `phases/05-contracts-tests/PROGRESS.md` | Create in recursive mode |
-| Implementation | Phase | Project | 0% | | `phases/06-implementation/PROGRESS.md` | Create in recursive mode |
-| Review & Retrospective | Phase | Project | 0% | | `phases/07-review/PROGRESS.md` | Create in recursive mode |
-| [Architecture component] | System Component | Project | 0% | | `system/[architecture-component]/PROGRESS.md` | |
-| [Owned unit or subcomponent] | Unit / Subcomponent | [Architecture component] | 0% | | `system/[architecture-component]/[owned-unit-or-subcomponent]/PROGRESS.md` | |
-
-### Child Progress Template
-
-Use this shape for any phase, system component, subcomponent, or unit-level progress document.
-
-```md
-# Progress: [Scope Name]
-
-**Type:** [Phase / System Component / Subcomponent / Unit]
-**Parent:** [Parent scope](../PROGRESS.md)
-**Owner:** [Owner]
-**Total Complete:** 0%
-**Current Focus:** [What is changing next]
-**Last Updated:** [Date]
-**Artifact Completeness:** 0%
-**Gate Status:** Pending owner approval
-**Phase Complete:** 0%
-
-## Navigation
-
-- **Parent:** [Parent progress](../PROGRESS.md)
-- **Children:** [Child progress docs, if any]
-- **Related phase docs:** [Requirements / Architecture / Planning / Contracts / Implementation]
-
-## Phase Completion
-
-| Phase | Complete | Weight | Evidence / Source | Notes |
-|-------|----------|--------|-------------------|-------|
-| Requirements | N/A | | | |
-| Architecture | N/A | | | |
-| Planning & Decomposition | N/A | | | |
-| Contracts & Tests | 0% | 1 | | |
-| Implementation | 0% | 1 | | |
-| Review & Retrospective | 0% | 1 | | |
-| **Phase Total** | **0%** | | | |
-
-## Children
-
-| Scope | Type | Weight | Total | Progress Doc | Notes |
-|-------|------|--------|-------|--------------|-------|
-| | | | | | |
-
-## Local Scope Inventory
-
-| Scope | Type | Source Evidence | Progress Doc | Intended Source Path | Intended Test Path | Inclusion Decision |
-|-------|------|-----------------|--------------|----------------------|--------------------|--------------------|
-| | | | | | | |
-
-## Next Score-Changing Actions
-
-| Action | Phase / Area | Expected Score Impact | Owner |
-|--------|--------------|-----------------------|-------|
-| | | | |
-
-## Blockers and Questions
-
-| Item | Impact | Owner | Next Step |
-|------|--------|-------|-----------|
-| | | | |
-
-## Gate Status
-
-| Agent Recommendation | Owner Decision | Decision Date | Remaining Concerns |
-|----------------------|----------------|---------------|--------------------|
-| Ready / Not ready / TBD | Approved / Needs revision / Deferred / TBD | TBD | TBD |
-```
-
----
-
-## Root Progress Ledger Template
-
-Use this as the default top-level `docs/loom/PROGRESS.md` shape. It is intentionally compact: the root file is the project cockpit, while detailed evidence lives in child phase, system component, subcomponent, and unit ledgers beneath it. The standalone copyable version lives at [templates/progress-ledger-template.md](templates/progress-ledger-template.md).
-
-```md
-# Loom Progress Ledger
-
-Project-specific completion ledger for [Project Name]. This root file is the project cockpit: snapshot, rollups, next score-changing actions, decisions, and open questions. Detailed evidence lives in the phase, system component, subcomponent, and unit ledgers beneath it.
-
-## Project Snapshot
-
-**Project:** [project-slug]
-**Date:** [YYYY-MM-DD]
-**Owner:** [Owner names]
-**Current Focus:** [Current phase, workstream, or score-changing push]
-**Total Complete:** [0-100%]
-**Calculation Basis:** [Equal phase weights / weighted phase scores / child rollup blend / custom basis]
-**Artifact Completeness:** [0-100% for drafted artifacts]
-**Gate Status:** [Pending owner approval / Approved / Needs revision / Deferred]
-**Phase Complete:** [0-100% including gate status]
-
-## Top-Level Phase Completion
-
-| Phase | Complete | Weight | Evidence / Source | Notes |
-|-------|----------|--------|-------------------|-------|
-| Discovery | 0% | 1 | [Discovery Progress](phases/01-discovery/PROGRESS.md) | |
-| Requirements | 0% | 1 | [Requirements Progress](phases/02-requirements/PROGRESS.md) | |
-| Architecture | 0% | 1 | [Architecture Progress](phases/03-architecture/PROGRESS.md) | |
-| Planning & Decomposition | 0% | 1 | [Planning Progress](phases/04-planning/PROGRESS.md) | |
-| Contracts & Tests | 0% | 1 | [Contracts & Tests Progress](phases/05-contracts-tests/PROGRESS.md) | |
-| Implementation | 0% | 1 | [Implementation Progress](phases/06-implementation/PROGRESS.md) | |
-| Review & Retrospective | 0% | 1 | [Review Progress](phases/07-review/PROGRESS.md) | |
-| **Phase Total** | **0%** | | | [Calculation note, such as rounded from 0 / 700.] |
-
-## Top-Level Child Rollup
-
-| Scope | Type | Weight | Phase Total | Child Rollup | Total | Owner | Notes |
-|-------|------|--------|-------------|--------------|-------|-------|-------|
-| [System Component](system/[architecture-component]/PROGRESS.md) | System Component | 1 | 0% | 0% | 0% | [Owner] | |
-| [Delivery Workstream](phases/[phase]/PROGRESS.md) | Workstream | 1 | 0% | 0% | 0% | [Owner] | |
-| **Child Rollup** | | | | | **0%** | | [Calculation note, such as rounded equal-weight average.] |
+Phase progress ledgers remain useful in a recursive project because each phase has distinct evidence and owner authority. System child ledgers are proportionate, not automatic.
 
 ## Scope Inventory
 
-Use this table to show that the progress tree was populated from evidence rather than vibes.
+Build an inventory before creating child files:
 
-| Scope | Type | Parent | Source Evidence | Progress Doc | Intended Source Path | Intended Test Path | Inclusion Decision |
-|-------|------|--------|-----------------|--------------|----------------------|--------------------|--------------------|
-| Discovery | Phase | Project | [Discovery artifact] | `phases/01-discovery/PROGRESS.md` | N/A | N/A | Included |
-| Requirements | Phase | Project | [Requirements artifact] | `phases/02-requirements/PROGRESS.md` | N/A | N/A | Included |
-| Architecture | Phase | Project | [Architecture artifact] | `phases/03-architecture/PROGRESS.md` | N/A | N/A | Included |
-| Planning & Decomposition | Phase | Project | [Planning artifact] | `phases/04-planning/PROGRESS.md` | N/A | N/A | Included |
-| Contracts & Tests | Phase | Project | [Contracts artifact] | `phases/05-contracts-tests/PROGRESS.md` | N/A | N/A | Included |
-| Implementation | Phase | Project | [Implementation artifact] | `phases/06-implementation/PROGRESS.md` | N/A | N/A | Included |
-| Review & Retrospective | Phase | Project | [Review artifact] | `phases/07-review/PROGRESS.md` | N/A | N/A | Included |
-| [Architecture component] | System Component | Project | [Architecture / planning / source evidence] | `system/[architecture-component]/PROGRESS.md` | `src/...` | `tests/...` | Included |
-| [Owned unit or subcomponent] | Unit / Subcomponent | [Architecture component] | [Contract / source / test evidence] | `system/[architecture-component]/[owned-unit-or-subcomponent]/PROGRESS.md` or `No child doc` | `src/...` or TBD | `tests/...` or TBD | Included / Rolled into parent / Deferred |
+| Scope | Type | Parent | Source Evidence | Progress Location | Source Area | Stable Test Boundary | Inclusion Decision |
+|-------|------|--------|-----------------|-------------------|-------------|----------------------|--------------------|
+| [Scope] | Phase / Workstream / Component / Feature / Migration / Unit | [Parent] | [Artifact, contract, source, or test] | [Child path or Parent row] | [Known / TBD] | [Known / TBD] | Child ledger / Parent row / Deferred |
 
-## Progress Tree Index
+`Deferred` means the scope is known but intentionally outside the active cycle. `Unknown` means evidence has not yet been inspected. Neither is `N/A`.
 
-Keep this table compact and clickable. Put deeper scoring evidence in child ledgers.
+## Engineering Evidence Ledger
 
-| Scope | Type | Parent | Total | Current Focus | Progress Doc | Notes |
-|-------|------|--------|-------|---------------|--------------|-------|
-| Discovery | Phase | Project | 0% | | [Progress](phases/01-discovery/PROGRESS.md) | |
-| Requirements | Phase | Project | 0% | | [Progress](phases/02-requirements/PROGRESS.md) | |
-| Architecture | Phase | Project | 0% | | [Progress](phases/03-architecture/PROGRESS.md) | |
-| Planning & Decomposition | Phase | Project | 0% | | [Progress](phases/04-planning/PROGRESS.md) | |
-| Contracts & Tests | Phase | Project | 0% | | [Progress](phases/05-contracts-tests/PROGRESS.md) | |
-| Implementation | Phase | Project | 0% | | [Progress](phases/06-implementation/PROGRESS.md) | |
-| Review & Retrospective | Phase | Project | 0% | | [Progress](phases/07-review/PROGRESS.md) | |
-| [Architecture component] | System Component | Project | 0% | | [Progress](system/[architecture-component]/PROGRESS.md) | |
-| [Owned unit or subcomponent] | Unit / Subcomponent | [Architecture component] | 0% | | [Progress](system/[architecture-component]/[owned-unit-or-subcomponent]/PROGRESS.md) or `No child doc` | |
+Track route evidence only when technical work in the scope needs it. This is evidence, not a skill-usage scorecard.
 
-## Next Score-Changing Actions
+| Scope / Decision | Operating Mode | Lead / Overlays | Trigger | Required Evidence | Observed Evidence | Reopened Upstream Decision | Status |
+|------------------|----------------|-----------------|---------|-------------------|-------------------|----------------------------|--------|
+| | Design / Implement / Refactor / Review | System Design / TDD / Design Patterns / Clean Code / None | | | | | Unknown / In progress / Ready / Blocked |
 
-| Action | Phase / Area | Expected Score Impact | Owner |
-|--------|--------------|-----------------------|-------|
-| [Next concrete action] | [Phase / system component] | [How this changes the score or unlocks scoring evidence] | [Owner] |
-| [Next concrete action] | [Phase / system component] | [How this changes the score or unlocks scoring evidence] | [Owner] |
+Examples of direct evidence:
 
-## Decisions and Adjustments
+- **System Design:** Driver trace, options, contracts, critical-path challenge, validation, and conditional migration or rollback.
+- **TDD:** Scope, schema, contract, all currently known executable tests, meaningful red or characterization baseline, per-slice green, and final broader green.
+- **Design Patterns:** Demonstrated pressure, direct and idiomatic alternatives, economics, domain participants, and validation of claimed change locality.
+- **Clean Code:** Stable contract, narrow diff, proportionate checks, final clarity pass, and diff inspection.
 
-| Date | Scope | Change | Reason | Owner |
-|------|-------|--------|--------|-------|
-| [YYYY-MM-DD] | [Scope] | [What changed] | [Why the score, structure, or plan changed] | [Owner] |
+## Phase-by-Phase Population
 
-## Gate Authority
+| Phase | Honest Progress-Tree Maturity |
+|-------|-------------------------------|
+| Discovery | Project-level status and obvious existing systems or surfaces; implementation paths remain unknown. |
+| Requirements | Coarse workstreams, surfaces, integrations, compatibility needs, and candidate components; paths can be `TBD`. |
+| Architecture | Stable independently owned or contract-bearing boundaries and provisional evidence mapping; no forced private units. |
+| Planning & Decomposition | Owned workstreams, vertical slices, gate scopes, dependency and integration evidence, and proportionate child decisions. |
+| Contracts & Tests | Direct schema, contract, all-known-test, and pre-state evidence for every gated scope. |
+| Implementation | Actual source and test evidence, slice status, gate resets, validation, and mapping corrections. |
+| Review & Retrospective | Final evidence disposition, remaining risk, owning follow-up phases, and unnecessary child-ledger cleanup. |
 
-Progress scores may reflect artifact completeness, but phase gates close only when the owner explicitly approves them. Agents may recommend readiness, identify concerns, and update draft completeness scores; they may not convert a recommendation into an owner decision.
+## Refresh Workflow
 
-| Phase | Agent Recommendation | Owner Decision | Decision Date | Remaining Concerns |
-|-------|----------------------|----------------|---------------|--------------------|
-| Discovery | Ready / Not ready / TBD | Approved / Needs revision / Deferred / TBD | TBD | TBD |
-| Requirements | Ready / Not ready / TBD | Approved / Needs revision / Deferred / TBD | TBD | TBD |
-| Architecture | Ready / Not ready / TBD | Approved / Needs revision / Deferred / TBD | TBD | TBD |
-| Planning & Decomposition | Ready / Not ready / TBD | Approved / Needs revision / Deferred / TBD | TBD | TBD |
-| Contracts & Tests | Ready / Not ready / TBD | Approved / Needs revision / Deferred / TBD | TBD | TBD |
-| Implementation | Ready / Not ready / TBD | Approved / Needs revision / Deferred / TBD | TBD | TBD |
-| Review & Retrospective | Ready / Not ready / TBD | Approved / Needs revision / Deferred / TBD | TBD | TBD |
+When building or refreshing progress:
 
-## Open Progress Questions
+1. Read the phase artifacts and existing owner decisions.
+2. Inspect applicable schemas, contracts, tests, validation output, and source evidence.
+3. Build or update the scope inventory.
+4. Update artifact readiness, engineering evidence readiness, recommendation, and owner gate separately.
+5. Create or retain child files only where independent tracking earns them.
+6. Link parents and children in both directions.
+7. Record the next evidence-changing action, owner, blocker, and decision point.
+8. Use `Unknown`, `TBD`, `N/A`, or `Deferred` honestly.
+9. Recalculate rollups and state their weighting basis.
+10. Inspect for stale paths, unsupported scores, duplicate facts, and hidden critical blockers.
 
-| Scope | Question Summary | Options | Trade-offs | Recommendation | Needed To Score Accurately | Owner |
-|-------|------------------|---------|------------|----------------|----------------------------|-------|
-| [Scope] | [Open question] | [Option A / Option B / Defer] | [Cost, risk, scope, quality, speed, reversibility] | [Recommended option and why] | [What evidence or decision is needed] | [Owner] |
-```
+Update progress when a phase gate changes, a scope or owner changes, a TDD gate moves from incomplete to meaningful pre-state or green, implementation evidence lands, a gate resets, validation changes confidence, or review changes disposition.
 
-Use the root template as the first thing a reader sees in a project repo. Put deeper scoring detail in the child ledgers:
+## Gate Record
 
-- Phase ledgers: `docs/loom/phases/*/PROGRESS.md`
-- System component ledgers: `docs/loom/system/[architecture-component]/PROGRESS.md`
-- Unit or subcomponent ledgers: `docs/loom/system/[architecture-component]/[owned-unit-or-subcomponent]/PROGRESS.md`
+| Phase / Scope | Artifact Readiness | Engineering Evidence Readiness | Agent Recommendation | Owner Decision | Decision Date | Remaining Concerns |
+|---------------|--------------------|--------------------------------|----------------------|----------------|---------------|--------------------|
+| | 0–100% / N/A | 0–100% / N/A | Ready / Not ready / TBD | Approved / Needs revision / Deferred / Pending | | |
 
-If a child scope does not need its own file, keep it as a row in the nearest parent table and write `No child doc` in the progress-doc field.
+The owner decision closes a gate; the agent does not infer it from a score. New evidence may reopen the owning phase and dependent readiness scores.
 
-When the project is also piloting Loom, copy [templates/pilot-feedback-template.md](templates/pilot-feedback-template.md) into `docs/loom/pilot-feedback.md` so process lessons do not get mixed into delivery scoring.
+## Template
+
+Use [templates/progress-ledger-template.md](templates/progress-ledger-template.md) for the project cockpit and child-ledger shape. Keep detailed evidence in the owning phase artifact or linked source/test output rather than copying it into every ledger.

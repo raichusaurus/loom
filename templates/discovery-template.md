@@ -6,7 +6,7 @@ Use this template to capture findings during the Discovery phase.
 **Date:** [Date]
 **Facilitator:** [Who's leading this]
 
-### How to Use This Template
+## How to Use This Template
 
 - Focus on learning, context, and direction; avoid locking in requirements or architecture too early.
 - Keep sections that clarify the problem, users, constraints, validation needs, or handoff to Requirements.
@@ -39,6 +39,8 @@ Use this template to capture findings during the Discovery phase.
 | Source / Artifact | What It Shows | Keep / Discard / Rethink | Notes |
 |-------------------|---------------|---------------------------|-------|
 | | | | |
+
+For a rewrite or migration, also capture the current user or data path, observed pain, affected owner, compatibility-sensitive behavior or data, and desired target outcome.
 
 ### Working Shape
 *What does the solution seem to be, without locking in requirements or architecture too early?*
@@ -97,6 +99,13 @@ Use this template to capture findings during the Discovery phase.
 - **Organizational policies:** [Any constraints?]
 - **Dependencies:** [What else depends on this?]
 
+### Material Evidence and Uncertainty
+*Classify only statements that could change scope, viability, safety, or later design.*
+
+| Statement | Type | Source / Evidence | Confidence | What It Could Change |
+|-----------|------|-------------------|------------|----------------------|
+| | Measured / Sourced / Derived / Inferred / Assumed / Unknown / Conflict | | High / Medium / Low | |
+
 ---
 
 ## Success & Validation
@@ -121,10 +130,10 @@ Use this template to capture findings during the Discovery phase.
 ### Key Assumptions
 *What are you assuming to be true? What needs validation?*
 
-| Assumption | Why We Believe It | How We'll Validate |
-|-----------|------------------|-------------------|
-| | | |
-| | | |
+| Assumption | Why We Believe It | Confidence | Validation Method | Owner | Decision Point |
+|------------|-------------------|------------|-------------------|-------|----------------|
+| | | | | | |
+| | | | | | |
 
 ---
 
@@ -133,24 +142,22 @@ Use this template to capture findings during the Discovery phase.
 ### Risks
 *What could prevent success?*
 
-| Risk | Impact | Likelihood | Mitigation |
-|------|--------|------------|-----------|
-| | | | |
+| Risk | Impact | Evidence / Assumption | Validation or Mitigation | Owner | Decision Point |
+|------|--------|-----------------------|--------------------------|-------|----------------|
+| | | | | | |
 
 ### Opportunities
 *What unexpected benefits might emerge?*
 
 ---
 
-## Framework Feedback
+## Loom Process Feedback
 
-*If this project is also teaching us about Loom, capture reusable process lessons here.*
+*Optional. Record only a phase-local observation when this phase exposed material Loom friction, a missing guardrail, repeated workaround, validation failure, or unnecessary ceremony. Put any reusable candidate in `docs/loom/pilot-feedback.md`; delete this section for a clean phase.*
 
-### What Worked
-
-### Friction
-
-### Template / Process Improvements
+| Observation | Evidence / Impact | Pilot Feedback Reference, if Reusable |
+|-------------|-------------------|---------------------------------------|
+| | | `docs/loom/pilot-feedback.md#...` |
 
 ---
 
@@ -188,6 +195,7 @@ Use this shape for each question that needs a decision:
 - **First useful version:**
 - **Explicitly out of scope:**
 - **Success / validation signals:**
+- **Material evidence, assumptions, and unknowns:**
 - **Open questions carried forward:**
 
 ### Next Steps
@@ -200,7 +208,6 @@ Use this shape for each question that needs a decision:
 - **Agent recommendation:** [ ] Ready [ ] Not ready
 - **Owner decision:** [ ] Approved [ ] Needs revision [ ] Deferred
 - **Decision date:** TBD
-- **Loom feedback captured:** [ ] Not applicable [ ] In this phase artifact [ ] In `docs/loom/pilot-feedback.md`
 - **Remaining concerns:** TBD
 
 ---
