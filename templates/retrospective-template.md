@@ -1,111 +1,133 @@
 # Review & Retrospective Template
 
-Use this template to evaluate the outcome and feed learnings into the next Loom cycle.
+Use this template to evaluate delivered outcomes and engineering evidence, route findings to the phase that owns them, and shape the next Loom cycle. Review is read-only unless fixes are separately authorized.
 
-**Project Name:** [Your project name]  
-**Date:** [Date]  
-**Review Lead:** [Who's leading this]
+**Project Name:** [Project name]
+**Date:** [Date]
+**Review Lead:** [Lead]
 
----
+## Outcome Trace
 
-## Outcome Review
+| Driver / Acceptance ID | Intended Outcome or Bound | Actual Evidence / Result | Met? | Evidence Type | Notes / Owning Follow-Up Phase |
+|------------------------|---------------------------|--------------------------|------|---------------|--------------------------------|
+| | | | Yes / No / Partial / Deferred | Measured / Observed / Derived / Assumed / Unknown | |
 
-### Requirements vs. Reality
-| Requirement | Met? | Evidence | Notes |
-|-------------|------|----------|-------|
-| | | | |
+### Deferred and Unverified Work
 
-### Success Metrics
-| Metric | Target | Actual | Notes |
-|--------|--------|--------|-------|
-| | | | |
+| Item | Deliberately Deferred or Evidence Missing? | Impact / Risk | Owner | Decision Point / Next Cycle |
+|------|-------------------------------------------|---------------|-------|-----------------------------|
+| | | | | |
 
----
+## Integrated Engineering Review
 
-## Quality Review
+### Schema, Contract, Tests, and Implementation
 
-### Technical Assessment
-- What held up well?
-- What felt fragile?
-- What technical debt remains?
-- What should be revisited?
+- [ ] Applicable schemas, constraints, and compatibility rules agree with delivered behavior.
+- [ ] Observable contracts, tests, implementation, and user/operator outcomes agree.
+- [ ] For every scope claimed as TDD, the declared scope, applicable schema, observable contract, and all currently known executable tests existed before any behavior-bearing implementation.
+- [ ] New or changed behavior has inspectable pre-implementation meaningful-red evidence, or is honestly labeled non-TDD.
+- [ ] Every non-TDD label traces to an explicit owner-approved exception recorded before implementation; missing authorization is a finding.
+- [ ] Behavior-preserving refactors have a pre-refactor green characterization baseline.
+- [ ] Gate resets exist for newly discovered behavior, edge cases, schema changes, or contract changes.
+- [ ] Tests were not weakened, over-mocked, or coupled unnecessarily to private structure.
+- **Evidence and gaps:**
 
-### Production / Release Validation
-- [ ] Deployed or released
-- [ ] Smoke tests passed
-- [ ] Monitoring reviewed
-- [ ] Rollback plan confirmed
+### Architecture and Operations
 
----
+- [ ] Boundaries, ownership, data sources of truth, dependency direction, and critical contracts held up.
+- [ ] Representative success, overload, dependency-failure, degraded, recovery, and abuse behavior was validated where applicable.
+- [ ] Compatibility, migration, cutover, rollback, recovery, and cleanup evidence is adequate where applicable.
+- [ ] Security, privacy, operability, observability, capacity, and cost assumptions were validated in proportion to risk.
+- **Evidence and gaps:**
+
+### Pattern or Abstraction Claims
+
+*Delete when no named pattern or material new abstraction was introduced.*
+
+| Decision | Documented Pressure / Change Scenario | Did Change Localize as Claimed? | Lifecycle / Failure / Economics Evidence | Keep, Simplify, or Remove | Revisit Trigger |
+|----------|----------------------------------------|---------------------------------|------------------------------------------|---------------------------|-----------------|
+| | | | | | |
+
+### Code Clarity
+
+- [ ] Names, cohesion, abstraction levels, state ownership, effects, and failure behavior are understandable.
+- [ ] No speculative indirection, obsolete path, debug residue, stale comment, accidental contract drift, or unrelated churn remains.
+- [ ] Exact focused and broader validation commands still pass.
+- **Evidence and gaps:**
+
+### Release or Local Workflow Validation
+
+Choose the applicable path; do not force production ceremony on a local MVP.
+
+| Path | Applicable? | Validation Performed | Result | Remaining Risk |
+|------|-------------|----------------------|--------|----------------|
+| Local run / inspection workflow | Yes / No | | | |
+| Deployment / release smoke test | Yes / No | | | |
+| Monitoring / alert review | Yes / No | | | |
+| Rollback / recovery confirmation | Yes / No | | | |
+
+## Prioritized Findings
+
+Order findings by correctness and safety; lifecycle, concurrency, recovery, compatibility, and capacity; boundary or pattern failure; missing evidence and maintainability; then polish.
+
+| Priority / Severity | Artifact / Evidence | Triggering Scenario | Observable Impact | Fact or Inference | Smallest Correction or Validation | Owning Phase |
+|---------------------|---------------------|---------------------|-------------------|-------------------|-----------------------------------|--------------|
+| | | | | | | Requirements / Architecture / Planning / Contracts & Tests / Implementation |
+
+No material findings: [ ] Yes. If yes, list what was not reviewed or could not be validated.
 
 ## Process Retrospective
 
-### What Went Well
-[Capture specific wins.]
+### Practices to Keep or Expand
 
-### What Could Be Better
-[Capture specific improvements.]
-
-### Decomposition Review
-- Did ownership boundaries work?
-- Were context packets sufficient?
-- Did parallel work integrate cleanly?
-- What should change next time?
-
----
-
-## Lessons & Actions
-
-### Lessons Learned
-| Lesson | Where It Applies | Future Use |
-|--------|------------------|------------|
+| Practice | Evidence / Outcome | Where to Reuse |
+|----------|--------------------|----------------|
 | | | |
 
-### Action Items
-| Action | Owner | Due Date |
-|--------|-------|----------|
-| | | |
+### Friction and Rework
 
-### Open Follow-Up Decisions
-| Question Summary | Options | Trade-offs | Recommendation | Owner / Status |
-|------------------|---------|------------|----------------|----------------|
+| Friction | Trigger / Evidence | Impact | One-Off or Recurrent | Candidate Next Experiment |
+|----------|--------------------|--------|----------------------|---------------------------|
 | | | | | |
 
----
+### Ownership and Routing Review
 
-## Next Cycle
+- Did workstream ownership and context packets prevent overlap?
+- Did selected engineering routes match the decisions actually made?
+- Did a route trigger too often, too little, or in the wrong order?
+- Did integration checkpoints catch drift early?
+- Which ceremony did not earn its cost?
 
-### Follow-up Loom Cycles
-| Scope | Reason | Starting Phase | Owner |
-|-------|--------|----------------|-------|
-| | | | |
+## Actions and Next Cycles
 
----
+| Action / Outcome | Starting Phase | Owner | Evidence Needed | Decision Point / Due Date |
+|------------------|----------------|-------|-----------------|---------------------------|
+| | | | | |
 
-## Phase Decisions
+Material fixes are not authorized by this review alone. Any behavior-affecting correction, including an unchanged-contract defect, returns to Contracts & Tests for regression evidence and meaningful red. A behavior-preserving refactor returns there for a declared refactor scope and green characterization baseline. A cross-boundary change returns to Architecture; only strictly non-behavioral or mechanical work may return directly to Implementation.
 
-*Keep final review decisions close to this artifact, even when they are also summarized in the root progress ledger.*
+## Process Improvement Candidates
 
-| Decision | Choice | Rationale | Owner |
-|----------|--------|-----------|-------|
-| | | | |
+Ordinary project authority does not authorize shared Loom, router, or specialist protocol edits. Put reusable candidates in `docs/loom/pilot-feedback.md`; delete this section for a clean run.
 
-## Loom Process Feedback
+| Candidate | Raw Evidence | Severity / Occurrences | Likely Authoritative Source | Expected Observable Behavior | Maintenance Authority Needed? |
+|-----------|--------------|------------------------|-----------------------------|------------------------------|-------------------------------|
+| | | | Loom / Router / Specialist / Skill metadata / Repository / Tool or environment | | Yes |
 
-*If this review exposed reusable Loom lessons, capture them here or link to `docs/loom/pilot-feedback.md`. Keep process feedback separate from product outcome.*
+## Open Follow-Up Decisions
 
-| Observation | Suggested Template/Guide Improvement | Project-Specific? |
-|-------------|--------------------------------------|-------------------|
-| | | Yes / No |
+| Question | Options | Tradeoffs | Recommendation | Decision Owner | Decision Point | Owning Phase |
+|----------|---------|-----------|----------------|----------------|----------------|--------------|
+| | | | | | | |
 
----
+## Final Gate
 
-## Phase Gate
-
+- **Outcome and engineering evidence reviewed:** [ ] Yes [ ] No
+- **TDD provenance described honestly:** [ ] Yes [ ] No [ ] Not applicable
+- **Findings are prioritized and routed to owning phases:** [ ] Yes [ ] No
+- **Remaining risk and unverified areas are explicit:** [ ] Yes [ ] No
+- **Next cycles and owners are identified where needed:** [ ] Yes [ ] No [ ] None needed
 - **Agent recommendation:** [ ] Ready to close [ ] Not ready
 - **Owner decision:** [ ] Approved [ ] Needs revision [ ] Deferred
 - **Decision date:** TBD
-- **Loom feedback captured:** [ ] Not applicable [ ] In this review artifact [ ] In `docs/loom/pilot-feedback.md`
-- **Review complete?** [ ] Yes [ ] No
-- **Follow-up Loom cycles identified?** [ ] Yes [ ] No
 - **Remaining concerns:** TBD

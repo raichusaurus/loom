@@ -1,278 +1,188 @@
 # Requirements Template
 
-Use this template to define and document requirements for your project.
+Use this template to define a bounded, traceable outcome for Architecture. Keep only sections that clarify scope, observable behavior, decision-driving quality attributes, validation, or compatibility.
 
-**Project Name:** [Your project name]
+**Project Name:** [Project name]
 **Date:** [Date]
-**Requirements Lead:** [Who's leading this]
+**Requirements Lead:** [Lead]
 
-### How to Use This Template
-
-- Keep sections that clarify what must be built, how success will be validated, or what Architecture must decide next.
-- Delete optional sections that do not apply; unused prompts create noise.
-- Use **Optional / Not Needed Yet** to name tempting work that should not be part of the MVP.
-
----
-
-## Overview
-
-### Discovery Inputs
-*Pull these forward from Discovery before writing new requirements.*
+## Discovery Inputs
 
 - **Core problem:**
-- **Primary user / operator:**
-- **Future / external users:**
+- **Primary user or operator:**
+- **Current state:**
 - **Working shape:**
 - **First useful version:**
 - **Explicitly out of scope:**
-- **Success / validation signals:**
+- **Success and validation signals:**
+- **Material evidence, assumptions, conflicts, and unknowns:**
 - **Open questions carried forward:**
 
-### Solution Vision
-*High-level vision of what we're building, based on the Discovery inputs above.*
+## Scope
 
-### Phase Updates
-*Optional. Use this when later phases clarify or change requirements. Keep the original trail, but make the current requirement clear.*
+### Outcome
 
-- **[Date / Phase]:** [What changed, what it supersedes, and why]
-
----
-
-## Scope Definition
+[Describe the user, operator, or business outcome without selecting the architecture.]
 
 ### In Scope
-- [ ] Feature 1
-- [ ] Feature 2
-- [ ] Feature 3
 
-*What are we definitely building?*
+- [Outcome or capability]
 
 ### Out of Scope
-- Feature that could wait
-- Nice-to-have that won't ship
-- External integrations that are blocked
 
-*What are we explicitly not doing?*
+- [Explicit non-goal]
 
-### MVP (Minimum Viable Product)
-[What's the smallest version that solves the core problem?]
+### Optional or Deferred
 
-### Phased Releases (if applicable)
-- **Phase 1:** [Features for initial release]
-- **Phase 2:** [Features for follow-up]
-- **Phase 3:** [Future enhancements]
-
-### Optional / Not Needed Yet
-*Use this to keep the MVP honest. Capture useful ideas that are intentionally deferred, experimental, or probably unnecessary.*
-
-| Item | Status | Why not now? | Revisit when |
-|------|--------|--------------|--------------|
+| Item | Status | Why Not Now | Revisit Trigger |
+|------|--------|-------------|-----------------|
 | | Optional / Deferred / Unnecessary | | |
 
----
+### Current-State Compatibility
 
-## Functional Requirements
+*Use for evolution, rewrite, migration, or replacement work. Delete for a truly greenfield scope.*
 
-### User Stories
-*Format: As a [user type], I want [action] so that [benefit]*
+| ID | Current Contract, Data, or Behavior | Observed Pain / Constraint | Preservation Decision | Affected Owner / Consumer | Target Outcome |
+|----|-------------------------------------|----------------------------|-----------------------|---------------------------|----------------|
+| COMP-001 | | | Yes / No (owner-approved) / Unknown—owner decision required | | |
 
-#### Story 1
-As a [user type], I want [action] so that [benefit]
+Architecture decides how to satisfy an approved compatibility promise; it does not decide whether product-visible behavior or data may break.
 
-Acceptance Criteria:
+## Requirements Catalog
 
-- Criterion 1
-- Criterion 2
-- Criterion 3
+Assign stable IDs to material MVP requirements so Architecture, contracts, tests, validation, and review can cite the same promise. A small change may need only a few rows.
 
-#### Story 2
-As a [user type], I want [action] so that [benefit]
+| ID | Actor / Surface | Observable Requirement | Priority | Origin / Evidence | Acceptance IDs | Notes |
+|----|-----------------|------------------------|----------|-------------------|----------------|-------|
+| FR-001 | | | Must / Should / Could / Won't | Discovery / source / owner decision | AC-001 | |
 
-Acceptance Criteria:
+### Data and Output Fidelity
 
-- Criterion 1
-- Criterion 2
+*Delete when no meaningful data or output contract exists.*
 
-*[Add more as needed]*
+| ID | Surface / Data | Required Fidelity or Provenance | Stable Identity / Unknown Handling | Consumer |
+|----|----------------|---------------------------------|------------------------------------|----------|
+| DF-001 | | | | |
 
-### Key Features
-*Use a consistent priority scale such as Must / Should / Could / Won't for MVP.*
+## Ranked Quality Attributes and Constraints
 
-| Feature | Description | Priority | Notes |
-|---------|-------------|----------|-------|
-| | | | |
-| | | | |
+Keep only attributes that can influence design, acceptance, safety, or cost. Use scenarios and defensible bounds rather than generic categories or unsupported precision.
 
-### Output Surfaces
-*Where will users, operators, or downstream systems see the result? Delete this section if the project has no meaningful output surfaces beyond the primary product.*
+| ID | Attribute / Constraint | Rank | Scenario or Load Condition | Target or Bound | Source / Confidence | Conflict or Acceptable Compromise | Validation Method |
+|----|------------------------|------|----------------------------|-----------------|---------------------|-----------------------------------|-------------------|
+| QA-001 | Performance / Reliability / Security / Privacy / Accessibility / Compatibility / Recovery / Operability / Cost | 1 | | | Measured / Sourced / Derived / Assumed / Unknown; High / Medium / Low | | |
 
-| Surface | Purpose | Required Content | Consumer |
-|---------|---------|------------------|----------|
-| | | | |
+Examples of material prompts, only when they affect this project:
 
-### Data Fidelity
-*For data-heavy projects, define what must be preserved versus what can be derived. Delete this section if it does not apply.*
+- **Performance and scale:** Average, peak, burst, growth, latency percentile, throughput, concurrency, data volume, skew, or downstream quota.
+- **Reliability and recovery:** Availability, durability, degraded behavior, RTO, RPO, reconciliation, or restore expectation.
+- **Security and privacy:** Authentication, authorization, tenancy, data sensitivity, retention, deletion, audit, abuse, or compliance obligation.
+- **Accessibility:** User-facing standard and consequential interaction requirements.
+- **Compatibility:** API, event, persistence, configuration, client, or mixed-version promise.
+- **Cost and operability:** Recurring bound, approval threshold, support model, deployment constraint, or observability need.
 
-- **Source facts to preserve:**
-- **Derived data / recalculable outputs:**
-- **Stable identifiers:**
-- **Precision limits / unknowns not to invent:**
+## Acceptance and Validation
 
----
+### Acceptance Criteria
 
-## Non-Functional Requirements
+Each acceptance criterion references the requirement or quality ID it proves. Given/When/Then is useful when it makes the scenario clearer, not as mandatory ceremony.
 
-### Performance
-- Load time targets: [e.g., < 2 seconds]
-- Concurrent users: [e.g., 1000]
-- Data throughput: [e.g., 1GB/day]
+| Acceptance ID | Driver IDs | Preconditions / Scenario | Action or Event | Observable Result | Consequential Boundary or Failure |
+|---------------|------------|--------------------------|-----------------|-------------------|-----------------------------------|
+| AC-001 | FR-001, QA-001 | | | | |
 
-### Scalability
-[How should this scale? What's the growth plan?]
+### Success Signals
 
-### Security
-- Authentication: [e.g., OAuth2]
-- Authorization: [e.g., Role-based access]
-- Data encryption: [At rest? In transit?]
-- Compliance: [GDPR? HIPAA? etc.]
+| Signal | Target or Decision Bound | Measurement Method | Source / Baseline | Owner | Decision Point |
+|--------|--------------------------|--------------------|-------------------|-------|----------------|
+| | | | | | |
 
-### Accessibility
-- WCAG Level: [e.g., AA]
-- Screen reader support: [Yes/No]
-- Keyboard navigation: [Yes/No]
+Implementation completion is defined later by approved contracts, tests, code-quality checks, and owner gates. Do not make Requirements prescribe private implementation tasks.
 
-### Reliability
-- Uptime target: [e.g., 99.9%]
-- Backup strategy: [How often?]
-- Recovery time objective: [RTO]
-
-### Cost
-- Recurring cost target: [e.g., local-only, free tier, <$X/month]
-- Paid service approval threshold:
-- Cost-related tradeoffs:
-
----
-
-## Acceptance Tests
-
-### Test Case 1: [Feature Name]
-Given [precondition] When [user action] Then [expected result]
-
-### Test Case 2: [Feature Name]
-Given [precondition] When [user action] Then [expected result]
-
-*[Add more as needed]*
-
----
-
-## Success Criteria
-
-### Measurable Goals
-- [ ] All acceptance tests passing
-- [ ] Performance targets met: [specific metrics]
-- [ ] User satisfaction: [target score]
-- [ ] Uptime: [target percentage]
-
-### Validation Signals
-*What evidence will prove the requirements are useful, not just implemented?*
-
-- [ ] Required outputs are inspectable by the intended user/operator
-- [ ] Results can be compared across runs, versions, users, or scenarios where stability matters
-- [ ] Confidence, sample size, provenance, or other credibility context is visible where needed
-- [ ] Outputs can be traced back to source data, user action, or acceptance criteria where needed
-
-### Definition of Done
-A feature is considered done when:
-- [ ] Code is written and reviewed
-- [ ] Tests are passing
-- [ ] Documentation is complete
-- [ ] Performance is acceptable
-- [ ] Security review is complete
-
----
-
-## Dependencies & Risks
+## Dependencies, Risks, and Assumptions
 
 ### External Dependencies
-| Dependency | Owner | Timeline | Risk |
-|------------|-------|----------|------|
-| | | | |
+
+| Dependency | Promise / Constraint | Owner | Evidence | Decision or Availability Date | Risk |
+|------------|----------------------|-------|----------|-------------------------------|------|
+| | | | | | |
 
 ### Risks
-| Risk | Mitigation | Owner |
-|------|-----------|-------|
-| | | |
 
-### Assumptions
-| Assumption | Validation Plan |
-|-----------|-----------------|
-| | |
+| Risk ID | Driver IDs | Impact | Evidence / Assumption | Validation or Mitigation | Owner | Decision Point |
+|---------|------------|--------|-----------------------|--------------------------|-------|----------------|
+| RISK-001 | | | | | | |
 
-### Prior Art / Legacy Inputs
-*Optional. Use for rewrites, migrations, pilots, or projects with meaningful existing artifacts. Delete if not applicable.*
+### Assumptions and Unknowns
 
-| Artifact | What it shows | Keep / Discard / Rethink | Notes |
-|----------|---------------|--------------------------|-------|
-| | | | |
-
----
+| ID | Assumption / Unknown | Type | Source / Confidence | What It Could Change | Validation Plan | Owner | Decision Point |
+|----|----------------------|------|---------------------|----------------------|-----------------|-------|----------------|
+| ASM-001 | | Assumption / Unknown / Conflict | | | | | |
 
 ## Architecture Inputs
 
-*Capture important decisions Requirements surfaced but should not resolve. These become starting points for Architecture.*
+Architecture should resolve only technical decisions that are material to the requirements or risks.
 
-Architecture should decide:
+| Question | Driver IDs | Plausible Options | Main Tradeoffs | Recommendation | Owner / Status | Revisit Trigger |
+|----------|------------|-------------------|----------------|----------------|----------------|-----------------|
+| | | Include current / simpler / defer when credible | Correctness / risk / speed / cost / reversibility | | | |
 
-| Question Summary | Options | Trade-offs | Recommendation | Owner / Status |
-|------------------|---------|------------|----------------|----------------|
-| [Decision area, tradeoff, or unresolved design question] | [Option A / Option B / Defer] | [Cost, risk, scope, quality, speed, reversibility] | [Recommended option and why] | [Owner / Open] |
+### Driver Summary for Architecture
+
+- **Highest-ranked quality attributes:**
+- **Contracts or compatibility promises to preserve:**
+- **Critical assumptions or unknowns:**
+- **Safety, privacy, or compliance constraints:**
+- **Consequential edge cases:**
+- **Decisions Architecture must not infer silently:**
 
 ## Progress Inputs
 
-*Capture the coarse scopes Progress should track before Architecture defines exact paths.*
+Capture coarse independently meaningful scopes. Architecture will decide stable boundaries; private modules and paths may remain `TBD`.
 
-| Scope | Type | Why track it? | Known / TBD Path Notes |
-|-------|------|---------------|------------------------|
-| | Workstream / Surface / Integration / Service candidate | | |
+| Scope | Type | Driver IDs | Why Track It | Path Notes |
+|-------|------|------------|--------------|------------|
+| | Workstream / Surface / Integration / Candidate Component | | | Known / TBD |
 
----
+## Requirement Change Log
 
-## Phase Decisions
+Later phases may propose a requirement change but may not silently rewrite the approved promise.
 
-*Keep decisions that shaped requirements close to this artifact, even when they are also summarized in the root progress ledger.*
+| Date | Affected IDs | Proposed Change | Reason / New Evidence | Downstream Impact | Proposer | Owner Decision | Supersedes |
+|------|--------------|-----------------|-----------------------|-------------------|----------|----------------|------------|
+| | | | | | | Approved / Needs revision / Deferred | |
 
-| Decision | Choice | Rationale | Owner |
-|----------|--------|-----------|-------|
-| | | | |
+## Open Decisions
 
-## Next Phase Handoff
+| Question | Options | Tradeoffs | Recommendation | Decision Owner | Decide By / Trigger | Status |
+|----------|---------|-----------|----------------|----------------|---------------------|--------|
+| | | | | | | |
 
-*If approved, summarize what Architecture should use next. Preparing this handoff does not close the phase gate or start Architecture by itself.*
+## Next-Phase Handoff
 
-- **Decisions:**
-- **Inputs:**
-- **Open risks:**
-- **Non-goals:**
+Preparing this handoff does not close the phase gate or authorize Architecture.
+
+- **Approved scope and non-goals:**
+- **Requirement and acceptance IDs:**
+- **Ranked quality drivers:**
+- **Compatibility promises:**
+- **Evidence, assumptions, and unknowns:**
+- **Architecture decisions required:**
 - **Validation signals:**
 
 ## Loom Process Feedback
 
-*If this phase exposed reusable Loom lessons, capture them here or link to `docs/loom/pilot-feedback.md`. Keep process feedback separate from product scope.*
+*Optional. Record only a phase-local observation. Put any evidence-backed reusable candidate in `docs/loom/pilot-feedback.md`; delete this section for a clean phase.*
 
-| Observation | Suggested Template/Guide Improvement | Project-Specific? |
-|-------------|--------------------------------------|-------------------|
-| | | Yes / No |
-
----
+| Observation | Evidence / Impact | Pilot Feedback Reference, if Reusable |
+|-------------|-------------------|---------------------------------------|
+| | | `docs/loom/pilot-feedback.md#...` |
 
 ## Phase Gate
 
 - **Agent recommendation:** [ ] Ready [ ] Not ready
 - **Owner decision:** [ ] Approved [ ] Needs revision [ ] Deferred
 - **Decision date:** TBD
-- **Loom feedback captured:** [ ] Not applicable [ ] In this phase artifact [ ] In `docs/loom/pilot-feedback.md`
 - **Remaining concerns:** TBD
 
----
-
-*Save this document in your project repo. Reference these requirements during Architecture and Implementation.*
+Before recommending readiness, confirm that material scope has stable IDs, acceptance evidence is traceable, quality attributes are ranked and bounded, assumptions are labeled, and Architecture will not have to invent a product decision.

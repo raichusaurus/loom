@@ -10,7 +10,7 @@ Requirements answer: **What exactly needs to be built, and how will we know it i
 
 This phase should pull forward Discovery context before inventing new scope. It turns the core problem, primary user/operator, first useful version, validation signals, and open questions into a bounded product or system specification.
 
-**Output:** Discovery inputs, solution vision, MVP scope, user stories, prioritized features, output surfaces, relevant non-functional requirements, acceptance tests, validation signals, risks, assumptions, and Architecture inputs.
+**Output:** Discovery inputs, solution vision, bounded MVP scope, stable requirement and acceptance IDs, ranked quality attributes, output surfaces, validation signals, risks, assumptions, and traceable Architecture inputs.
 
 ---
 
@@ -33,19 +33,23 @@ This phase should pull forward Discovery context before inventing new scope. It 
 - Which tempting ideas are optional, deferred, or unnecessary for now?
 
 ### 3. Define Functional Requirements
-- What user stories describe the necessary behavior?
-- What acceptance criteria prove each story works?
+- What observable requirements describe the necessary behavior for each actor or surface?
+- What acceptance criteria prove each requirement works?
+- Which stable IDs let later decisions, contracts, tests, and validation cite each material requirement?
 - Which features are Must, Should, Could, or Won't for the MVP?
 - Where will users, operators, or downstream systems see outputs?
 - What source facts, stable identifiers, or data fidelity constraints must be preserved?
 
-### 4. Establish Non-Functional Requirements
-- What performance, scalability, reliability, security, accessibility, or cost constraints matter?
+### 4. Rank Quality Attributes and Constraints
+- Which performance, scalability, reliability, security, privacy, accessibility, compatibility, recovery, operability, or cost attributes can change the design?
+- How are the material attributes ranked when they conflict?
+- What scenario, load condition, measurable target, or defensible bound defines each one?
+- Is the target measured, sourced, derived, assumed, or still unknown, and with what confidence?
 - Which constraints are real MVP requirements versus future concerns?
-- What external dependencies, assumptions, or prior-art decisions affect scope?
 
 ### 5. Define Acceptance and Validation
-- What Given/When/Then acceptance tests should Contracts & Tests inherit?
+- What acceptance scenarios or criteria should Contracts & Tests turn into executable evidence?
+- Which requirement and acceptance IDs does each scenario trace to?
 - What measurable goals define done?
 - What evidence proves the requirements are useful, not merely implemented?
 - Where do outputs need provenance, confidence, sample size, comparison, or traceability?
@@ -56,6 +60,7 @@ This phase should pull forward Discovery context before inventing new scope. It 
 - Which prior-art or legacy reuse decisions need technical judgment?
 - What requirements changed during later phases, and what did they supersede?
 - Which coarse workstreams, surfaces, services, or components should Progress track now, even if source/test paths are still `TBD`?
+- How does each open architecture decision trace to a requirement, quality attribute, constraint, assumption, or risk?
 
 ---
 
@@ -71,16 +76,16 @@ Before moving to Architecture, validate:
 
 - ✅ Discovery inputs are pulled forward and reflected in scope
 - ✅ MVP, in-scope work, out-of-scope work, and optional/deferred work are explicit
-- ✅ User stories have testable acceptance criteria
+- ✅ Observable requirements have testable acceptance criteria
+- ✅ Material requirements, quality attributes, compatibility constraints, and acceptance criteria have stable IDs
 - ✅ Features use a consistent priority scale
 - ✅ Output surfaces and data fidelity needs are captured where relevant
-- ✅ Non-functional requirements are specific enough to guide design
-- ✅ Acceptance tests and validation signals are measurable
+- ✅ Consequential quality attributes are ranked, bounded, sourced, and explicit about tradeoffs
+- ✅ Acceptance criteria, scenarios, and validation signals trace to the requirements they prove
 - ✅ Dependencies, assumptions, risks, and prior-art inputs are documented
 - ✅ Architecture inputs name unresolved technical decisions without prematurely solving them
 - ✅ Open questions that need user decisions include summaries, options, trade-offs, and recommendations
 - ✅ Coarse progress scopes are identified for obvious workstreams, surfaces, integrations, or service candidates
-- ✅ Loom process feedback is captured or explicitly marked not applicable
 - ✅ Phase gate separates agent recommendation, owner decision, decision date, and remaining concerns
 
 ---
@@ -93,6 +98,12 @@ Before moving to Architecture, validate:
 ❌ **Hiding output expectations** - If someone consumes a result, define the surface
 ❌ **Inventing data** - State what must be preserved, derived, nullable, or unknown
 ❌ **Solving architecture too early** - Requirements should frame decisions Architecture must make
+❌ **Generic quality checklists** - Keep only attributes that can affect a decision and state their rank, scenario, source, and bound
+❌ **False precision** - Do not turn an unsupported guess into an authoritative-looking target
+
+## Loom Process Feedback
+
+Record only a phase-local observation when Requirements exposes material Loom friction. Put any reusable evidence-backed candidate in `docs/loom/pilot-feedback.md`. A clean phase needs no feedback note.
 
 ---
 

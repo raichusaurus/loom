@@ -1,6 +1,6 @@
 # Phase 1: Discovery
 
-**Objective:** Understand the problem space, users, constraints, validation needs, and first useful direction before committing to requirements or architecture.
+**Objective:** Understand the problem space, users, current-state evidence, constraints, validation needs, and first useful direction before committing to requirements or architecture.
 
 ---
 
@@ -10,7 +10,7 @@ Discovery is about **learning before committing**. It clarifies the problem, cur
 
 This phase can name a likely solution shape, but it should not lock in requirements or technical design too early. Use "working shape" to capture the current direction while keeping later phases free to refine it.
 
-**Output:** A clear problem statement, project context, user and stakeholder picture, constraints, validation strategy, key assumptions, risks, and a Requirements handoff.
+**Output:** A clear problem statement, project context, user and stakeholder picture, evidence and uncertainty inventory, constraints, validation strategy, key assumptions, risks, and a Requirements handoff.
 
 ---
 
@@ -40,6 +40,8 @@ This phase can name a likely solution shape, but it should not lock in requireme
 - Budget, team, infrastructure, and available resources
 - Existing systems, technology constraints, and scale expectations
 - Compliance, organizational policy, and dependency constraints
+- For rewrites or migrations, the current path, pain point, affected owners, and contracts, data, or behavior that may need compatibility
+- Source and confidence for any constraint that could materially change scope or design
 
 ### 5. Define Success and Validation
 - What measurable signals show the idea is working?
@@ -50,7 +52,9 @@ This phase can name a likely solution shape, but it should not lock in requireme
 ### 6. Identify Risks, Opportunities, and Process Learning
 - What could prevent success?
 - What opportunities might emerge?
-- What framework, template, or process lessons should Loom carry forward?
+- Which statements are measured or sourced facts, inferences, assumptions, unknowns, or conflicts?
+- Who will validate each material assumption or risk, by what decision point?
+- Did Loom expose material process friction worth recording? If not, add no feedback entry.
 
 ---
 
@@ -71,10 +75,10 @@ Before moving to Requirements, validate:
 - ✅ Explicit out-of-scope items are captured
 - ✅ Constraints and dependencies are explicit
 - ✅ Success metrics and validation strategy are measurable enough for Requirements
-- ✅ Assumptions, risks, and open questions have validation paths
+- ✅ Material facts, inferences, assumptions, unknowns, and conflicts are distinguished
+- ✅ Material assumptions, risks, and open questions have validation owners and decision points
 - ✅ Open questions that need user decisions include summaries, options, trade-offs, and recommendations
 - ✅ Requirements handoff summarizes the inputs the next phase should pull forward
-- ✅ Loom process feedback is captured or explicitly marked not applicable
 - ✅ Phase gate separates agent recommendation from owner approval
 
 ---
@@ -86,7 +90,12 @@ Before moving to Requirements, validate:
 ❌ **Missing the first user** - "Everyone" is not a useful first operator
 ❌ **Letting nice-to-haves blur the first useful version** - Name what is out of scope early
 ❌ **Vague validation** - "Seems useful" is not enough evidence for Requirements
-❌ **Dropping process lessons** - If the project teaches you about Loom, record it while it is fresh
+❌ **Treating assumptions as facts** - Label confidence and define how consequential uncertainty will be resolved
+❌ **Turning Discovery into architecture** - Capture decision drivers without selecting topology or technology prematurely
+
+## Loom Process Feedback
+
+Record a phase-local observation only when Discovery exposed material Loom friction, a missing guardrail, a repeated workaround, or unnecessary ceremony. Put reusable candidates with evidence in `docs/loom/pilot-feedback.md`.
 
 ---
 

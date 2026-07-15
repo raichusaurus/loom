@@ -1,207 +1,195 @@
 # Planning & Decomposition Template
 
-Use this template to turn architecture into an executable plan for humans and agents.
+Use this template to turn approved architecture into owned, validation-oriented vertical slices and a complete Contracts & Tests handoff.
 
-**Project Name:** [Your project name]  
-**Date:** [Date]  
-**Planning Lead:** [Who's leading this]
+**Project Name:** [Project name]
+**Date:** [Date]
+**Planning Lead:** [Lead]
+**Loom Scope:** [Project / Service / Feature / Migration / Task]
 
----
+## Inputs and Authority
 
-## Scope
+- **Requirements artifact and approved IDs:**
+- **Architecture artifact and decision IDs:**
+- **Stable boundaries, contracts, and non-goals:**
+- **Critical risks and validation obligations:**
+- **Migration, rollback, or cleanup obligations:**
+- **Owner-authorized planning scope:**
 
-### Planning Scope
-[Project, service, feature, subproject, or task-level mini-Loom]
+Planning may adjust coordination, ownership, and sequence within this scope. Product outcome changes return to Requirements; system boundary or compatibility changes return to Architecture; schema or observable behavior changes return to Contracts & Tests.
 
-### Inputs
-- Discovery document:
-- Requirements document:
-- Architecture document:
-- Architecture planning inputs:
+## Driver-to-Work Trace
 
-### Decisions Made
-*What is settled for this planning pass? Planning should not reopen these without new evidence.*
+Use inline references for a very small change; use this table when several drivers or workstreams need coordination.
 
-- [Decision 1]
-- [Decision 2]
+| Driver ID | Architecture Treatment | Workstream / Slice | Owner | Validation Evidence | Status |
+|-----------|------------------------|--------------------|-------|---------------------|--------|
+| | | | | | |
 
-### Open Decisions
-*What still needs to be resolved during Contracts/Tests, implementation, or a future phase?*
+## Workstreams
 
-| Question Summary | Options | Trade-offs | Recommendation | Owner / Status |
-|------------------|---------|------------|----------------|----------------|
+| Workstream | Inspectable Outcome | Driver IDs | Owner | Scope / Authorized Paths | Explicit Non-Goals / Prohibited Areas | Engineering Route / Trigger |
+|------------|---------------------|------------|-------|--------------------------|--------------------------------------|-----------------------------|
+| | | | | | | System Design / TDD / Design Patterns / Clean Code / No engineering route |
+
+## Validation-Oriented Vertical Slices
+
+Start with the smallest slice that validates a risky architecture claim or delivers an inspectable outcome. Do not use slices to postpone already known contract or failure cases.
+
+| Slice | Inspectable Outcome | Driver IDs | Owner | Prerequisites / Stable Contracts | Explicit Deferred Decisions | Risk to Retire | Required Exit Evidence | Reversal / Recovery |
+|-------|---------------------|------------|-------|----------------------------------|-----------------------------|----------------|------------------------|---------------------|
+| | | | | | | | | |
+
+### Increment Sequence
+
+| Order | Slice | Can Start When | Why This Order | Parallel With |
+|-------|-------|----------------|----------------|---------------|
 | | | | | |
 
-### Architecture Handoff Summary
-*Pull this from the Architecture document before decomposing work.*
-
-- **Components / modules to build:**
-- **Likely workstreams:**
-- **Critical sequencing constraints:**
-- **Parallelization opportunities:**
-- **Contracts, schemas, or interfaces needing tests:**
-- **Service/module boundaries to preserve:**
-- **Highest-risk areas to isolate early:**
-- **Decisions Planning must not reopen without new evidence:**
-
----
-
-## Work Breakdown
-
-### Workstreams
-| Workstream | Purpose | Owner | Scope | Notes |
-|------------|---------|-------|-------|-------|
-| | | | | |
-
-### Implementation Slices
-| Slice | Outcome | Depends On | Priority |
-|-------|---------|------------|----------|
-| | | | |
-
----
-
-## Ownership Boundaries
+## Ownership and Traceability
 
 ### Ownership Map
-| Owner | Docs Path | Source Path | Test Path | Responsibilities | Out of Scope |
-|-------|-----------|-------------|-----------|------------------|--------------|
-| | `docs/loom/system/.../PROGRESS.md` | `src/...` | `tests/...` | | |
 
-### Mirrored Tree Plan
-*Use the intended Architecture module map to align Loom progress docs, source files, and tests before implementation starts.*
+Source and test paths must be traceable to stable scopes but do not need identical hierarchies. Exact private paths can remain `TBD`.
 
-| Scope | Type | Parent | Progress Doc Path | Intended Source Path | Intended Test Path |
-|-------|------|--------|-------------------|----------------------|--------------------|
-| | System Component / Subcomponent / Unit | | `docs/loom/system/.../PROGRESS.md` | | |
+| Owner | Progress Scope | Docs / Decision Scope | Source Area | Stable Test Boundary | Responsibilities | Shared Areas / Coordination Rule |
+|-------|----------------|-----------------------|-------------|----------------------|------------------|----------------------------------|
+| | Child ledger or Parent row | | Known / TBD | Known / TBD | | |
 
-### Shared Areas
-| Shared Area | Owners | Coordination Rule |
-|-------------|--------|-------------------|
-| | | |
+### Progress Scope Decisions
 
-### Boundary / Contract Alignment
-*Which architecture boundaries, dependency rules, or component contracts must the plan preserve?*
+Create a child ledger when a scope has independent ownership, contracts, blockers, scoring evidence, or a review path. Keep smaller units as rows in the nearest parent.
 
-- **Source architecture sections:**
-- **Dependency rules:**
-- **Interfaces / schemas / commands to keep stable:**
-- **Architecture updates required before changing:**
+| Scope | Parent | Child Ledger? | Reason | Source / Test Evidence |
+|-------|--------|---------------|--------|------------------------|
+| | | Yes / Parent row | | Known / TBD |
 
----
+## Dependencies and Critical Path
 
-## Dependencies & Sequencing
+Distinguish a real blocker from convenient sequencing.
 
-### Dependency Graph
-[Diagram or list the dependency order]
-
-### Critical Path
-[What must happen first, and what blocks delivery?]
-
-### Parallel Work
-| Workstream | Can Start When | Integration Point |
-|------------|----------------|-------------------|
-| | | |
-
----
+| Upstream Scope | Downstream Scope | Blocking Artifact / Decision / Dependency | Owner | Unlock Condition | Due or Decision Point | Critical? |
+|----------------|------------------|-------------------------------------------|-------|------------------|-----------------------|-----------|
+| | | | | | | Yes / No |
 
 ## Agent Context Packets
 
-### Context Packet: [Workstream Name]
-- **Owner:** [Agent/person]
-- **Goal:** [What this workstream must accomplish]
-- **Relevant requirements:** [Links or references]
-- **Relevant architecture decisions:** [Links or references]
-- **Owned progress docs:** [docs/loom/system/... paths]
-- **Owned source paths:** [src/... paths]
-- **Owned test paths:** [tests/... paths]
-- **Contracts to preserve:** [APIs, schemas, events, interfaces]
-- **Risks and assumptions:** [Known concerns]
-- **Expected output:** [Patch, design, test plan, report, etc.]
-- **Handoff notes required:** [What must be reported when done]
+### Context Packet: [Workstream]
 
-*[Duplicate for each workstream]*
+- **Owner / agent:**
+- **Planned future work mode:** [Design / Tests only / Implement / Refactor / Review]
+- **Currently authorized actions:** [Planning artifacts only / Schema-contract-tests only / Other explicit authority]
+- **Implementation activation condition:** [Named Phase 5 scope passes its gate and the owner approves implementation]
+- **Goal and inspectable outcome:**
+- **Driver and acceptance IDs:**
+- **Architecture decisions and boundaries:**
+- **Coherent change scope:**
+- **Explicit non-goals and prohibited paths:**
+- **Owned progress, source, and test areas:**
+- **Schemas, contracts, and compatibility to preserve:**
+- **Engineering lead and overlays:**
+- **Route trigger and required evidence:**
+- **Dependencies and integration checkpoint:**
+- **Risks, assumptions, and validation threshold:**
+- **Stop and escalate when:** [Requirement / boundary / schema / contract / security / irreversible-change discovery]
+- **Expected output and exact validation:**
+- **Required handoff:**
 
----
+Duplicate only for independently owned workstreams.
+
+## Contracts & Tests Handoff
+
+Each row declares a coherent gate scope. Include all currently known behavior and consequential failure cases; do not send only the happy path.
+
+| Gate Scope | Mode | Driver / Acceptance IDs | Observable Outcome | Applicable Schema / Compatibility | Known Contract Clauses and Failures | Explicit Non-Goals | Owner | Harness Need |
+|------------|------|-------------------------|--------------------|-----------------------------------|-------------------------------------|--------------------|-------|--------------|
+| | New / Changed / Refactor | | | | | | | |
+
+### Integration Evidence Candidates
+
+| Boundary / Workflow | Driver or Contract IDs | Scenario | Expected Observable Evidence | Owner |
+|---------------------|------------------------|----------|------------------------------|-------|
+| | | | | |
 
 ## Integration Plan
 
-### Checkpoints
-| Checkpoint | Purpose | Required Evidence | Owner |
-|------------|---------|-------------------|-------|
-| | | | |
+| Checkpoint | Participating Scopes | Purpose | Required Evidence | Owner | Stop / Escalation Trigger |
+|------------|----------------------|---------|-------------------|-------|---------------------------|
+| | | | | | |
 
-### Conflict Resolution
-[How do we handle overlapping edits, contract changes, or design deviations?]
+### Conflict and Deviation Handling
 
-### Escalation Path
-[When should an agent stop and ask for direction?]
+- **Overlapping edits:**
+- **Planning-only sequence or ownership deviation:**
+- **Requirement-changing discovery:** Return to Requirements.
+- **Boundary, compatibility, or migration discovery:** Return to Architecture.
+- **Schema, contract, or supported-scenario discovery:** Return to Contracts & Tests and reset its gate.
 
-### Contract / Test Candidates
-*Carry these into Contracts & Tests. Include behavior that should become fixtures, contract tests, smoke tests, schema checks, command contracts, or API expectations.*
+## Risk Validation
 
-| Candidate | Source | Why it matters | Suggested test shape |
-|-----------|--------|----------------|----------------------|
-| | | | |
+Run the cheapest credible validation before an irreversible or expensive commitment.
 
----
+| Risk / Assumption | Driver IDs | Validation Method | Owner | Acceptance / Progression Threshold | Reversal / Escalation Threshold | Decision Point |
+|-------------------|------------|-------------------|-------|------------------------------------|---------------------------------|----------------|
+| | | | | | | |
 
-## Delivery Plan
+## Migration and Rollout Work
 
-### Milestones
-| Milestone | Outcome | Workstreams Included | Exit Criteria |
-|-----------|---------|----------------------|---------------|
-| | | | |
+*Conditional. Pull from Architecture; delete when not applicable.*
 
-### Initial Sequential Plan
-[For first implementation, what is the safest waterfall-style order?]
+| Increment | Owner | Compatibility / Mixed-Version Work | Verification / Reconciliation | Progression Threshold | Abort / Recovery | Temporary-Path Cleanup |
+|-----------|-------|------------------------------------|-------------------------------|-----------------------|------------------|------------------------|
+| | | | | | | |
 
-### Later Agile Cycles
-[After the foundation exists, what smaller loops should continue iteratively?]
+## Milestones
 
----
+| Milestone | Inspectable Outcome | Slices | Driver IDs | Exit Evidence | Owner |
+|-----------|---------------------|--------|------------|---------------|-------|
+| | | | | | |
 
-## Update Policy
+## Decision and Change Log
 
-*Use Planning as the implementation coordination map. Update this document when architecture decisions change, workstream ownership changes, contract boundaries move, or real implementation findings force a better slice order.*
+| Date | Decision / Change | Source Driver or Evidence | Choice | Owner | Affected Artifacts | Upstream Approval Needed? |
+|------|-------------------|---------------------------|--------|-------|--------------------|---------------------------|
+| | | | | | | |
 
----
+## Open Decisions
 
-## Phase Decisions
+Only material blockers should halt work.
 
-*Keep decisions that shaped planning close to this artifact, even when they are also summarized in the root progress ledger.*
+| Question | Options | Tradeoffs | Recommendation | Decision Owner | Decide By / Trigger | Blocks |
+|----------|---------|-----------|----------------|----------------|---------------------|--------|
+| | | | | | | |
 
-| Decision | Choice | Rationale | Owner |
-|----------|--------|-----------|-------|
-| | | | |
+## Next-Phase Handoff
 
-## Next Phase Handoff
+Preparing this handoff does not close the phase gate or authorize behavior-bearing implementation.
 
-*If approved, summarize what Contracts & Tests should use next. Preparing this handoff does not close the phase gate or start Contracts & Tests by itself.*
-
-- **Decisions:**
-- **Inputs:**
-- **Open risks:**
-- **Non-goals:**
-- **Validation signals:**
+- **Approved change scopes and non-goals:**
+- **Driver and acceptance trace:**
+- **Owners and context packets:**
+- **Dependency and integration checkpoints:**
+- **Schema, contract, behavior, and failure candidates:**
+- **Risk-validation and migration obligations:**
+- **Open decisions that Phase 5 must not infer:**
 
 ## Loom Process Feedback
 
-*If this phase exposed reusable Loom lessons, capture them here or link to `docs/loom/pilot-feedback.md`. Keep process feedback separate from product scope.*
+*Optional. Record only a phase-local observation. Put any evidence-backed reusable candidate in `docs/loom/pilot-feedback.md`; delete this section for a clean phase.*
 
-| Observation | Suggested Template/Guide Improvement | Project-Specific? |
-|-------------|--------------------------------------|-------------------|
-| | | Yes / No |
-
----
+| Observation | Evidence / Impact | Pilot Feedback Reference, if Reusable |
+|-------------|-------------------|---------------------------------------|
+| | | `docs/loom/pilot-feedback.md#...` |
 
 ## Phase Gate
 
+- **Every material driver has treatment, owner, slice, and validation:** [ ] Yes [ ] No
+- **Each gate scope has known behavior, failures, schema, and non-goals:** [ ] Yes [ ] No
+- **Ownership, authority, dependencies, and integration are actionable:** [ ] Yes [ ] No
+- **Conditional migration and risk validation are owned:** [ ] Yes [ ] No [ ] Not applicable
 - **Agent recommendation:** [ ] Ready [ ] Not ready
 - **Owner decision:** [ ] Approved [ ] Needs revision [ ] Deferred
 - **Decision date:** TBD
-- **Loom feedback captured:** [ ] Not applicable [ ] In this phase artifact [ ] In `docs/loom/pilot-feedback.md`
 - **Remaining concerns:** TBD
 
----
-
-*Save this document in your project repo. Use it to brief agents and coordinate implementation.*
+Owner approval authorizes Contracts & Tests, not behavior-bearing implementation.

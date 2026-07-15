@@ -1,61 +1,75 @@
-# Pilot Feedback Template
+# Loom Pilot Feedback Template
 
-Use this template when a project is also piloting Loom itself. Keep it close to the project docs as `docs/loom/pilot-feedback.md` so framework lessons stay separate from delivery status.
+Use this optional artifact as `docs/loom/pilot-feedback.md` when project work exposes material, reusable Loom or engineering-routing feedback. A clean run needs no entry.
 
-**Project Name:** [Your project name]  
-**Date:** [Date]  
-**Pilot Lead:** [Who's collecting feedback]
+Ordinary project authority permits recording a candidate, not editing shared Loom, router, or specialist protocols. Promote a candidate only after one high-severity failure or near miss, or the same ordinary problem across two or three tasks, and only through explicitly authorized maintenance.
 
----
+**Project Name:** [Project name]
+**Date:** [Date]
+**Pilot Lead:** [Lead]
 
 ## Pilot Snapshot
 
-| Area | Current Signal | Notes |
-|------|----------------|-------|
-| Orchestration | Working / Mixed / Friction | |
-| Phase Templates | Working / Mixed / Friction | |
-| Recursive Progress | Working / Mixed / Friction | |
-| Agent Handoffs | Working / Mixed / Friction | |
-| Review / Retrospective | Working / Mixed / Friction | |
+| Area | Current Signal | Evidence / Notes |
+|------|----------------|------------------|
+| Orchestration and phase gates | Working / Mixed / Friction | |
+| Phase templates | Working / Mixed / Friction | |
+| Engineering routing | Working / Mixed / Friction | |
+| TDD gate and evidence | Working / Mixed / Friction | |
+| Architecture and pattern decisions | Working / Mixed / Friction | |
+| Implementation clarity and validation | Working / Mixed / Friction | |
+| Progress traceability | Working / Mixed / Friction | |
 
-## What Worked
+## Evidence-Backed Observations
 
-| Practice / Template | Evidence | Keep / Expand |
-|---------------------|----------|---------------|
-| | | |
+Record only a missed or excessive trigger, ambiguous or conflicting instruction, user correction, repeated workaround, false claim, missing guardrail, validation failure, or ceremony whose cost exceeded its risk.
 
-## Friction
+| Observation ID | Signal Type | Raw Task / Artifact / Diff / Output | What Happened | Expected Observable Behavior | Impact | Severity | Occurrence Count |
+|----------------|-------------|-------------------------------------|---------------|------------------------------|--------|----------|------------------|
+| PF-001 | Trigger / Conflict / Correction / Workaround / False claim / Missing guardrail / Validation failure / Excess ceremony | | | | | Low / Medium / High / Critical | |
 
-| Friction | Where It Appeared | Impact | Suggested Change |
-|----------|-------------------|--------|------------------|
-| | | | |
+## Cause Classification
 
-## Template Improvements
+Place a proposed rule in one authoritative source.
 
-| Template / Doc | Proposed Change | Reason | Status |
-|----------------|-----------------|--------|--------|
-| | | | Proposed / Accepted / Deferred |
+| Observation ID | Likely Cause | Evidence for Classification | Authoritative Target | Generalizes Beyond This Project? | Contradicts a Harder Gate? |
+|----------------|--------------|-----------------------------|----------------------|----------------------------------|---------------------------|
+| PF-001 | Skill metadata / Software-engineering router / One specialist / Loom framework / Repository convention / Reference or script / Task, tool, or environment | | | Yes / No / Unknown | Yes / No |
 
-## Orchestrator Improvements
+## Candidate Improvements
 
-| Behavior | What Happened | Preferred Behavior | Follow-up |
-|----------|---------------|--------------------|-----------|
-| | | | |
+| Candidate | Observation IDs | Smallest Observable Change | Why It Earns Context Cost | Status | Maintenance Owner / Authority |
+|-----------|-----------------|----------------------------|---------------------------|--------|-------------------------------|
+| | | | | Proposed / Needs more evidence / Authorized / Rejected / Deferred | |
 
-## Progress Scoring Lessons
+## Regression Scenarios
 
-| Scope / Phase | Scoring Ambiguity | Decision | Carry Forward? |
-|---------------|-------------------|----------|----------------|
-| | | | Yes / No |
+Define scenarios before editing an authorized framework or protocol.
 
-## Gate Authority Lessons
+| Candidate | Scenario | Should Trigger / Route | Should Not Trigger / Prohibited Behavior | Expected Ordering or Evidence |
+|-----------|----------|------------------------|------------------------------------------|-------------------------------|
+| | Direct specialist invocation | | | |
+| | Mixed-discipline task | | | |
+| | Near-miss negative case | | | |
 
-| Phase | Agent Recommendation | Owner Decision | Lesson |
-|-------|----------------------|----------------|--------|
-| | Ready / Not ready / TBD | Approved / Needs revision / Deferred / TBD | |
+## Maintenance Validation
 
-## Carry-Forward Actions
+| Candidate | Baseline Evidence | Revision / Diff | Structure Check | Fresh-Agent Forward Test | Remaining Contradiction or Duplication |
+|-----------|-------------------|-----------------|-----------------|--------------------------|----------------------------------------|
+| | | | | | |
 
-| Action | Target Repo / Doc | Owner | Status |
-|--------|-------------------|-------|--------|
-| | | | |
+## Canary
+
+Canary an accepted revision across five to ten applicable tasks or one Loom cycle.
+
+| Candidate | Task / Cycle | Routing Accuracy | User Corrections | Rework | Validation Completeness | Effort / Ceremony | Outcome |
+|-----------|--------------|------------------|------------------|--------|-------------------------|-------------------|---------|
+| | | | | | | | |
+
+## Keep, Revise, or Prune
+
+| Candidate | Canary Summary | Decision | Reason | Follow-Up |
+|-----------|----------------|----------|--------|-----------|
+| | | Keep / Revise / Merge / Weaken / Remove | | |
+
+Do not weaken authorization, contract preservation, safety, or an active TDD gate merely to reduce ceremony.

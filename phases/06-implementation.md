@@ -2,121 +2,139 @@
 
 ## Purpose
 
-Now you build. Implementation is taking the architecture, decomposition plan, and contracts, then writing the actual code that fulfills requirements and passes tests.
+Implementation answers: **What is the smallest verified code change that satisfies the locked contract clearly and safely?**
 
-This phase focuses on:
-- Writing clean, testable code
-- Following established contracts
-- Respecting ownership boundaries
-- Bootstrapping local and CI/check automation when the scaffold can run it
-- Maintaining code quality
-- Keeping tests passing
-- Keeping progress docs, source paths, and test paths aligned as real implementation shape emerges
-- Documentation and comments
+Loom owns implementation scope, coordination, progress, deviations, the phase gate, and handoff. The local `software-engineering` router composes the technical work: TDD controls sequencing, Clean Code is the baseline for touched code, Design Patterns applies only to demonstrated source-level pressure, and System Design re-enters when a finding crosses a system boundary.
 
-## Key Questions
+## Entry Gate
 
-The Implementation Agent will help you navigate:
+Do not change behavior-bearing implementation for a scope until its Contracts & Tests handoff provides one of two explicit entry paths.
 
-### Code Organization
-- How should code be organized?
-- What naming conventions?
-- How do we keep it maintainable?
-- Where does each piece belong?
-- How do we avoid crossing another workstream's ownership boundary without coordination?
-- Does the implemented source/test layout still match the mirrored progress tree?
+The normal TDD path provides:
 
-### Quality Standards
-- How do we write good code?
-- What code review looks like?
-- What makes code "done"?
-- How do we catch bugs?
+- Owner-approved coherent scope and explicit non-goals
+- Applicable schema and compatibility rules
+- Observable contract and clause-to-test trace
+- All currently known executable tests
+- Meaningful red for new or changed behavior, or a green characterization baseline for a refactor
+- Exact focused command and observed result
+- Any baseline failure that must remain distinguished
 
-### Testing During Development
-- Writing unit tests as you go?
-- Integration tests for new features?
-- How do you verify contracts?
-- What's the development workflow?
-- Which checks from Contracts & Tests can now be automated?
-- Which live or external checks must stay opt-in?
+The exception path provides:
 
-### Problem-Solving
-- How do we handle unexpected complexity?
-- When do we deviate from design?
-- How do we communicate changes?
-- When do we update documentation?
-- When does a subproject or service need its own mini-Loom cycle?
+- Explicit owner-approved scope, non-goals, and observable contract
+- Applicable schema and compatibility rules
+- The non-TDD bypass reason and exactly which normal test or pre-state evidence is missing
+- Available reduced evidence and checks
+- Follow-up, owner, and decision point for closing the evidence gap
 
-### Performance & Optimization
-- Are there performance concerns?
-- When do we optimize?
-- How do we measure impact?
-- What's premature optimization vs. necessary?
+Do not describe that work as TDD.
+
+Within work claimed as TDD, behavior-free scaffolding is the only pre-red exception. Under either path, an unresolved decision that implementation would necessarily settle keeps the gate closed.
+
+## Implementation Loop
+
+The red-green-refactor evidence below applies to standard TDD scopes. For an approved non-TDD scope, make the same narrow contract-backed change, run and record the exception's reduced checks, keep missing evidence visible, and do not manufacture or claim red-green provenance.
+
+### 1. Confirm the Slice
+
+Choose the highest-risk coherent contract-backed slice that can produce useful feedback. Identify the locked contract clauses it satisfies and the deferred decisions it must not encode.
+
+Scope-level gating precedes slicing: a standard TDD increment cannot postpone an already known boundary or failure test, and an exception scope must keep every missing known case explicit in its approved evidence gap.
+
+### 2. Make the Minimum Change
+
+Write only the production behavior required to satisfy the locked clauses. Keep behavior changes distinguishable from mechanical movement, avoid unrelated cleanup, and do not add speculative configuration, extension points, abstractions, or cases.
+
+For a standard TDD scope, run the focused tests after each meaningful increment. For a non-TDD exception, run the recorded reduced check. Do not weaken assertions, over-mock the subject, or change the contract merely to make the code pass.
+
+### 3. Prove Green and Refactor
+
+For a standard TDD scope, record the focused green result, then refactor names, duplication, boundaries, and structure only while the applicable tests remain green. For a non-TDD exception, record the reduced-check result and do not perform behavior-preserving structural refactoring without either a characterization baseline or a separately approved evidence exception. Re-run applicable checks after each meaningful refactor and broader checks in proportion to risk.
+
+### 4. Reset the Gate When Scope Changes
+
+If implementation discovers a new supported behavior, edge case, schema change, contract clause, failure rule, or cross-boundary decision:
+
+1. Stop behavior-bearing implementation for the affected scope.
+2. Return to the phase that owns the changed requirement or architecture decision when necessary.
+3. Revise schema and contract in Contracts & Tests.
+4. For the standard TDD path, update all currently known executable tests and record the new meaningful red or appropriate characterization baseline. For a non-TDD path, obtain a new explicit exception for the expanded scope and record the changed gaps and reduced checks; the prior exception does not silently expand.
+5. Obtain required approval and resume only when the gate is open again.
+
+A change in task order or private implementation detail may remain a Planning or Implementation deviation. A changed observable contract is not merely a deviation.
+
+## Design Pressure and Patterns
+
+Prefer direct, idiomatic code. Before adding a named pattern or new abstraction, identify:
+
+- The concrete present pressure and realistic supported change scenario
+- The stable contract and actual axis of variation
+- The current/local solution, an existing language or framework mechanism, and the named-pattern option
+- The concepts, files, runtime paths, lifecycle, concurrency, migration, and debugging cost added
+- Why the chosen collaboration removes more relevant reasoning burden than it introduces
+- Domain-named participants, ownership, effects, failure behavior, and a revisit or removal trigger
+
+Pattern analysis may occur after the pressure and stable contract are known, but behavior-bearing participants wait for the applicable Implementation entry gate. Validate the design claim: a representative supported change should be localized where intended, and callers should not need pattern-specific knowledge. Remove ceremonial participants and speculative extension points.
+
+## Final Clarity Pass
+
+Read the touched code as a future maintainer would while the applicable TDD tests are green or the approved exception's reduced checks pass:
+
+- Names and vocabulary communicate domain intent consistently.
+- Routines and modules are cohesive and stay at understandable abstraction levels.
+- State ownership, effects, validation, errors, retries, timeouts, cancellation, and cleanup are visible where relevant.
+- Nesting, duplication, coupling, and comments represent real knowledge rather than cosmetic rules.
+- Public contracts, serialized shapes, persistence, configuration, events, and machine-consumed errors did not drift accidentally.
+- Dead code, debug output, stale comments, unused abstractions, secrets, generated noise, and unrelated churn are absent.
+
+This is one proportionate engineering pass, not a demand for broad cleanup.
+
+## Integrated Validation and Handoff
+
+Record one evidence set for Implementation and Review:
+
+- Schema and contract established
+- Meaningful-red or characterization-baseline command and result, or the approved non-TDD exception and reduced checks
+- Per-slice focused green commands and results for TDD scopes, or per-slice reduced-check results for exception scopes
+- Applicable schema, contract, unit, integration, end-to-end, type, format, lint, build, migration, security, and manual checks with exact results
+- Pattern design-claim evidence when a pattern or abstraction was introduced
+- Final clarity and diff-inspection result
+- Gate resets, approved deviations, remaining risk, and anything unverified
+
+Run focused checks first, then broaden in proportion to contract surface and risk. Coverage percentages are supporting signals only; contract and behavioral evidence determine confidence.
 
 ## Outputs
 
-By the end of Implementation, you'll have:
+- Working implementation for the approved scope
+- Per-slice contract and non-goal evidence, plus pre-state, green, and refactor evidence for TDD scopes or reduced-check evidence for approved exception scopes
+- Updated local and CI/check automation where the scaffold now supports meaningful checks
+- Evidence-backed pattern or no-pattern decisions when relevant
+- Final clarity and diff inspection
+- Traceable progress, gate-reset, deviation, integration, and maintenance notes
+- A self-contained Review & Retrospective handoff
 
-✅ **Working Code** - Features implemented per requirements
-✅ **Passing Tests** - All tests passing, coverage targets met
-✅ **Executable Checks** - Local checks and CI/check automation bootstrapped when meaningful
-✅ **Code Documentation** - Comments and docstrings where needed
-✅ **PR/Commit History** - Clear history of changes
-✅ **Integration Complete** - All pieces working together
-✅ **Progress Tree Updated** - Implemented source/test paths and deviations reflected in progress docs
-✅ **Updated Handoffs** - Deviations, blockers, and integration notes captured
-✅ **Open Decision Packets** - Blockers, deviations, and implementation choices framed with options, trade-offs, and recommendations
+## When Implementation Is Ready for Owner Review
 
-## Implementation Guidelines
+- Every TDD-implemented behavior traces to an approved scope, schema, contract clause, and pre-implementation test; every non-TDD behavior traces to an explicit owner-approved bypass and reduced-evidence record.
+- Focused and proportionate broader checks pass; exact commands and results are recorded.
+- Tests were not weakened to accommodate implementation.
+- Newly discovered behavior or contract changes were regated before implementation continued.
+- Pattern or abstraction choices answer demonstrated pressure and their design claim was validated.
+- The touched code received a proportionate clarity pass while applicable TDD tests were green or approved reduced checks passed.
+- Progress and traceability reflect delivered reality without forcing private structures into child ledgers.
+- Approved deviations, remaining risks, and unverified items are explicit.
+- Integration handoffs are complete and applicable automation works or has an owner and reason for deferral.
+- The agent recommendation remains separate from owner approval.
 
-### During Development
-- **Write tests as you go** - Don't leave testing for the end
-- **Keep commits clean** - Small, focused commits are easier to review
-- **Reference requirements** - Tie code to acceptance tests
-- **Communicate changes** - If you're deviating from design, flag it
-- **Update progress paths** - If implementation changes the planned structure, update the relevant progress docs with evidence and reason
-- **Review your own code first** - Catch obvious issues before review
+## Release and Operations Follow-Up
 
-### Code Quality
-- **Follow conventions** - Use established naming and patterns
-- **Make it readable** - Code is read more than it's written
-- **Keep it simple** - Complex solutions often hide better approaches
-- **Document the why** - Comments should explain decisions, not what code does
+If implementation exposes deployment, scheduling, monitoring, runbook, release automation, or production-support needs outside the approved scope, capture a focused follow-up Loom cycle. Do not silently broaden a local-first or MVP implementation.
 
-### Testing Strategy
-- **Unit tests** - Test individual components in isolation
-- **Integration tests** - Test how components work together
-- **End-to-end tests** - Test full workflows
-- **Manual testing** - Especially for UI/UX validation
-- **Check automation** - Add CI or equivalent automation once the project has a scaffold, lockfile, and meaningful commands
+## Loom Process Feedback
 
-### Release / Operations Follow-Up
-If implementation reveals deployment, scheduling, monitoring, runbook, release automation, or production support needs, capture them as follow-up work. For many local-first or MVP projects, this can be a later mini-Loom cycle rather than a required core phase.
-
-## When Implementation is Complete
-
-You're ready to move to Review & Retrospective when:
-
-- ✅ All requirements are implemented
-- ✅ All tests are passing
-- ✅ Local checks and applicable CI/check automation are working or explicitly deferred
-- ✅ Code quality standards are met
-- ✅ Documentation is complete
-- ✅ Progress docs reflect delivered source/test paths and known deviations
-- ✅ Open questions that need user decisions include summaries, options, trade-offs, and recommendations
-- ✅ Code review is done and approved
-- ✅ Workstream handoffs and integration notes are complete
-- ✅ Loom process feedback is captured or explicitly marked not applicable
-- ✅ Phase gate separates agent recommendation from owner approval
-
-## Tips
-
-- **Start with the hardest part** - Get risky pieces done first
-- **Implement incrementally** - Smaller chunks are easier to test and review
-- **Keep refactoring in scope** - Clean code matters
-- **Don't optimize prematurely** - But don't ignore obvious inefficiencies
-- **Ask for help** - Code review should catch issues and share knowledge
+Capture only a phase-local observation about material routing friction, a mishandled gate reset, repeated workaround, false confidence, validation failure, or excessive ceremony. Put any reusable evidence-backed candidate in `docs/loom/pilot-feedback.md`. A clean phase needs no feedback note.
 
 ---
 
-**Next**: Move to [Review & Retrospective](./07-review-retrospective.md) once Implementation is complete and the owner approves the gate.
+Move to [Review & Retrospective](./07-review-retrospective.md) after the owner approves the Implementation gate.

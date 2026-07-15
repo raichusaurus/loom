@@ -1,53 +1,42 @@
 # Loom
 
-A step-by-step workflow framework and orchestration system for building projects with clear separation of responsibilities between agents.
+Loom is a seven-phase workflow for turning a project idea or scoped software change into traceable decisions, executable evidence, verified implementation, and reusable learning.
 
-## Overview
+The first pass establishes a stable foundation before heavy parallelism. Later passes can be smaller, faster Loom cycles around a feature, service, migration, or task while preserving the gates that still apply.
 
-Loom is a structured methodology for project development that guides you through each phase with dedicated agents handling specific responsibilities. The framework ensures consistency, clarity, and quality across all projects.
+## The Seven Phases
 
-## The Loom Framework
+1. **[Discovery](./phases/01-discovery.md)** — Understand the problem, users, current state, constraints, assumptions, and evidence needed to proceed.
+2. **[Requirements](./phases/02-requirements.md)** — Define scoped observable outcomes, ranked quality attributes, acceptance criteria, and non-goals.
+3. **[Architecture](./phases/03-architecture.md)** — Establish system boundaries, ownership, critical contracts, tradeoffs, failure behavior, and evolution decisions.
+4. **[Planning & Decomposition](./phases/04-planning-decomposition.md)** — Create owned vertical slices, dependencies, context packets, and integration checkpoints.
+5. **[Contracts & Tests](./phases/05-contracts-tests.md)** — Establish each change scope's schema, observable contract, all currently known executable tests, and meaningful pre-implementation evidence.
+6. **[Implementation](./phases/06-implementation.md)** — Make the smallest contract-backed changes, prove green, and improve clarity without crossing active gates.
+7. **[Review & Retrospective](./phases/07-review-retrospective.md)** — Evaluate outcomes and engineering evidence, prioritize findings, and shape the next cycle.
 
-The framework consists of **7 core phases**:
+Agents may draft artifacts, run authorized checks, prepare handoffs, update evidence-based progress, and recommend readiness. The project owner approves, revises, or defers each phase gate.
 
-1. **[Discovery](./phases/01-discovery.md)** - Explore the problem space, gather context, identify stakeholders and constraints
-2. **[Requirements](./phases/02-requirements.md)** - Define what needs to be built, success criteria, and scope boundaries
-3. **[Architecture](./phases/03-architecture.md)** - Design the system structure, data flow, and technical approach
-4. **[Planning & Decomposition](./phases/04-planning-decomposition.md)** - Break the work into owned streams, context packets, dependencies, and integration checkpoints
-5. **[Contracts & Tests](./phases/05-contracts-tests.md)** - Define interfaces, test strategy, fixtures, and verification handoffs
-6. **[Implementation](./phases/06-implementation.md)** - Build the actual services and features
-7. **[Review & Retrospective](./phases/07-review-retrospective.md)** - Evaluate the outcome, document learnings, and plan improvements
+## Engineering Skills Inside Loom
 
-The first Loom pass is usually more waterfall-style, especially for a new project: establish the shared foundation before parallelizing heavily. Once the foundation exists, Loom becomes more agile and recursive: services, features, and subprojects can run smaller Loom cycles inside the larger project cycle.
+Loom owns the project lifecycle. When the local `software-engineering` skill is available, it routes technical decisions inside the active phase:
 
-Phase gates have explicit authority boundaries. Agents may draft artifacts, update progress, prepare handoffs, and recommend readiness; the project owner approves, revises, or defers the gate before the next phase begins.
+- **System Design** leads cross-component boundaries, data ownership, external contracts, quality attributes, failure behavior, operations, and migration.
+- **TDD** controls schema-first, contract-first, test-first implementation sequencing. Loom activates this route by default for behavior-bearing software work.
+- **Design Patterns** addresses demonstrated source-level collaboration pressure after stable boundaries and contracts are known.
+- **Clean Code** is the baseline for authorized code changes and the final clarity pass.
 
-## Feedback Home
+The router selects one lead and only necessary overlays. It is not an additional Loom phase, does not broaden authorization, and does not approve gates. See [FRAMEWORK.md](./FRAMEWORK.md) for the composition and reopening rules.
 
-Every phase should ask whether Loom itself created friction, clarity, or reusable process lessons before the phase gate closes. Capture small phase-local notes in the phase artifact's `Loom Process Feedback` section. When the project is piloting Loom or producing reusable framework lessons, copy [templates/pilot-feedback-template.md](./templates/pilot-feedback-template.md) to `docs/loom/pilot-feedback.md` and use that as the durable feedback home.
+## Repository Structure
 
-## The Orchestration Agent
+This repository contains reusable framework guidance and templates:
 
-The **Orchestrator** is your guide throughout the Loom process. It works directly with you to:
-
-- Walk you through each phase sequentially
-- Answer questions and provide guidance
-- Kick off specialized agents for specific phases
-- Track progress and maintain context
-- Facilitate transitions between phases
-
-See [ORCHESTRATOR.md](./ORCHESTRATOR.md) for detailed information.
-
-## Project Structure
-
-The framework repo keeps the reusable phase guidance at the top level:
-
-```
+```text
 loom/
-├── README.md (this file)
-├── FRAMEWORK.md (framework philosophy and principles)
-├── ORCHESTRATOR.md (orchestration agent documentation)
-├── PROGRESS.md (recursive project progress ledger)
+├── README.md
+├── FRAMEWORK.md
+├── ORCHESTRATOR.md
+├── PROGRESS.md
 ├── phases/
 │   ├── 01-discovery.md
 │   ├── 02-requirements.md
@@ -56,15 +45,6 @@ loom/
 │   ├── 05-contracts-tests.md
 │   ├── 06-implementation.md
 │   └── 07-review-retrospective.md
-├── agents/
-│   ├── orchestrator/ (main orchestration agent)
-│   ├── discovery/ (discovery phase specialist)
-│   ├── requirements/ (requirements phase specialist)
-│   ├── architecture/ (architecture phase specialist)
-│   ├── planning/ (planning & decomposition specialist)
-│   ├── contracts-tests/ (contracts and testing specialist)
-│   ├── implementation/ (implementation phase specialist)
-│   └── review/ (review & retrospective specialist)
 └── templates/
     ├── discovery-template.md
     ├── requirements-template.md
@@ -77,13 +57,17 @@ loom/
     └── retrospective-template.md
 ```
 
-Projects using Loom should keep their project-specific Loom artifacts under `docs/loom/`:
+Phase-specific agents are roles coordinated by the Orchestrator; this repository does not currently ship separate `agents/` definitions.
+
+## Project Artifact Layout
+
+Projects using Loom should keep their project-specific artifacts under `docs/loom/`:
 
 ```text
 docs/loom/
-├── README.md (project Loom index)
-├── PROGRESS.md (project progress cockpit and rollup)
-├── pilot-feedback.md (optional, for projects piloting Loom itself)
+├── README.md
+├── PROGRESS.md
+├── pilot-feedback.md                 # optional; only for material Loom feedback
 ├── phases/
 │   ├── 01-discovery/
 │   │   ├── README.md
@@ -107,42 +91,46 @@ docs/loom/
 │       ├── README.md
 │       └── PROGRESS.md
 └── system/
-    └── [architecture-component]/
-        ├── PROGRESS.md
-        └── [owned-unit-or-subcomponent]/
-            └── PROGRESS.md
+    └── [independently-tracked-component]/
+        └── PROGRESS.md
 ```
 
-The `system/` tree should follow the major components named by Architecture, then nest lower-level progress ledgers only where a unit has its own owner, blockers, scoring evidence, or review path.
+The `system/` tree follows stable architecture or delivery scopes, not every private class or test helper. A child ledger earns its file when it has independent ownership, contracts, blockers, scoring evidence, or a review path. Keep smaller units as evidence rows in the nearest parent.
 
-Use [templates/progress-ledger-template.md](./templates/progress-ledger-template.md) for both the root progress cockpit and child progress ledgers. Use [templates/pilot-feedback-template.md](./templates/pilot-feedback-template.md) when a project is also producing reusable Loom process lessons.
-
-Phase artifacts should keep local decision logs and next-phase handoffs near the work they shape. The root progress ledger can summarize those decisions, but it should not be the only place a phase-level choice lives.
+Source paths, test paths, and Loom scopes must be traceable, but they do not need identical hierarchies. Tests should live at the highest stable boundary that proves the behavior, with narrower tests added when they improve design or diagnosis.
 
 ## How to Use Loom
 
-### For a New Project
+### New Project
 
-1. **Start the Orchestrator** - Tell the orchestration agent you're starting a new project
-2. **Follow the phases** - Move through each phase sequentially
-3. **Specialized agents assist** - Phase-specific agents provide deeper guidance and expertise
-4. **Documents are created** - Templates and outputs are generated as you progress
-5. **Complete the cycle** - Finish with review and retrospective
+1. Tell the [Orchestrator](./ORCHESTRATOR.md) the desired outcome and known constraints.
+2. Work through the first applicable phase and fill only the template sections that improve the decision.
+3. At each transition, verify the phase artifact, applicable engineering evidence, remaining risks, and owner decision separately.
+4. If later evidence changes a requirement, boundary, schema, or contract, reopen the phase that owns it and refresh dependent handoffs.
+5. Finish with Review & Retrospective, even when the next result is another scoped Loom cycle.
 
-Use [PROGRESS.md](./PROGRESS.md) to track percent complete across the whole project and recursively through phases, architecture components, owned subcomponents, classes, or other smallest owned units. When recursive progress is requested, the root progress ledger links to child `PROGRESS.md` files at each useful drilldown level, and discovered scopes are populated by default instead of requiring one prompt per zoom level.
+### Existing Project or Small Change
 
-### For Existing Projects
+Enter at the phase that owns the current uncertainty. Inspect inherited requirements, architecture, contracts, tests, and implementation evidence first. Several phase responsibilities may share one artifact or session, but applicable hard gates still hold.
 
-You can jump into any phase in the framework if your project is already underway. The Orchestrator will help you catch up.
+### Progress
 
-## Key Principles
+Use [PROGRESS.md](./PROGRESS.md) for scoring and recursive traceability. The root ledger is the project cockpit. Add phase and child ledgers in proportion to independent ownership and evidence; use `Unknown` or `TBD` rather than inventing implementation structure early.
 
-- **Clear Separation of Concerns** - Each phase has distinct responsibilities
-- **Guided Progress** - The Orchestrator keeps you moving forward
-- **Documentation First** - Decisions and reasoning are captured at each stage
-- **Testability** - Contracts and tests are defined before implementation
-- **Continuous Improvement** - Retrospectives inform future projects
+### Process Feedback
+
+Record feedback only when Loom creates material clarity or friction worth preserving. Keep a phase-local observation near the affected artifact. Put a reusable, evidence-backed candidate in `docs/loom/pilot-feedback.md` using [templates/pilot-feedback-template.md](./templates/pilot-feedback-template.md). A clean phase needs no feedback entry.
+
+## Core Invariants
+
+- Consequential decisions trace to requirements, constraints, evidence, or risk.
+- By default, behavior-bearing implementation follows scope → schema → contract → all currently known executable tests → meaningful red → green → refactor; an owner-approved non-TDD exception must name its reduced evidence and may not claim that provenance.
+- Behavior-preserving refactors establish a green characterization baseline instead of an artificial red state.
+- A pattern or abstraction must solve demonstrated present pressure and remove more reasoning cost than it adds.
+- Code changes preserve observable contracts unless a contract change is explicitly approved and regated.
+- Agent recommendations, artifact readiness, engineering evidence readiness, and owner approval remain distinct.
+- Artifacts and progress structure stay proportionate to the decisions and coordination they support.
 
 ---
 
-**Ready to get started?** Ask the Orchestrator to begin!
+Start by telling the Orchestrator what you want to build or change and what evidence already exists.

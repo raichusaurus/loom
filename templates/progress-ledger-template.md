@@ -1,172 +1,155 @@
 # Loom Progress Ledger
 
-Project-specific completion ledger for [Project Name]. This root file is the project cockpit: snapshot, rollups, next score-changing actions, decisions, and open questions. Detailed evidence lives in the phase, system component, subcomponent, and unit ledgers beneath it.
+Use this file as `docs/loom/PROGRESS.md`. It is the project cockpit; detailed evidence remains in phase artifacts, schemas, contracts, tests, validation output, source, and proportionate child ledgers.
 
-Use this file as the default top-level `docs/loom/PROGRESS.md`. For recursive progress, create child phase and system ledgers from the shapes below. If a discovered scope does not need its own file, keep it in the nearest parent table and write `No child doc` with the reason.
+The sample phase links below are relative to the copied `docs/loom/PROGRESS.md`; they are intentionally not repository-local links from this template file.
 
 ## Project Snapshot
 
-**Project:** [project-slug]
+**Project:** [Project]
 **Date:** [YYYY-MM-DD]
-**Owner:** [Owner names]
-**Current Focus:** [Current phase, workstream, or score-changing push]
-**Total Complete:** [0-100%]
-**Calculation Basis:** [Equal phase weights / weighted phase scores / child rollup blend / custom basis]
-**Artifact Completeness:** [0-100% for drafted artifacts]
-**Gate Status:** [Pending owner approval / Approved / Needs revision / Deferred]
-**Phase Complete:** [0-100% including gate status]
+**Owner:** [Owner]
+**Current Focus:** [Phase, workstream, or evidence-changing push]
+**Phase Completion:** [0–100% / Unknown / TBD]
+**Child Rollup:** [0–100% / Unknown / TBD / N/A]
+**Calculation Basis:** [Weights and formula]
 
-## Top-Level Phase Completion
+## Phase Status
 
-| Phase | Complete | Weight | Evidence / Source | Notes |
-|-------|----------|--------|-------------------|-------|
-| Discovery | 0% | 1 | [Discovery Progress](phases/01-discovery/PROGRESS.md) | |
-| Requirements | 0% | 1 | [Requirements Progress](phases/02-requirements/PROGRESS.md) | |
-| Architecture | 0% | 1 | [Architecture Progress](phases/03-architecture/PROGRESS.md) | |
-| Planning & Decomposition | 0% | 1 | [Planning Progress](phases/04-planning/PROGRESS.md) | |
-| Contracts & Tests | 0% | 1 | [Contracts & Tests Progress](phases/05-contracts-tests/PROGRESS.md) | |
-| Implementation | 0% | 1 | [Implementation Progress](phases/06-implementation/PROGRESS.md) | |
-| Review & Retrospective | 0% | 1 | [Review Progress](phases/07-review/PROGRESS.md) | |
-| **Phase Total** | **0%** | | | [Calculation note, such as rounded from 0 / 700.] |
+Keep artifact readiness, engineering evidence readiness, recommendation, and owner authority separate.
 
-## Top-Level Child Rollup
+| Phase | Artifact Readiness | Engineering Evidence Readiness | Phase Completion | Weight | Agent Recommendation | Owner Decision | Evidence / Source | Remaining Concerns |
+|-------|--------------------|--------------------------------|------------------|--------|----------------------|----------------|-------------------|--------------------|
+| Discovery | 0% | N/A | 0% | 1 | TBD | Pending | [Phase progress](phases/01-discovery/PROGRESS.md) | |
+| Requirements | 0% | N/A | 0% | 1 | TBD | Pending | [Phase progress](phases/02-requirements/PROGRESS.md) | |
+| Architecture | 0% | 0% | 0% | 1 | TBD | Pending | [Phase progress](phases/03-architecture/PROGRESS.md) | |
+| Planning & Decomposition | 0% | N/A | 0% | 1 | TBD | Pending | [Phase progress](phases/04-planning/PROGRESS.md) | |
+| Contracts & Tests | 0% | 0% | 0% | 1 | TBD | Pending | [Phase progress](phases/05-contracts-tests/PROGRESS.md) | |
+| Implementation | 0% | 0% | 0% | 1 | TBD | Pending | [Phase progress](phases/06-implementation/PROGRESS.md) | |
+| Review & Retrospective | 0% | 0% | 0% | 1 | TBD | Pending | [Phase progress](phases/07-review/PROGRESS.md) | |
 
-| Scope | Type | Weight | Phase Total | Child Rollup | Total | Owner | Notes |
-|-------|------|--------|-------------|--------------|-------|-------|-------|
-| [System Component](system/[architecture-component]/PROGRESS.md) | System Component | 1 | 0% | 0% | 0% | [Owner] | |
-| [Delivery Workstream](phases/[phase]/PROGRESS.md) | Workstream | 1 | 0% | 0% | 0% | [Owner] | |
-| **Child Rollup** | | | | | **0%** | | [Calculation note, such as rounded equal-weight average.] |
+Phase completion reaches `100%` only when applicable artifact and evidence readiness are complete and the owner has approved the gate.
+
+For a headline phase number, use the lower of artifact readiness and applicable engineering evidence readiness, capped at `99%` until owner approval. Treat `N/A` engineering evidence as excluded rather than zero.
 
 ## Scope Inventory
 
-Use this table to show that the progress tree was populated from evidence rather than vibes.
+Inventory material scopes before deciding which ones earn child files. Source and test paths must be traceable, not structurally identical.
 
-| Scope | Type | Parent | Source Evidence | Progress Doc | Intended Source Path | Intended Test Path | Inclusion Decision |
-|-------|------|--------|-----------------|--------------|----------------------|--------------------|--------------------|
-| Discovery | Phase | Project | [Discovery artifact] | `phases/01-discovery/PROGRESS.md` | N/A | N/A | Included |
-| Requirements | Phase | Project | [Requirements artifact] | `phases/02-requirements/PROGRESS.md` | N/A | N/A | Included |
-| Architecture | Phase | Project | [Architecture artifact] | `phases/03-architecture/PROGRESS.md` | N/A | N/A | Included |
-| Planning & Decomposition | Phase | Project | [Planning artifact] | `phases/04-planning/PROGRESS.md` | N/A | N/A | Included |
-| Contracts & Tests | Phase | Project | [Contracts artifact] | `phases/05-contracts-tests/PROGRESS.md` | N/A | N/A | Included |
-| Implementation | Phase | Project | [Implementation artifact] | `phases/06-implementation/PROGRESS.md` | N/A | N/A | Included |
-| Review & Retrospective | Phase | Project | [Review artifact] | `phases/07-review/PROGRESS.md` | N/A | N/A | Included |
-| [Architecture component] | System Component | Project | [Architecture / planning / source evidence] | `system/[architecture-component]/PROGRESS.md` | `src/...` | `tests/...` | Included |
-| [Owned unit or subcomponent] | Unit / Subcomponent | [Architecture component] | [Contract / source / test evidence] | `system/[architecture-component]/[owned-unit-or-subcomponent]/PROGRESS.md` or `No child doc` | `src/...` or TBD | `tests/...` or TBD | Included / Rolled into parent / Deferred |
+| Scope | Type | Parent | Source Evidence | Progress Location | Source Area | Stable Test Boundary | Inclusion Decision |
+|-------|------|--------|-----------------|-------------------|-------------|----------------------|--------------------|
+| | Phase / Workstream / Component / Feature / Migration / Unit | | | `system/.../PROGRESS.md` or Parent row | Known / TBD | Known / TBD | Child ledger / Parent row / Deferred |
 
-## Progress Tree Index
+## Progress Tree
 
-Keep this table compact and clickable. Put deeper scoring evidence in child ledgers.
+| Scope | Type | Parent | Artifact Readiness | Engineering Evidence Readiness | Completion | Owner Gate / Status | Weight | Progress Location | Current Focus |
+|-------|------|--------|--------------------|--------------------------------|------------|---------------------|--------|-------------------|---------------|
+| | | | | | | | | | |
 
-| Scope | Type | Parent | Total | Current Focus | Progress Doc | Notes |
-|-------|------|--------|-------|---------------|--------------|-------|
-| Discovery | Phase | Project | 0% | | [Progress](phases/01-discovery/PROGRESS.md) | |
-| Requirements | Phase | Project | 0% | | [Progress](phases/02-requirements/PROGRESS.md) | |
-| Architecture | Phase | Project | 0% | | [Progress](phases/03-architecture/PROGRESS.md) | |
-| Planning & Decomposition | Phase | Project | 0% | | [Progress](phases/04-planning/PROGRESS.md) | |
-| Contracts & Tests | Phase | Project | 0% | | [Progress](phases/05-contracts-tests/PROGRESS.md) | |
-| Implementation | Phase | Project | 0% | | [Progress](phases/06-implementation/PROGRESS.md) | |
-| Review & Retrospective | Phase | Project | 0% | | [Progress](phases/07-review/PROGRESS.md) | |
-| [Architecture component] | System Component | Project | 0% | | [Progress](system/[architecture-component]/PROGRESS.md) | |
-| [Owned unit or subcomponent] | Unit / Subcomponent | [Architecture component] | 0% | | [Progress](system/[architecture-component]/[owned-unit-or-subcomponent]/PROGRESS.md) or `No child doc` | |
+Create a child ledger only when a scope has independent ownership, a stable contract or separate TDD gate, blockers, material validation, or an independent review, migration, release, or recovery path.
 
-## Next Score-Changing Actions
+For a child with a Loom gate, apply the `99%` cap until owner approval. For a nongated child, use the lower of applicable artifact and engineering evidence readiness and allow `100%` from complete direct evidence; record owner decision as `N/A`.
 
-| Action | Phase / Area | Expected Score Impact | Owner |
-|--------|--------------|-----------------------|-------|
-| [Next concrete action] | [Phase / system component] | [How this changes the score or unlocks scoring evidence] | [Owner] |
-| [Next concrete action] | [Phase / system component] | [How this changes the score or unlocks scoring evidence] | [Owner] |
+## Engineering Evidence
 
-## Decisions and Adjustments
+Invoking a skill earns no progress. Link the evidence required by the technical decision.
 
-| Date | Scope | Change | Reason | Owner |
-|------|-------|--------|--------|-------|
-| [YYYY-MM-DD] | [Scope] | [What changed] | [Why the score, structure, or plan changed] | [Owner] |
+| Scope / Decision | Operating Mode | Lead / Overlays | Trigger | Required Evidence | Observed Evidence | Reopened Upstream Decision | Status |
+|------------------|----------------|-----------------|---------|-------------------|-------------------|----------------------------|--------|
+| | Design / Implement / Refactor / Review | System Design / TDD / Design Patterns / Clean Code / None | | | | | Unknown / In progress / Ready / Blocked |
 
-## Gate Authority
+## Next Evidence-Changing Actions
 
-Progress scores may reflect artifact completeness, but phase gates close only when the owner explicitly approves them. Agents may recommend readiness, identify concerns, and update draft completeness scores; they may not convert a recommendation into an owner decision.
+| Action | Phase / Scope | Evidence or Score Changed | Owner | Blocker / Decision Point |
+|--------|---------------|---------------------------|-------|--------------------------|
+| | | | | |
 
-| Phase | Agent Recommendation | Owner Decision | Decision Date | Remaining Concerns |
-|-------|----------------------|----------------|---------------|--------------------|
-| Discovery | Ready / Not ready / TBD | Approved / Needs revision / Deferred / TBD | TBD | TBD |
-| Requirements | Ready / Not ready / TBD | Approved / Needs revision / Deferred / TBD | TBD | TBD |
-| Architecture | Ready / Not ready / TBD | Approved / Needs revision / Deferred / TBD | TBD | TBD |
-| Planning & Decomposition | Ready / Not ready / TBD | Approved / Needs revision / Deferred / TBD | TBD | TBD |
-| Contracts & Tests | Ready / Not ready / TBD | Approved / Needs revision / Deferred / TBD | TBD | TBD |
-| Implementation | Ready / Not ready / TBD | Approved / Needs revision / Deferred / TBD | TBD | TBD |
-| Review & Retrospective | Ready / Not ready / TBD | Approved / Needs revision / Deferred / TBD | TBD | TBD |
+## Decisions and Reopened Gates
+
+| Date | Scope | Decision / Change | Reason / New Evidence | Owning Phase Reopened | Downstream Artifacts to Refresh | Owner |
+|------|-------|-------------------|-----------------------|-----------------------|---------------------------------|-------|
+| | | | | | | |
 
 ## Open Progress Questions
 
-| Scope | Question Summary | Options | Trade-offs | Recommendation | Needed To Score Accurately | Owner |
-|-------|------------------|---------|------------|----------------|----------------------------|-------|
-| [Scope] | [Open question] | [Option A / Option B / Defer] | [Cost, risk, scope, quality, speed, reversibility] | [Recommended option and why] | [What evidence or decision is needed] | [Owner] |
+Only material questions that prevent honest scoring need a decision packet.
+
+| Scope | Question | Options | Tradeoffs | Recommendation | Evidence Needed | Decision Owner / Point |
+|-------|----------|---------|-----------|----------------|-----------------|------------------------|
+| | | | | | | |
 
 ---
 
 ## Child Progress Ledger Shape
 
-Use this shape for any phase, system component, subcomponent, or unit-level progress file.
+Copy the following shape only for a scope that earns independent tracking.
 
 ```md
-# Progress: [Scope Name]
+# Progress: [Scope]
 
-**Type:** [Phase / System Component / Subcomponent / Unit]
-**Parent:** [Parent scope](../PROGRESS.md)
+**Type:** [Phase / Workstream / Component / Feature / Migration / Unit]
+**Parent:** [Parent progress]([relative-path-to-parent-PROGRESS.md])
 **Owner:** [Owner]
-**Total Complete:** 0%
-**Current Focus:** [What is changing next]
+**Current Focus:** [Next evidence-changing action]
 **Last Updated:** [YYYY-MM-DD]
-**Artifact Completeness:** 0%
-**Gate Status:** Pending owner approval
-**Phase Complete:** 0%
+**Artifact Readiness:** [0–100% / Unknown / TBD / N/A]
+**Engineering Evidence Readiness:** [0–100% / Unknown / TBD / N/A]
+**Completion:** [0–100% / Unknown / TBD]
+**Agent Recommendation:** [Ready / Not ready / TBD]
+**Owner Decision:** [Approved / Needs revision / Deferred / Pending / N/A]
 
 ## Navigation
 
-- **Parent:** [Parent progress](../PROGRESS.md)
+- **Parent:** [Parent progress]([relative-path-to-parent-PROGRESS.md])
 - **Children:** [Child progress docs, if any]
-- **Related phase docs:** [Requirements / Architecture / Planning / Contracts / Implementation]
+- **Owning phase artifacts:** [Links]
+- **Relevant schemas, contracts, tests, source, and validation:** [Links]
 
-## Phase Completion
+## Phase Status
 
-| Phase | Complete | Weight | Evidence / Source | Notes |
-|-------|----------|--------|-------------------|-------|
-| Discovery | N/A | | | |
-| Requirements | N/A | | | |
-| Architecture | N/A | | | |
-| Planning & Decomposition | N/A | | | |
-| Contracts & Tests | 0% | 1 | | |
-| Implementation | 0% | 1 | | |
-| Review & Retrospective | 0% | 1 | | |
-| **Phase Total** | **0%** | | | |
-
-## Children
-
-| Scope | Type | Weight | Total | Progress Doc | Notes |
-|-------|------|--------|-------|--------------|-------|
-| | | | | | |
+| Phase | Artifact Readiness | Engineering Evidence Readiness | Phase Completion | Weight | Agent Recommendation | Owner Decision | Evidence / Source | Notes |
+|-------|--------------------|--------------------------------|------------------|--------|----------------------|----------------|-------------------|-------|
+| Discovery | N/A | N/A | N/A | | N/A | N/A | | |
+| Requirements | N/A | N/A | N/A | | N/A | N/A | | |
+| Architecture | N/A | N/A | N/A | | N/A | N/A | | |
+| Planning & Decomposition | N/A | N/A | N/A | | N/A | N/A | | |
+| Contracts & Tests | 0% | 0% | 0% | 1 | TBD | Pending | | |
+| Implementation | 0% | 0% | 0% | 1 | TBD | Pending | | |
+| Review & Retrospective | 0% | 0% | 0% | 1 | TBD | Pending | | |
 
 ## Local Scope Inventory
 
-| Scope | Type | Source Evidence | Progress Doc | Intended Source Path | Intended Test Path | Inclusion Decision |
-|-------|------|-----------------|--------------|----------------------|--------------------|--------------------|
-| | | | | | | |
+| Scope | Type | Source Evidence | Progress Location | Source Area | Stable Test Boundary | Inclusion Decision |
+|-------|------|-----------------|-------------------|-------------|----------------------|--------------------|
+| | | | Child path / Parent row | Known / TBD | Known / TBD | Child ledger / Parent row / Deferred |
 
-## Next Score-Changing Actions
+## Engineering Evidence
 
-| Action | Phase / Area | Expected Score Impact | Owner |
-|--------|--------------|-----------------------|-------|
+| Decision / Change Scope | Operating Mode | Lead / Overlays | Required Evidence | Observed Evidence | Gate Status |
+|-------------------------|----------------|-----------------|-------------------|-------------------|-------------|
+| | | | | | |
+
+## Children
+
+| Scope | Type | Weight | Artifact Readiness | Engineering Evidence Readiness | Completion | Progress Doc | Notes |
+|-------|------|--------|--------------------|--------------------------------|------------|--------------|-------|
+| | | | | | | | |
+
+## Next Evidence-Changing Actions
+
+| Action | Phase / Area | Expected Evidence Change | Owner |
+|--------|--------------|--------------------------|-------|
 | | | | |
 
-## Blockers and Questions
+## Blockers, Decisions, and Gate Resets
 
-| Item | Impact | Owner | Next Step |
-|------|--------|-------|-----------|
-| | | | |
+| Item | Impact | Owning Phase | Owner | Next Step / Decision Point |
+|------|--------|--------------|-------|----------------------------|
+| | | | | |
 
-## Gate Status
+## Gate Record
 
-| Agent Recommendation | Owner Decision | Decision Date | Remaining Concerns |
-|----------------------|----------------|---------------|--------------------|
-| Ready / Not ready / TBD | Approved / Needs revision / Deferred / TBD | TBD | TBD |
+| Artifact Readiness | Engineering Evidence Readiness | Agent Recommendation | Owner Decision | Decision Date | Remaining Concerns |
+|--------------------|--------------------------------|----------------------|----------------|---------------|--------------------|
+| 0–100% / Unknown / TBD / N/A | 0–100% / Unknown / TBD / N/A | Ready / Not ready / TBD | Approved / Needs revision / Deferred / Pending / N/A | | |
 ```

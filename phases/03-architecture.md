@@ -2,126 +2,117 @@
 
 ## Purpose
 
-Architecture answers: **How will we build this, and what boundaries should implementation preserve?**
+Architecture answers: **What system boundaries, ownership, contracts, and quality tradeoffs should implementation preserve?**
 
-This phase translates Requirements into a technical design that Planning & Decomposition can turn into workstreams. It should prefer clear decisions, tradeoffs, boundaries, and handoff inputs over exhaustive implementation detail.
+It translates Requirements into the smallest coherent technical design that Planning & Decomposition can turn into owned, verifiable work. It should make consequential decisions explicit without predesigning private classes, file trees, or pattern participants.
 
-This phase focuses on:
-- System structure, component responsibilities, and interaction patterns
-- Technology choices by layer, with alternatives and tradeoffs
-- Data model, data flow, state ownership, and fidelity constraints
-- Interfaces, control surfaces, and dependency direction
-- Component contracts that should feed Contracts & Tests
-- Scalability, performance, security, reliability, and operational shape
-- Deferred paths and future transition boundaries
-- Planning inputs for workstream decomposition
+When a decision crosses components, data stores, externally visible contracts, migration, deployment, or operational boundaries, route it through the local `software-engineering` skill with System Design as the lead. Loom continues to own the artifact, phase gate, and handoff. Use Design Patterns here only when a concrete source-level collaboration is already in scope; do not design from a pattern catalog.
+
+## Architecture Decision Gates
+
+Before presenting a design as settled, pass the applicable gates:
+
+- **Framing:** Ranked requirements, quality attributes, constraints, non-goals, and material unknowns are known or bounded by labeled assumptions.
+- **Evidence:** Facts, measurements, estimates, inferences, assumptions, and unknowns are distinguished. Quantify only drivers that can change a decision.
+- **Alternatives:** Consequential or hard-to-reverse choices compare viable options, including current, simpler, or no-change approaches when credible.
+- **Contracts:** Critical ownership, interface, data, consistency, ordering, delivery, error, compatibility, limit, and security semantics are explicit where relevant.
+- **Risk:** Each critical assumption or unresolved risk has evidence or a validation method, owner, and decision point.
+- **Migration:** Stateful, externally visible, or incompatible change includes compatibility, verification, cutover, rollback, recovery, and retirement decisions.
+- **Authority:** An approved architecture authorizes Planning, not implementation or production changes.
+
+Apply these gates proportionally. A small local feature may need a focused decision record; a cross-system migration may need the full treatment.
 
 ## Key Questions
 
-The Architecture Agent will help you explore:
+### Inputs and Drivers
 
-### Inputs From Requirements
-- What MVP scope must Architecture honor?
-- Which acceptance criteria shape technical design?
-- What non-functional constraints are real for this pass?
-- What optional or deferred work should the architecture avoid building now?
-- Which open decisions did Requirements hand forward?
+- Which requirement, acceptance, quality-attribute, constraint, assumption, or risk IDs drive this design?
+- What current system or workflow exists, and what outcome must change?
+- What is explicitly outside this architecture scope?
+- Which quality attributes conflict, and which ranks higher?
+- Which unknowns would materially change a public contract, safety posture, irreversible choice, or order-of-magnitude cost?
 
-### System Structure and Boundaries
-- What are the major components, modules, services, or classes?
-- What does each component own?
-- What documentation/source/test paths should represent each service, component, and unit before implementation exists?
-- Which progress drilldowns should be created or updated from this architecture tree?
-- How do components communicate, sequence work, share state, and handle failure?
-- What must each component not do?
-- What dependency direction and ownership rules should implementation preserve?
-- Which future transition boundaries should be protected without overbuilding?
+### Boundaries, Ownership, and Data
 
-### Interfaces and Control Surfaces
-- How do users, operators, jobs, external systems, or downstream consumers interact with the system?
-- Which CLI, UI, API, worker, export, or scheduled surfaces exist?
-- Which surfaces are privileged controls versus read-only or product surfaces?
-- What access separation or default exposure decisions matter?
+- What are the smallest components or services that earn independent responsibility, ownership, scaling, release, isolation, or failure boundaries?
+- Who operates each boundary, and what data or state does it own?
+- What is the source of truth, what is derived or ephemeral, and what lifecycle, retention, deletion, residency, or migration rules apply?
+- What dependency direction prevents circular or ambiguous ownership?
+- Which trust and failure domains matter?
+- What should remain deliberately direct or colocated for now?
 
-### Technology Decisions
-- What technology fits each layer?
-- Why this choice?
-- What alternatives were considered?
-- What tradeoffs does each choice create?
-- What boundary rule comes with the choice?
+### Critical Contracts and Flows
 
-### Data, Runtime State, and Integrations
-- What is the data model or state model?
-- What is the source of truth?
-- Which identifiers must stay stable?
-- What data is derived or recalculable?
-- What precision limits or unknown values must not be invented?
-- What external APIs, storage systems, queues, events, or protocols are involved?
-- What operational modes, runtime controls, backoff behavior, or progress visibility are needed?
+- What do users, operators, jobs, and external systems observe on success, delay, partial success, and failure?
+- Which APIs, commands, queries, events, schemas, files, or control surfaces form stable boundaries?
+- What inputs, outputs, effects, invariants, errors, authentication, authorization, versioning, limits, and compatibility rules apply?
+- Where do consistency, ordering, transaction boundaries, idempotency, retries, timeouts, cancellation, backpressure, deduplication, or replay affect correctness?
+- How do primary read, write, control, and background flows behave under normal load, overload, dependency failure, duplicate or reordered work, recovery, and plausible abuse?
 
-### Domain or Model Logic
-- Is there domain logic, workflow logic, ranking, scoring, AI/model behavior, search relevance, or another complex decision engine?
-- What are its inputs and outputs?
-- How replaceable or extensible should it be?
-- What must the logic not depend on?
-- What explainability, provenance, confidence, evidence, or audit context is required?
+### Options and Material Scale
 
-### Risk, Operations, and Handoff
-- What bottlenecks, failure modes, and recovery paths matter?
-- What security and reliability choices are required?
-- What deployment/run process is enough for the current scope?
-- What risks come from deferred work?
-- What decisions are settled, and what remains open?
-- What should Planning & Decomposition build, sequence, parallelize, and protect?
+- What is the simplest viable design?
+- What alternatives solve the same present problem, and what correctness, complexity, operability, migration, cost, lock-in, or team-fit tradeoffs do they create?
+- Which decisions are reversible, and what trigger would justify revisiting them?
+- If scale changes the choice, what average, peak, burst, growth, payload, fan-out, retention, skew, quota, and headroom ranges matter?
+- What is the first likely bottleneck, and does the recommendation change across plausible input ranges?
+
+### Evolution, Operations, and Validation
+
+- What smallest vertical slice can validate the riskiest architecture assumption?
+- How will mixed versions, data movement, backfill, reconciliation, cutover, abort, rollback, recovery, and temporary-path retirement work when relevant?
+- What deployment, configuration, feature control, observability, support, and recovery responsibilities are proportionate to this scope?
+- Which user-visible outcomes become service indicators or local verification signals?
+- What is the cheapest credible validation method for each critical risk: review, prototype, benchmark, contract test, fault injection, migration rehearsal, restore test, or security analysis?
 
 ## Outputs
 
-By the end of Architecture, you'll have:
+By the end of Architecture, produce the proportionate subset of:
 
-✅ **Architecture Overview** - Problem recap, goals, and requirement inputs
-✅ **System Design** - Components, interactions, diagrams, interfaces, and boundary rules
-✅ **Mirrored Module Map** - Intended Loom progress, source, and test paths for architecture components and owned units
-✅ **Progress Drilldown Inputs** - Architecture components, subcomponents, and units that should be populated in the progress tree
-✅ **Technology Decisions** - Choices by layer with justification, alternatives, tradeoffs, and boundary implications
-✅ **Data Design** - Model, source of truth, identifiers, data flow, storage, and runtime state
-✅ **Integration Design** - External services, endpoints, events, queues, and storage integrations
-✅ **Component Contracts** - Inputs, outputs, ownership, and test candidates for Contracts & Tests
-✅ **Security & Reliability Plan** - Access, secrets, failure handling, recovery, and observability
-✅ **Decision Log** - Key decisions, open decisions, options, tradeoffs, recommendations, defaults, and revisit triggers
-✅ **Planning Inputs** - Components, workstreams, sequencing, parallelism, contracts, boundaries, and highest-risk areas
+- **Driver trace:** Material requirement and quality IDs mapped to design treatment and validation.
+- **Architecture decision:** Stable decision IDs, selected design, rationale, alternatives, tradeoffs, and revisit triggers.
+- **Boundaries and ownership:** Components, responsibilities, operators, dependencies, trust or failure domains, and owned data.
+- **Critical flows:** End-to-end success, degraded, failure, and recovery behavior.
+- **Stable contracts:** Interfaces, schemas, invariants, compatibility, consistency, error, security, and delivery semantics needed by Contracts & Tests.
+- **Data design:** Sources of truth, identity, lifecycle, retention, deletion, derived state, and migration expectations.
+- **Risk and validation plan:** Evidence, assumptions, owners, methods, thresholds, and decision points.
+- **Evolution plan:** Compatible increments, verification, cutover, rollback, recovery, and cleanup where relevant.
+- **Planning inputs:** Owned work boundaries, first validating slice, dependencies, integration points, and decisions Planning must not reopen without new evidence.
+- **Progress mapping:** Stable independently tracked scopes and provisional source/test evidence paths where known; private implementation remains `TBD`.
+
+Use a diagram only when it makes several boundaries, flows, or state transitions materially clearer. Label current versus proposed state, actors, direction, protocols, trust boundaries, and failure domains as applicable.
 
 ## Architecture Template
 
-See [architecture-template.md](../templates/architecture-template.md) for a detailed template.
+Use [architecture-template.md](../templates/architecture-template.md). Keep its core drivers, decisions, boundaries, critical flows, risks, validation, and handoff; delete conditional modules that do not affect the design.
 
-## When Architecture is Complete
+## When Architecture Is Ready for Owner Review
 
-You're ready to move to Planning & Decomposition when:
+- The scope, non-goals, current state, ranked drivers, and material unknowns are explicit.
+- Consequential decisions trace to requirements, constraints, evidence, or risk.
+- Viable alternatives were compared for costly, irreversible, or operationally significant choices.
+- Components earn their boundaries and have clear responsibilities, ownership, dependencies, and state.
+- Critical interface and data semantics are explicit enough for Contracts & Tests.
+- Representative success, overload, dependency-failure, degraded, recovery, and abuse scenarios were considered where credible.
+- Critical assumptions and risks have evidence or a validation owner, method, threshold, and decision point.
+- Stateful, external, or incompatible changes include a credible migration and rollback path.
+- Planning receives owned vertical-slice inputs, not speculative private implementation structure.
+- Open owner decisions use summaries, options, tradeoffs, recommendations, and revisit triggers.
+- The agent recommendation remains separate from owner approval and does not authorize implementation.
 
-- ✅ Requirements inputs and MVP constraints are reflected in the design
-- ✅ Components, modules, services, and responsibilities are clear enough to decompose
-- ✅ Intended documentation, source, and test paths are clear enough for Planning and Progress to mirror
-- ✅ Progress tree entries can be populated for known services, components, and major units
-- ✅ Interaction patterns, interfaces, and control surfaces are documented
-- ✅ Boundary rules and ownership rules are explicit
-- ✅ Data model, state ownership, and integration points are understood
-- ✅ Technology choices are justified with tradeoffs and alternatives
-- ✅ Open decisions include summaries, options, tradeoffs, recommendations, defaults, and revisit triggers
-- ✅ Component contracts and contract-test candidates are identified
-- ✅ Security, reliability, operational, and deferred-work risks are captured
-- ✅ Planning inputs name workstreams, sequencing constraints, parallelization opportunities, and decisions Planning must not reopen
-- ✅ Loom process feedback is captured or explicitly marked not applicable
-- ✅ Phase gate separates agent recommendation from owner approval
+## Common Architecture Mistakes
 
-## Tips
+- **Architecture theater:** Adding queues, services, caches, or multi-region topology without a present driver and explicit semantics.
+- **Boxes without contracts:** Naming components without ownership, data, interfaces, failure behavior, or a reason for the boundary.
+- **Premature source design:** Freezing classes, patterns, or mirrored test directories before implementation pressure exists.
+- **Decorative capacity math:** Producing unsupported point estimates that cannot change the decision.
+- **One-way migrations:** Assuming perfect cutover or rollback without mixed-version and data-recovery behavior.
+- **Design as authorization:** Starting implementation because a diagram was approved.
 
-- **Design the boundaries, not every line of code** - Planning and Implementation need shape more than exhaustive detail
-- **Make deferred paths visible** - Future work is easier when the MVP explicitly avoids and preserves the right things
-- **Treat contracts as handoff material** - Component inputs, outputs, and "must not do" rules feed Contracts & Tests
-- **Name control surfaces carefully** - Operator controls, read-only outputs, and external APIs often carry different risks
-- **Capture defaults for open decisions** - Planning can move forward when it knows the current default and revisit trigger
-- **Prefer diagrams that clarify ownership** - Small interaction diagrams beat large decorative maps
+## Loom Process Feedback
+
+Capture only a material phase-local observation here. Put any reusable evidence-backed candidate in `docs/loom/pilot-feedback.md`. A clean Architecture phase needs no feedback note.
 
 ---
 
-**Next**: Move to [Planning & Decomposition](./04-planning-decomposition.md) once Architecture is complete and the owner approves the gate.
+Move to [Planning & Decomposition](./04-planning-decomposition.md) after the owner approves the Architecture gate.
