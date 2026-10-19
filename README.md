@@ -168,7 +168,29 @@ This creates the Loom artifact scaffold and copies the CLI, ticket template, che
 
 Existing projects can use the same command; this is the initial additive adoption path.
 
+### Guided Project Bootstrap
+
+For a safer guided setup, use the project command. It is a dry run by default:
+
+```bash
+bin/loom project start /path/to/new-project \
+  --name new-project \
+  --repo acme/new-project
+```
+
+For an existing repository, use `adopt` instead of `start`. Review the printed plan, then add `--apply` to install the local files. GitHub repository creation, ruleset import, branch creation, and setup-PR creation remain explicit follow-up actions until the user provides authenticated GitHub access and authorizes those external mutations.
+
 For organizations that want centralized workflow maintenance, Loom also publishes a reusable workflow at `.github/workflows/loom-check-reusable.yml`. A project can call it from its own workflow with `uses: raichusaurus/loom/.github/workflows/loom-check-reusable.yml@main`; pin a release tag once Loom begins publishing versioned releases.
+
+### Developer Setup
+
+New collaborators can run:
+
+```bash
+bin/loom setup
+```
+
+This checks for Git, GitHub CLI, and Git identity, then prints the onboarding steps. Add `--project /path/to/project` to include project adoption guidance, or add `--apply` when you are ready for Loom to install the local project files. `bin/loom doctor` runs the environment check without the onboarding text.
 
 ---
 
