@@ -131,6 +131,12 @@ Record feedback only when Loom creates material clarity or friction worth preser
 - Agent recommendations, artifact readiness, engineering evidence readiness, and owner approval remain distinct.
 - Artifacts and progress structure stay proportionate to the decisions and coordination they support.
 
+## Collaborative Git Workflow
+
+Loom projects use Git as the shared collaboration and audit surface. Each phase has a project-scoped shared branch, contributors work through short-lived branches or worktrees, and meaningful changes are committed and pushed for team visibility. Consequential changes move through review; approved phase gates are preserved in Git history, and the next phase branches from the approved predecessor state.
+
+See [FRAMEWORK.md](./FRAMEWORK.md#7-git-native-collaboration) for the full collaboration model and its distinction between Git review and owner approval.
+
 ---
 
 Start by telling the Orchestrator what you want to build or change and what evidence already exists.

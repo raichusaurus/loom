@@ -26,6 +26,7 @@ At the start of a phase or a materially new technical decision, the Orchestrator
 4. When the local `software-engineering` skill is available, select one lead discipline and only necessary overlays; record `No engineering route` when the work is purely lifecycle or product work.
 5. Name the evidence the selected route must produce before the next dependent action.
 6. Check whether new evidence reopens an earlier requirement, boundary, schema, contract, or owner decision.
+7. Turn unresolved consequential questions into visible tickets linked to the active phase branch, artifact, and evidence. Identify the human decision-maker, what work is blocked or at risk, and the condition for resuming.
 
 The engineering router is not an eighth Loom phase. Loom controls lifecycle and phase authority; the selected specialist protocol controls the technical work inside the authorized phase.
 
@@ -52,6 +53,7 @@ During each phase, the Orchestrator:
 - Maintains traceability among requirements, architecture decisions, change scopes, schemas, contracts, tests, implementation evidence, and progress.
 - Records a plan or contract deviation only after checking whether it requires reopening the phase that owns the changed decision.
 - Updates the root and applicable child progress ledgers from evidence, without creating a child file for every private implementation detail.
+- Maintains open-question tickets for decisions that require human input, keeps them linked to the phase artifacts and Git changes, and prevents unresolved consequential questions from being silently converted into assumptions.
 
 ## Cross-Phase Engineering Handoffs
 

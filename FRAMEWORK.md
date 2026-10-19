@@ -51,13 +51,55 @@ Agentic workflows need clear work boundaries. Planning & Decomposition defines o
 
 Each technical workstream should name its observable outcome, stable contracts, non-goals, selected engineering route, and evidence required before it can change production behavior.
 
-### 7. Guided Decisions and High-Signal Feedback
+### 7. Git-Native Collaboration
+
+Loom projects are collaborative Git workspaces. The repository is the canonical shared surface for phase artifacts, decisions, progress, evidence, and handoffs. Contributors may work locally on their own machines, but meaningful changes should be committed and pushed so the current state remains visible to the team.
+
+Each project phase has a shared phase branch, created from the approved state of the preceding phase. Use a consistent project-scoped naming scheme such as:
+
+```text
+loom/[project]/discovery
+loom/[project]/requirements
+loom/[project]/architecture
+loom/[project]/planning
+loom/[project]/contracts-tests
+loom/[project]/implementation
+loom/[project]/review
+```
+
+The phase branch is the shared workspace for the active phase. Individual contributors use short-lived branches or worktrees for distinct changes and merge them into the phase branch through review when the change is consequential. Low-risk working notes may be pushed directly when the project agrees that review is unnecessary, but this should not obscure decisions, contract changes, gate changes, or other material evidence.
+
+When a phase gate is approved, preserve that state in Git history—normally through a reviewed pull request or equivalent merge—and create the next phase branch from the approved commit. Do not maintain permanently diverging phase branches that cannot be traced to an approved predecessor. If later evidence changes a requirement, boundary, schema, contract, or plan, reopen the owning phase and record the reason in both the artifact and the relevant Git history.
+
+Git provides collaboration and auditability; it does not replace Loom's authority model. A pushed branch or merged pull request shows that work was shared or reviewed, not that an owner approved a phase gate. Owner decisions remain explicit in the Loom artifact or linked project record.
+
+### Open Questions Become Tickets
+
+When work within a phase exposes an unresolved question whose answer could affect scope, requirements, architecture, contracts, quality bounds, sequencing, implementation, or approval, record it as a ticket before making an assumption. The ticket is the shared coordination unit for human input; it should not live only in an agent transcript, local notes, or an unpushed branch.
+
+Each open-question ticket should include:
+
+- the phase and project scope
+- the specific question and why it matters
+- the evidence or decision that exposed it
+- the options or constraints currently known
+- the recommended decision, if one is useful
+- the human owner or decision-maker
+- the phase branch and relevant artifact or commit
+- the downstream work blocked or at risk
+- the status, decision, date, and resolving commit or pull request
+
+Agents may identify, draft, classify, and route these tickets. They may resolve a question only when the answer is already established by an authoritative project decision or the owner has explicitly delegated that decision. Otherwise, the phase remains pending or records the ticket as a visible dependency; agents must not silently choose an assumption to make the work appear unblocked.
+
+Tickets should be linked from the phase artifact and referenced in commits or pull requests that depend on them. When a ticket is resolved, update the authoritative phase artifact, close or transition the ticket, and record whether the decision reopens an earlier phase or resets a downstream contract or implementation gate.
+
+### 8. Guided Decisions and High-Signal Feedback
 
 The Orchestrator maintains context and packages material open questions for decision. Each decision packet should include a short summary, plausible options, tradeoffs, a recommendation, and the trigger that would change it. Do not manufacture options for a trivial or already constrained choice.
 
 Capture Loom process feedback when work exposes material friction: an ambiguous gate, repeated workaround, missing guardrail, validation failure, or ceremony whose cost exceeds its risk. Keep phase-local observations in the phase artifact and reusable framework lessons in `docs/loom/pilot-feedback.md`. A clean phase needs no feedback entry or `N/A` ceremony.
 
-### 8. Explicit Gate Authority
+### 9. Explicit Gate Authority
 
 Agents can draft artifacts, score artifact readiness, identify risks, prepare handoffs, and recommend whether a phase is ready. They cannot approve a gate on the owner's behalf.
 
@@ -72,7 +114,7 @@ Every phase should separate:
 
 A prior approval does not freeze a decision that new evidence invalidates. Reopen the phase that owns the changed requirement, boundary, schema, or contract, record the reason, and refresh dependent handoffs.
 
-### 9. Proportionate Progress Visibility
+### 10. Proportionate Progress Visibility
 
 Progress should be visible at every useful zoom level without turning the progress tree into a second source tree. Track project and phase status, then add child ledgers where a service, component, workstream, or unit has independent ownership, contracts, blockers, scoring evidence, or a review path.
 
