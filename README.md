@@ -144,6 +144,16 @@ Loom projects use Git as the shared collaboration and audit surface. Each phase 
 
 See [FRAMEWORK.md](./FRAMEWORK.md#7-git-native-collaboration) for the full collaboration model and its distinction between Git review and owner approval.
 
+## Opt-In Adoption
+
+Loom is not required for every repository a contributor touches. Use one of three modes:
+
+- **Shared project:** The project owner authorizes Loom, and `loom project adopt` installs the shared artifacts, checks, ownership files, and GitHub setup.
+- **Personal overlay:** Keep Loom artifacts in a separate local or private workspace while contributing to another team's repository. Link notes to the upstream issue, PR, branch, and commit without modifying the upstream process.
+- **Lightweight session:** Use Loom's phase reasoning, open-question discipline, and handoff practices temporarily without creating persistent project files.
+
+Never install Loom into someone else's repository without their authorization. Shared adoption is a project decision; personal Loom use is always available to an individual contributor.
+
 ## Enforce Loom Conventions
 
 The repository includes a dependency-free checker for Loom-enabled project repositories:

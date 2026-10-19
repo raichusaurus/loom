@@ -73,6 +73,20 @@ When a phase gate is approved, preserve that state in Git history—normally thr
 
 Git provides collaboration and auditability; it does not replace Loom's authority model. A pushed branch or merged pull request shows that work was shared or reviewed, not that an owner approved a phase gate. Owner decisions remain explicit in the Loom artifact or linked project record.
 
+### Loom Adoption Is Opt-In
+
+Loom must not be imposed on a project whose owners have not chosen to use it. A contributor may use Loom privately while contributing to a repository that follows another process.
+
+Support three operating modes:
+
+- **Shared Loom project:** The project opts in. Loom artifacts, phase branches, tickets, workflows, ownership files, and rulesets live in the project repository and apply to the collaborating team.
+- **Personal Loom overlay:** A contributor uses Loom in a separate local or private workspace. The overlay may track the upstream repository, issue, pull request, branch, commit, decisions, open questions, and validation evidence, but it does not add Loom files, branches, workflows, or rules to the upstream repository without permission.
+- **Lightweight Loom session:** For a small contribution, the agent applies only the relevant Loom reasoning and handoff practices in the session, without creating persistent project governance artifacts.
+
+`loom project adopt` means shared project adoption and must modify only a repository whose owners have authorized that choice. Personal overlays and lightweight sessions preserve the host project's conventions while still giving the contributor Loom's structure, traceability, and open-question discipline.
+
+When working in overlay mode, link every relevant Loom decision back to the upstream repository and exact Git reference. Do not represent a private overlay as an official project gate, owner decision, or team-wide requirement.
+
 ### Open Questions Become Tickets
 
 When work within a phase exposes an unresolved question whose answer could affect scope, requirements, architecture, contracts, quality bounds, sequencing, implementation, or approval, record it as a ticket before making an assumption. The ticket is the shared coordination unit for human input; it should not live only in an agent transcript, local notes, or an unpushed branch.
