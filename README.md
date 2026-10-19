@@ -2,6 +2,8 @@
 
 Loom is a seven-phase workflow for turning a project idea or scoped software change into traceable decisions, executable evidence, verified implementation, and reusable learning.
 
+The current framework version is recorded in [VERSION](./VERSION). Projects installed with `bin/loom init` record the version in `.loom-version`; `loom check` reports missing or mismatched versions so upgrades are deliberate and visible.
+
 The first pass establishes a stable foundation before heavy parallelism. Later passes can be smaller, faster Loom cycles around a feature, service, migration, or task while preserving the gates that still apply.
 
 ## The Seven Phases
@@ -54,7 +56,12 @@ loom/
     ├── implementation-template.md
     ├── progress-ledger-template.md
     ├── pilot-feedback-template.md
-    └── retrospective-template.md
+    ├── retrospective-template.md
+    ├── open-question-ticket.md
+    ├── pull-request-template.md
+    ├── CODEOWNERS
+    ├── loom-check.yml
+    └── loom-ruleset.json
 ```
 
 Phase-specific agents are roles coordinated by the Orchestrator; this repository does not currently ship separate `agents/` definitions.
@@ -136,6 +143,32 @@ Record feedback only when Loom creates material clarity or friction worth preser
 Loom projects use Git as the shared collaboration and audit surface. Each phase has a project-scoped shared branch, contributors work through short-lived branches or worktrees, and meaningful changes are committed and pushed for team visibility. Consequential changes move through review; approved phase gates are preserved in Git history, and the next phase branches from the approved predecessor state.
 
 See [FRAMEWORK.md](./FRAMEWORK.md#7-git-native-collaboration) for the full collaboration model and its distinction between Git review and owner approval.
+
+## Enforce Loom Conventions
+
+The repository includes a dependency-free checker for Loom-enabled project repositories:
+
+```bash
+bin/loom check /path/to/project
+```
+
+It verifies the required phase artifacts, resolves relative Markdown links, and validates the required sections in `docs/loom/tickets/LOOM-*.md`. Copy [templates/open-question-ticket.md](templates/open-question-ticket.md) when creating a human-decision ticket and [templates/loom-check.yml](templates/loom-check.yml) into a project's `.github/workflows/` directory to run the check on every push and pull request.
+
+The checker enforces repository conventions only. Branch protection, required reviews, and owner approval must be configured in the hosting service and remain separate from agent recommendations.
+
+### Install Loom in a Project
+
+From a checkout of this repository:
+
+```bash
+bin/loom init /path/to/project
+```
+
+This creates the Loom artifact scaffold and copies the CLI, ticket template, check workflow, pull-request template, `CODEOWNERS`, and a ruleset JSON baseline. Existing files are never overwritten. Replace the placeholder owners in `CODEOWNERS`, review the ruleset branch pattern and bypass policy, then import `.github/loom-ruleset.json` in the project's GitHub settings.
+
+Existing projects can use the same command; this is the initial additive adoption path.
+
+For organizations that want centralized workflow maintenance, Loom also publishes a reusable workflow at `.github/workflows/loom-check-reusable.yml`. A project can call it from its own workflow with `uses: raichusaurus/loom/.github/workflows/loom-check-reusable.yml@main`; pin a release tag once Loom begins publishing versioned releases.
 
 ---
 

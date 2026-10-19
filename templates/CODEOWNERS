@@ -1,0 +1,9 @@
+# Replace these placeholders with project-specific GitHub users or teams.
+/docs/loom/phases/01-discovery/ @discovery-owner
+/docs/loom/phases/02-requirements/ @requirements-owner
+/docs/loom/phases/03-architecture/ @architecture-owner
+/docs/loom/phases/04-planning/ @planning-owner
+/docs/loom/phases/05-contracts-tests/ @engineering-owner
+/docs/loom/phases/06-implementation/ @engineering-owner
+/docs/loom/phases/07-review/ @project-owner
+/docs/loom/tickets/ @project-owner
