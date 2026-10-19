@@ -2,7 +2,7 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from loom_cli import check_project, init_project
+from loom_cli import check_project, init_project, project_plan
 
 
 class LoomCliTests(unittest.TestCase):
@@ -47,6 +47,14 @@ class LoomCliTests(unittest.TestCase):
             self.assertEqual((root / ".loom-version").read_text(), "0.1.0\n")
             self.assertEqual((root / "README.md").read_text(), "existing project\n")
             self.assertEqual(check_project(root), [])
+
+    def test_project_start_plan_is_dry_run(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            plan = project_plan("start", root, "example", "acme/example")
+            self.assertIn("create project scaffold", plan)
+            self.assertIn("create phase branch loom/example/discovery", plan)
+            self.assertFalse((root / "docs").exists())
 
     def _write_project(self, root):
         loom = root / "docs/loom"

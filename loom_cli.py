@@ -3,6 +3,8 @@
 import argparse
 import re
 import shutil
+import subprocess
+import sys
 from pathlib import Path
 
 
@@ -129,11 +131,105 @@ def init_project(project_root: Path) -> list[str]:
     return created
 
 
-def main() -> int:
+def project_plan(mode: str, project_root: Path, project_name: str, repository: str) -> list[str]:
+    """Describe project bootstrap actions without changing files or GitHub."""
+    actions = [f"inspect {project_root}"]
+    if mode == "start" and (project_root / "docs" / "loom").exists():
+        actions.append("ERROR: project already contains docs/loom; use adopt")
+    else:
+        actions.append("create project scaffold")
+    actions.extend(
+        (
+            "install pinned Loom version " + LOOM_VERSION,
+            "configure CODEOWNERS and pull-request template",
+            "configure Loom check workflow",
+            f"prepare ruleset import for {repository}",
+            f"create phase branch loom/{project_name}/discovery",
+            "open setup pull request",
+        )
+    )
+    return actions
+
+
+def doctor_findings() -> list[str]:
+    """Check the local tools needed for a Loom collaboration."""
+    findings = []
+    for command in ("git", "gh"):
+        if shutil.which(command) is None:
+            findings.append(f"missing command: {command}")
+    if shutil.which("git") is None:
+        return findings
+    for key, label in (("user.name", "Git user.name"), ("user.email", "Git user.email")):
+        result = subprocess.run(
+            ["git", "config", "--global", "--get", key],
+            capture_output=True,
+            text=True,
+            check=False,
+        )
+        if result.returncode != 0 or not result.stdout.strip():
+            findings.append(f"missing Git identity: {label}")
+    return findings
+
+
+def main(argv=None) -> int:
+    if argv is None:
+        argv = sys.argv[1:]
+    if argv and argv[0] == "project":
+        parser = argparse.ArgumentParser(description="Bootstrap a Loom project.")
+        parser.add_argument("project", choices=("project",))
+        parser.add_argument("mode", choices=("start", "adopt"))
+        parser.add_argument("project_root")
+        parser.add_argument("--name", default=None)
+        parser.add_argument("--repo", default="repository-not-configured")
+        parser.add_argument("--apply", action="store_true")
+        args = parser.parse_args(argv)
+        project_root = Path(args.project_root).resolve()
+        project_name = args.name or project_root.name
+        actions = project_plan(args.mode, project_root, project_name, args.repo)
+        if any(action.startswith("ERROR:") for action in actions):
+            for action in actions:
+                print(action)
+            return 1
+        if args.apply:
+            for path in init_project(project_root):
+                print(f"CREATED: {path}")
+            print("NOTE: create the GitHub repository, import the ruleset, and open the setup PR.")
+        else:
+            for action in actions:
+                print(f"PLAN: {action}")
+            print("Dry run only. Add --apply to install local project files.")
+        return 0
+
+    if argv and argv[0] in ("doctor", "setup"):
+        parser = argparse.ArgumentParser(description="Prepare a developer for Loom.")
+        parser.add_argument("command", choices=("doctor", "setup"))
+        parser.add_argument("--project", default=None)
+        parser.add_argument("--apply", action="store_true")
+        args = parser.parse_args(argv)
+        findings = doctor_findings()
+        if findings:
+            print("Loom environment needs attention:")
+            for finding in findings:
+                print(f"- {finding}")
+        else:
+            print(f"Loom {LOOM_VERSION} environment is ready.")
+        print("Next steps:")
+        print("- Authenticate GitHub with: gh auth login")
+        print("- Read README.md, FRAMEWORK.md, and ORCHESTRATOR.md")
+        if args.project:
+            project_root = Path(args.project).resolve()
+            if args.apply:
+                for path in init_project(project_root):
+                    print(f"CREATED: {path}")
+            else:
+                print(f"- Preview project adoption with: bin/loom project adopt {project_root}")
+                print("- Add --apply only after reviewing the plan")
+        return 1 if findings else 0
+
     parser = argparse.ArgumentParser(description="Check Loom project conventions.")
     parser.add_argument("command", choices=("check", "init"))
     parser.add_argument("project_root", nargs="?", default=".")
-    args = parser.parse_args()
+    args = parser.parse_args(argv)
     project_root = Path(args.project_root).resolve()
     if args.command == "init":
         for path in init_project(project_root):
